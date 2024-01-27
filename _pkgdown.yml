@@ -10,13 +10,22 @@ navbar:
       icon: fa-linkedin
       href: https://www.linkedin.com/in/flavioleccese/
       aria-label: LinkedIn
+    github:
+      icon: fa-github
+      href: https://github.com/FlavioLeccese92/euroleaguer/
+      aria-label: Github
 home:
   links:
-  - text: Official Euroleague basketball website
+  - text: Euroleague basketball website
     href: https://www.euroleaguebasketball.net/euroleague/
+  - text: Eurocup basketball website
+    href: https://www.euroleaguebasketball.net/eurocup/
 docsearch:
   search:
 reference:
-- title: Header
+- title: Game
   contents:
   - getGameHeader
+  - getGameBoxScore
+  - getGamePoints
+  - getGameRound

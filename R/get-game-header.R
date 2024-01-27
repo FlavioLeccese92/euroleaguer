@@ -2,15 +2,12 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @description
-#'
-#' Description...
-#'
-#' @param game_code The code of the game
-#' @param season_code The code of the season
-#'
+#' @param game_code The code of the game. An integer value.
+#' @param season_code The code of the season (examples are "E2023" for Euroleague
+#' or "U2023" for Eurocup 2023)
+#' @return Returns a summary for the chosen games and seasons
 #' @examples
-#' getGameHeader(season_code = c("E2023", "E2022"), game_code = 1)
+#' getGameHeader(season_code = c("E2023", "U2023"), game_code = 1)
 #'
 #' @name getGameHeader
 #' @rdname getGameHeader

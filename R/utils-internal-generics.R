@@ -32,8 +32,8 @@
         out,
         iter_data %>%
           dplyr::bind_cols(iter_args[iter, ], .) %>% tibble::as_tibble() %>%
-          dplyr::select(all_of(setdiff(names(.), args_names_frmt))) %>%
-          dplyr::rename_with(~args_names_frmt, all_of(args_names))
+          dplyr::select(dplyr::all_of(setdiff(names(.), args_names_frmt))) %>%
+          dplyr::rename_with(~args_names_frmt, dplyr::all_of(args_names))
       )
     }
     else if (inherits(iter_data, "list")) {
@@ -47,6 +47,15 @@
         )
       }
     }
+    else if (inherits(iter_data, "character")) {
+      out = dplyr::bind_rows(
+        out,
+        tibble::tibble(Value = iter_data) %>%
+          dplyr::bind_cols(iter_args[iter, ], .) %>% tibble::as_tibble() %>%
+          dplyr::select(dplyr::all_of(setdiff(names(.), args_names_frmt))) %>%
+          dplyr::rename_with(~args_names_frmt, dplyr::all_of(args_names))
+      )
+    }
     else {out = NULL}
   }
   return(out)
@@ -55,7 +64,7 @@
 # rename_stat
 rename_stat = function(data) {
 
-  data = data %>% rename_with(TextFormatType1)
+  data = data %>% dplyr::rename_with(TextFormatType1)
 
   exchange_table = tibble::tibble(
     col_to = c("PIR", "PM", "PTS", "2FGM", "2FGA", "3FGM", "3FGA",
@@ -77,7 +86,7 @@ rename_stat = function(data) {
   names(data) = tibble::tibble(col_data = names(data)) %>%
     dplyr::mutate(col_data_lower = col_data %>% tolower()) %>%
     dplyr::left_join(exchange_table, by = c("col_data_lower" = "col_from")) %>%
-    dplyr::mutate(col_to = col_to %>% dplyr::ifelse(is.na(.), col_data, .)) %>%
+    dplyr::mutate(col_to = col_to %>% ifelse(is.na(.), col_data, .)) %>%
     dplyr::pull(col_to)
 
   return(data)
