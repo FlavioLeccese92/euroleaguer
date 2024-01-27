@@ -19,4 +19,4 @@ docsearch:
 reference:
 - title: Header
   contents:
-  - get-game-header
+  - getGameHeader

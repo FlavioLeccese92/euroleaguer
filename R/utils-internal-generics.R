@@ -31,7 +31,7 @@
       out = dplyr::bind_rows(
         out,
         iter_data %>%
-          dplyr::bind_cols(iter_args[iter, ], .) %>% as_tibble() %>%
+          dplyr::bind_cols(iter_args[iter, ], .) %>% tibble::as_tibble() %>%
           dplyr::select(all_of(setdiff(names(.), args_names_frmt))) %>%
           dplyr::rename_with(~args_names_frmt, all_of(args_names))
       )
