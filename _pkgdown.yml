@@ -1,4 +1,22 @@
 url: https://flavioleccese92.github.io/euroleaguer/
 template:
   bootstrap: 5
-
+navbar:
+  structure:
+    left:  [intro, reference, articles, news]
+    right: [search, linkedin, github]
+  components:
+    linkedin:
+      icon: fa-linkedin
+      href: https://www.linkedin.com/in/flavioleccese/
+      aria-label: LinkedIn
+home:
+  links:
+  - text: Official Euroleague basketball website
+    href: https://www.euroleaguebasketball.net/euroleague/
+docsearch:
+  search:
+reference:
+- title: Header
+  contents:
+  - getGameHeader
