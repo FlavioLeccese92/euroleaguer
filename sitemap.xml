@@ -13,7 +13,16 @@
     <loc>https://flavioleccese92.github.io/euroleaguer/index.html</loc>
   </url>
   <url>
+    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getGameBoxScore.html</loc>
+  </url>
+  <url>
     <loc>https://flavioleccese92.github.io/euroleaguer/reference/getGameHeader.html</loc>
+  </url>
+  <url>
+    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getGamePoints.html</loc>
+  </url>
+  <url>
+    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getGameRound.html</loc>
   </url>
   <url>
     <loc>https://flavioleccese92.github.io/euroleaguer/reference/index.html</loc>
