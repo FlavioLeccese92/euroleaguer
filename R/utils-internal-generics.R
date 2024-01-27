@@ -11,55 +11,20 @@
 
 .iterate = function(FUN, ...) {
   fun_args = formals(FUN)
-  fun_args[["..."]] = NULL
   args_names = names(fun_args)
 
   this_args = list(...)
-  this_names = setdiff(names(this_args), "")
+  names(this_args) = args_names
 
-  if (length(setdiff(this_names, args_names)) > 0) {
-    cli::cli_abort(c("x" = "Unused argument{?s} {setdiff(this_names, args_names)}"))
-  }
-  if (length(this_args) > length(fun_args)) {
-    cli::cli_abort(c("x" = "Function requires {length(fun_args)} args but {length(this_args)} provided"))
-  }
-
-  fun_args_mrgd = NULL
-  for (arg_i in args_names) {
-    if (arg_i %in% names(this_args)) {
-      if (is.null(unlist(this_args[arg_i]))) {
-        cli::cli_abort(c("x" = "{arg_i} argument cannot be NULL"))
-      }
-      fun_args_mrgd[arg_i] = this_args[arg_i]
-      this_args[[arg_i]] = fun_args[[arg_i]] = NULL
-    }
-  }
-  if (length(fun_args) > 0) {
-    i = 1
-    for (arg_i in names(fun_args)) {
-      if (i > length(this_args)) {
-        fun_args_mrgd[arg_i] = list(NULL)
-      } else {
-        if (is.null(unlist(this_args[i]))) {
-          cli::cli_abort(c("x" = "{arg_i} argument cannot be NULL"))
-        } else {
-          fun_args_mrgd[arg_i] = unname(unlist(this_args[i]))
-        }
-      }
-      i = i + 1
-    }
-  }
-
-  args_null = names(which(sapply(fun_args_mrgd, is.null)))
+  args_null = names(which(sapply(this_args, is.null)))
   len_null = length(args_null)
   if (len_null > 0) {
-    cli_abort(c("x" = "{args_null} argument{?s} {?is/are} missing with no default"))
+    cli_abort(c("x" = "{args_null} argument{?s} cannot be NULL"))
   }
+  iter_args = expand.grid(this_args, stringsAsFactors = FALSE)
 
-  iter_args = expand.grid(fun_args_mrgd, stringsAsFactors = FALSE)
   args_names_frmt = iter_args %>% dplyr::rename_with(TextFormatType2) %>% names()
   out = NULL
-
   for (iter in seq_len(nrow(iter_args))) {
     iter_data = do.call(FUN, iter_args[iter, ])
     if (inherits(iter_data, "tbl")) {

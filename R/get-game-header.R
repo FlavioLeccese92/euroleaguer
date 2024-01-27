@@ -10,12 +10,12 @@
 #' @param season_code The code of the season
 #'
 #' @examples
-#' getGameHeader(game_code = 1, season_code = "E2023")
+#' getGameHeader(season_code = c("E2023", "E2022"), game_code = 1)
 #'
 #' @name getGameHeader
 #' @rdname getGameHeader
 #' @export
 
-getGameHeader = function(game_code, season_code = "E2023"){
+getGameHeader = function(game_code, season_code){
   .iterate(.getGameHeader, game_code, season_code)
 }
