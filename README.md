@@ -15,12 +15,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 **euroleaguer** provides an easy way to retrieve data from
 [EuroLeague](https://www.euroleaguebasketball.net/euroleague/) and
 [EuroCup](https://www.euroleaguebasketball.net/eurocup/) API with R.
-Functions allow to exploit [API
-methods](https://www.arduino.cc/reference/en/iot/api/) for many
-purposes, manage your Arduino devices and dashboards and access to the
-data produced by sensors and sketches. This is an un-official API
-wrapper and we recommend to follow usual rules of conduct when dealing
-with open API calls.
+This is an un-official API wrapper and we recommend to follow usual
+rules of conduct when dealing with open API calls.
 
 ## Installation
 
