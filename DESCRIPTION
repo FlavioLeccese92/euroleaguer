@@ -5,7 +5,7 @@ Version: 0.1.0
 Authors@R: 
     c(person(given = "Flavio", family = "Leccese", email = "flavioleccese92@gmail.com", role = c("aut", "cre")))
 Maintainer: Flavio Leccese <flavioleccese92@gmail.com>
-Description: Unofficial API wrapper for Euroleage basketball data
+Description: Unofficial API wrapper for EuroLeague and EuroCup basketball. Real-time data enabled.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

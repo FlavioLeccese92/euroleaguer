@@ -19,11 +19,11 @@ options(cli.progress_show_after = 0)
   args_null = names(which(sapply(this_args, is.null)))
   len_null = length(args_null)
   if (len_null > 0) {
-    cli_abort(c("x" = "{args_null} argument{?s} cannot be NULL"))
+    cli::cli_abort(c("x" = "{args_null} argument{?s} cannot be NULL"))
   }
   iter_args = expand.grid(this_args, stringsAsFactors = FALSE)
 
-  args_names_frmt = iter_args %>% dplyr::rename_with(TextFormatType2) %>% names()
+  args_names_frmt = iter_args %>% dplyr::rename_with(.TextFormatType2) %>% names()
 
   cli::cli_progress_bar(
     format = paste0(
@@ -136,10 +136,10 @@ options(cli.progress_show_after = 0)
 
 .TextFormatType1 = function(x){
   x %>%
-    gsub("([A-Z])", " \\1", .) %>%
-    gsub("\\.", " ", .) %>%
+    gsub(pattern = "([A-Z])", replacement = " \\1") %>%
+    gsub(pattern = "\\.", replacement = " ") %>%
     stringr::str_to_title() %>%
-    gsub(" ", "", .) %>%
+    gsub(pattern = " ", replacement = "") %>%
     return()
 }
 
@@ -148,11 +148,11 @@ options(cli.progress_show_after = 0)
 
 .TextFormatType2 = function(x){
   x %>%
-    gsub("_", " ", .) %>%
-    stringr::str_to_title(.) %>%
-    gsub(" ", "", .) %>%
-    gsub("IdPlayer", "Player_ID", .) %>%
-    gsub("IdAction", "Action_ID", .) %>%
+    gsub(pattern = "_", replacement = " ") %>%
+    stringr::str_to_title() %>%
+    gsub(pattern = " ", replacement = "") %>%
+    gsub(pattern = "IdPlayer", replacement = "Player_ID") %>%
+    gsub(pattern = "IdAction", replacement = "Action_ID") %>%
     return()
 }
 
