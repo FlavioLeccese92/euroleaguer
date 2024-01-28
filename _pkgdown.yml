@@ -1,6 +1,12 @@
 url: https://flavioleccese92.github.io/euroleaguer/
 template:
   bootstrap: 5
+  bslib:
+    base_font: {google: "Lato"}
+    heading_font: {google: "Inconsolata"}
+    bg: '#f2f2f2'
+    fg: '#050505'
+    primary: '#E91D26'
 navbar:
   structure:
     left:  [intro, reference, articles, news]
