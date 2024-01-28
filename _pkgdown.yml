@@ -36,3 +36,4 @@ reference:
   - getGamePoints
   - getGameRound
   - getGamePlayers
+  - getGamePlayByPlay

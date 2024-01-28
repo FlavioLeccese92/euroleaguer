@@ -16,7 +16,7 @@
   httr::GET("https://live.euroleague.net/api/Header?",
             query = list(gamecode = game_code,
                          seasoncode = season_code)) %>%
-    .$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>% tibble::as_tibble() %>%
+    .$content %>% rawToChar() %>% jsonlite::fromJSON() %>% tibble::as_tibble() %>%
     dplyr::rename_with(.TextFormatType1) %>%
     return()
 }
@@ -29,7 +29,7 @@
   getin = httr::GET("https://live.euroleague.net/api/BoxScore",
                     query = list(gamecode = game_code,
                                  seasoncode = season_code)) %>%
-    .$content %>% rawToChar() %>% jsonlite::fromJSON(.)
+    .$content %>% rawToChar() %>% jsonlite::fromJSON()
 
   out = NULL
   out[["Team"]] = tibble::tibble(Team = getin$Stats$Team)
@@ -74,9 +74,10 @@
   httr::GET("https://live.euroleague.net/api/Points",
             query = list(gamecode = game_code,
                          seasoncode = season_code)) %>%
-    .$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>% .$Rows %>%
+    .$content %>% rawToChar() %>% jsonlite::fromJSON() %>% .$Rows %>%
     tibble::as_tibble() %>%
     dplyr::rename_with(.TextFormatType2) %>%
+    dplyr::rename(NumberOfPlay = .data$NumAnot) %>%
     dplyr::mutate(Player_ID = trimws(gsub("P", "", .data$Player_ID)),
                   Utc = as.POSIXct(.data$Utc, format = "%Y%m%d%H%M%OS", tz = "UTC")) %>%
     dplyr::mutate(GameCode = game_code,
@@ -92,7 +93,7 @@
   httr::GET("https://live.euroleague.net/api/Round",
             query = list(gamecode = game_code,
                          seasoncode = season_code)) %>%
-    .$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
+    .$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
     return()
 }
 
@@ -106,7 +107,38 @@
                          seasoncode = season_code,
                          equipo = team_code,
                          temp = season_code)) %>%
-    .$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>% tibble::as_tibble() %>%
+    .$content %>% rawToChar() %>% jsonlite::fromJSON() %>% tibble::as_tibble() %>%
     dplyr::rename_with(.TextFormatType1) %>%
     return()
+}
+
+#' @name .getGamePlayByPlay
+#' @noRd
+#' @keywords internal
+
+.getGamePlayByPlay = function(game_code, season_code){
+  getin = httr::GET("https://live.euroleague.net/api/PlayByPlay",
+                    query = list(gamecode = game_code,
+                                 seasoncode = season_code)) %>%
+    .$content %>% rawToChar() %>% jsonlite::fromJSON()
+
+  out = NULL
+  out[["PlayByPlaySummary"]] = getin[c("Live", "TeamA", "TeamB",
+                                       "CodeTeamA", "CodeTeamB",
+                                       "ActualQuarter")] %>%
+    dplyr::bind_rows() %>%
+    dplyr::mutate(dplyr::across(dplyr::everything(), trimws))
+
+  out[["PlayByPlay"]] = dplyr::bind_rows(
+    getin[["FirstQuarter"]] %>% {if (length(.) > 0) dplyr::mutate(., Quarter = 1, .before = 1) else NULL},
+    getin[["SecondQuarter"]] %>% {if (length(.) > 0) dplyr::mutate(., Quarter = 2, .before = 1) else NULL},
+    getin[["ThirdQuarter"]] %>% {if (length(.) > 0) dplyr::mutate(., Quarter = 3, .before = 1) else NULL},
+    getin[["ForthQuarter"]] %>% {if (length(.) > 0) dplyr::mutate(., Quarter = 4, .before = 1) else NULL},
+    getin[["ExtraTime"]] %>% {if (length(.) > 0) dplyr::mutate(., Quarter = 5, .before = 1) else NULL} ) %>%
+    tibble::as_tibble() %>%
+    dplyr::rename_with(.TextFormatType3) %>%
+    dplyr::mutate(dplyr::across(dplyr::where(is.character), trimws),
+                  dplyr::across(dplyr::everything(), ~ifelse(nchar(.) == 0, NA, .)))
+
+  return(out)
 }

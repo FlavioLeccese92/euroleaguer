@@ -15,12 +15,12 @@ or "U2023" for Eurocup 2023)}
 \value{
 Returns a list of elements for the chosen games and seasons
 \itemize{
-\item Team. Name of the teams
-\item Coach. Name of the coaches
-\item EndOfQuarter. Team accumulated points by quarter
-\item ByQuarter. Team points for each quarter
-\item PlayerStats. Statistics for each player in the game
-\item TeamStats. Aggregated statistics for each team in the game
+\item \emph{Team}. Name of the teams
+\item \emph{Coach}. Name of the coaches
+\item \emph{EndOfQuarter}. Team accumulated points by quarter
+\item \emph{ByQuarter}. Team points for each quarter
+\item \emph{PlayerStats}. Statistics for each player in the game
+\item \emph{TeamStats}. Aggregated statistics for each team in the game
 }
 
 Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/game-center/2023-24/crvena-zvezda-meridianbet-belgrade-ldlc-asvel-villeurbanne/E2023/1/#boxscore}{BoxScore}

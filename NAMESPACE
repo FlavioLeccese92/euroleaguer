@@ -2,6 +2,7 @@
 
 export(getGameBoxScore)
 export(getGameHeader)
+export(getGamePlayByPlay)
 export(getGamePlayers)
 export(getGamePoints)
 export(getGameRound)

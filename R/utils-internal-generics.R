@@ -136,10 +136,10 @@ options(cli.progress_show_after = 0)
 
 .TextFormatType1 = function(x){
   x %>%
-    gsub(pattern = "([A-Z])", replacement = " \\1") %>%
-    gsub(pattern = "\\.", replacement = " ") %>%
+    gsub("([A-Z])", " \\1", .) %>%
+    gsub("\\.", " ", .) %>%
     stringr::str_to_title() %>%
-    gsub(pattern = " ", replacement = "") %>%
+    gsub(" ", "", .) %>%
     return()
 }
 
@@ -148,11 +148,11 @@ options(cli.progress_show_after = 0)
 
 .TextFormatType2 = function(x){
   x %>%
-    gsub(pattern = "_", replacement = " ") %>%
+    gsub("_", " ", .) %>%
     stringr::str_to_title() %>%
-    gsub(pattern = " ", replacement = "") %>%
-    gsub(pattern = "IdPlayer", replacement = "Player_ID") %>%
-    gsub(pattern = "IdAction", replacement = "Action_ID") %>%
+    gsub(" ", "", .) %>%
+    gsub("IdPlayer", "Player_ID", .) %>%
+    gsub("IdAction", "Action_ID", .) %>%
     return()
 }
 

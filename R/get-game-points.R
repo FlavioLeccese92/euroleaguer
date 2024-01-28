@@ -7,9 +7,9 @@
 #' or "U2023" for Eurocup 2023)
 #' @return Returns scoring information of each player for the chosen games and seasons (subset of play-by-play data).
 #' In particular:
-#' - NumAnot. Reference id of the action (useful for join with retult of getPlayByPlay)
-#' - CoordX and CoordY. Spatial coordinates of the shot
-#' - Zone. Area of the court of the shot
+#' - **NumberOfPlay**. Reference id of the action (useful for join with results of getPlayByPlay)
+#' - **CoordX** and **CoordY**. Spatial coordinates of the shot
+#' - **Zone**. Area of the court of the shot
 #'
 #' Reference webpage: [PlayByPlay](<https://www.euroleaguebasketball.net/euroleague/game-center/2023-24/crvena-zvezda-meridianbet-belgrade-ldlc-asvel-villeurbanne/E2023/1/#play-by-play>)
 #' @examples
