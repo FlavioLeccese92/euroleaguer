@@ -24,3 +24,6 @@ Imports:
     tibble
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
+Suggests: 
+    knitr,
+    rmarkdown
