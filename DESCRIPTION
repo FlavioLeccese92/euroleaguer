@@ -12,12 +12,9 @@ LazyData: true
 RoxygenNote: 7.2.3
 URL: https://flavioleccese92.github.io/euroleaguer/
 Imports:
-    tidyr,
     dplyr,
     httr,
     jsonlite,
-    scales,
-    glue,
     cli,
     lubridate,
     stringr,

@@ -1,7 +1,5 @@
 #' Utils internal functions
 #'
-#' @description
-#'
 #' Set of (not exported) utility functions for the package.
 #'
 #' `r lifecycle::badge('experimental')`
@@ -79,10 +77,13 @@ options(cli.progress_show_after = 0)
   return(out)
 }
 
-# rename_stat
-rename_stat = function(data) {
 
-  data = data %>% dplyr::rename_with(TextFormatType1)
+#' @name .rename_stat
+#' @noRd
+
+.rename_stat = function(data) {
+
+  data = data %>% dplyr::rename_with(.TextFormatType1)
 
   exchange_table = tibble::tibble(
     col_to = c("PIR", "PM", "PTS", "2FGM", "2FGA", "3FGM", "3FGA",
@@ -110,7 +111,10 @@ rename_stat = function(data) {
   return(data)
 }
 
-StatsRange = tibble::tibble(
+#' @name .StatsRange
+#' @noRd
+
+.StatsRange = tibble::tibble(
   Stat = c("PM", "FG%", "3FG%", "2FG%", "FT%", "PTS", "PIR"),
   Min = c(-30, 0, 0, 0, 0, 0, 0),
   Max = c(30, 100, 100, 100, 100, 40, 50),
@@ -127,7 +131,10 @@ StatsRange = tibble::tibble(
            "Valuation (PIR)")
 )
 
-TextFormatType1 = function(x){
+#' @name .TextFormatType1
+#' @noRd
+
+.TextFormatType1 = function(x){
   x %>%
     gsub("([A-Z])", " \\1", .) %>%
     gsub("\\.", " ", .) %>%
@@ -135,7 +142,11 @@ TextFormatType1 = function(x){
     gsub(" ", "", .) %>%
     return()
 }
-TextFormatType2 = function(x){
+
+#' @name .TextFormatType2
+#' @noRd
+
+.TextFormatType2 = function(x){
   x %>%
     gsub("_", " ", .) %>%
     stringr::str_to_title(.) %>%
@@ -144,7 +155,11 @@ TextFormatType2 = function(x){
     gsub("IdAction", "Action_ID", .) %>%
     return()
 }
-TextFormatType3 = function(x){
+
+#' @name .TextFormatType3
+#' @noRd
+
+.TextFormatType3 = function(x){
   dplyr::case_when(
     x == "PLAYER_ID" ~ "IdPlayer",
     x == "NUMBEROFPLAY" ~ "NumberOfPlay",
@@ -153,6 +168,6 @@ TextFormatType3 = function(x){
     x == "PLAYTYPE" ~ "PlayType",
     x == "POINTS_A" ~ "PointsA",
     x == "POINTS_B" ~ "PointsB",
-    TRUE ~ str_to_title(x)) %>%
+    TRUE ~ stringr::str_to_title(x)) %>%
     return()
 }
