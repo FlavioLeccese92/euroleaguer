@@ -2,7 +2,7 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2024-01-28T00:21Z
+last_built: 2024-01-28T12:28Z
 urls:
   reference: https://flavioleccese92.github.io/euroleaguer/reference
   article: https://flavioleccese92.github.io/euroleaguer/articles
