@@ -84,7 +84,18 @@ or "U2023" for Eurocup 2023)</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">getGameHeader</span><span class="op">(</span>season_code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"E2023"</span>, <span class="st">"U2023"</span><span class="op">)</span>, game_code <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'TextFormatType2' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 46</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   GameCode SeasonCode Live  Round Date       Hour   Stadium Capacity TeamA TeamB</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 E2023      FALSE 1     05/10/2023 <span style="color: #949494;">"</span>19:0… STARK … 18360    CRVE… LDLC…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        1 U2023      FALSE 1     04/10/2023 <span style="color: #949494;">"</span>18:0… ARENA … 2022     PROM… VEOL…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 36 more variables: CodeTeamA &lt;chr&gt;, TVCodeA &lt;chr&gt;, CodeTeamB &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   TVCodeB &lt;chr&gt;, ImA &lt;chr&gt;, ImB &lt;chr&gt;, ScoreA &lt;chr&gt;, ScoreB &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   CoachA &lt;chr&gt;, CoachB &lt;chr&gt;, GameTime &lt;chr&gt;, RemainingPartialTime &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Wid &lt;chr&gt;, Quarter &lt;chr&gt;, FoultsA &lt;chr&gt;, FoultsB &lt;chr&gt;, TimeoutsA &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   TimeoutsB &lt;chr&gt;, ScoreQuarter1A &lt;int&gt;, ScoreQuarter2A &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ScoreQuarter3A &lt;int&gt;, ScoreQuarter4A &lt;int&gt;, ScoreExtraTimeA &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ScoreQuarter1B &lt;int&gt;, ScoreQuarter2B &lt;int&gt;, ScoreQuarter3B &lt;int&gt;, …</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
