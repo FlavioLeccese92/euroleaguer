@@ -103,10 +103,10 @@ options(cli.progress_show_after = 0)
   )
 
   names(data) = tibble::tibble(col_data = names(data)) %>%
-    dplyr::mutate(col_data_lower = col_data %>% tolower()) %>%
+    dplyr::mutate(col_data_lower = .data$col_data %>% tolower()) %>%
     dplyr::left_join(exchange_table, by = c("col_data_lower" = "col_from")) %>%
-    dplyr::mutate(col_to = col_to %>% ifelse(is.na(.), col_data, .)) %>%
-    dplyr::pull(col_to)
+    dplyr::mutate(col_to = .data$col_to %>% ifelse(is.na(.), .data$col_data, .)) %>%
+    dplyr::pull(.data$col_to)
 
   return(data)
 }
