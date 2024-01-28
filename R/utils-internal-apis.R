@@ -95,3 +95,18 @@
     .$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
     return()
 }
+
+#' @name .getGamePlayers
+#' @noRd
+#' @keywords internal
+
+.getGamePlayers = function(game_code, team_code = "VIR", season_code = "E2023"){
+  httr::GET("https://live.euroleague.net/api/Players",
+            query = list(gamecode = game_code,
+                         seasoncode = season_code,
+                         equipo = team_code,
+                         temp = season_code)) %>%
+    .$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>% tibble::as_tibble() %>%
+    dplyr::rename_with(TextFormatType1) %>%
+    return()
+}

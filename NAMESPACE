@@ -3,6 +3,7 @@
 export("%>%")
 export(getGameBoxScore)
 export(getGameHeader)
+export(getGamePlayers)
 export(getGamePoints)
 export(getGameRound)
 importFrom(dplyr,"%>%")

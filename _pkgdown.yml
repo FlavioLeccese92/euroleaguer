@@ -35,3 +35,4 @@ reference:
   - getGameBoxScore
   - getGamePoints
   - getGameRound
+  - getGamePlayers

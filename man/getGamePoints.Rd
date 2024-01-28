@@ -7,7 +7,7 @@
 getGamePoints(game_code, season_code)
 }
 \arguments{
-\item{game_code}{The code of the game. An integer value.}
+\item{game_code}{The code of the game. An integer value}
 
 \item{season_code}{The code of the season (examples are "E2023" for Euroleague
 or "U2023" for Eurocup 2023)}

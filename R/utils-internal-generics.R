@@ -9,6 +9,8 @@
 #' @name .iterate
 #' @noRd
 
+options(cli.progress_show_after = 0)
+
 .iterate = function(FUN, ...) {
   fun_args = formals(FUN)
   args_names = names(fun_args)
@@ -24,8 +26,24 @@
   iter_args = expand.grid(this_args, stringsAsFactors = FALSE)
 
   args_names_frmt = iter_args %>% dplyr::rename_with(TextFormatType2) %>% names()
+
+  cli::cli_progress_bar(
+    format = paste0(
+      "{cli::pb_spin} API get ",
+      "{.path {paste(args_names_frmt, iter_args[iter, ], sep = ': ', collapse = ' ')}} ",
+      "[{cli::pb_current}/{cli::pb_total}]   ETA:{cli::pb_eta}"
+    ),
+    format_done = paste0(
+      "{cli::col_green(cli::symbol$tick)} {cli::pb_total} API calls ",
+      "in {cli::pb_elapsed}."
+    ),
+    clear = FALSE,
+    total = nrow(iter_args)
+  )
+
   out = NULL
   for (iter in seq_len(nrow(iter_args))) {
+    cli::cli_progress_update()
     iter_data = do.call(FUN, iter_args[iter, ])
     if (inherits(iter_data, "tbl")) {
       out = dplyr::bind_rows(
