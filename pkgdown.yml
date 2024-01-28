@@ -1,8 +1,9 @@
 pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
-articles: {}
-last_built: 2024-01-28T17:56Z
+articles:
+  vignette: vignette.html
+last_built: 2024-01-28T18:21Z
 urls:
   reference: https://flavioleccese92.github.io/euroleaguer/reference
   article: https://flavioleccese92.github.io/euroleaguer/articles
