@@ -79,9 +79,9 @@ or "U2023" for Eurocup 2023)</p></dd>
     
 
 <p>Returns scoring information of each player for the chosen games and seasons (subset of play-by-play data).
-In particular:</p><ul><li><p>NumAnot. Reference id of the action (useful for join with retult of getPlayByPlay)</p></li>
-<li><p>CoordX and CoordY. Spatial coordinates of the shot</p></li>
-<li><p>Zone. Area of the court of the shot</p></li>
+In particular:</p><ul><li><p><strong>NumberOfPlay</strong>. Reference id of the action (useful for join with results of getPlayByPlay)</p></li>
+<li><p><strong>CoordX</strong> and <strong>CoordY</strong>. Spatial coordinates of the shot</p></li>
+<li><p><strong>Zone</strong>. Area of the court of the shot</p></li>
 </ul><p>Reference webpage: <a href="https://www.euroleaguebasketball.net/euroleague/game-center/2023-24/crvena-zvezda-meridianbet-belgrade-ldlc-asvel-villeurbanne/E2023/1/#play-by-play" class="external-link">PlayByPlay</a></p>
 
 
@@ -91,22 +91,22 @@ In particular:</p><ul><li><p>NumAnot. Reference id of the action (useful for joi
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">getGamePoints</span><span class="op">(</span>season_code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"E2023"</span>, <span class="st">"U2023"</span><span class="op">)</span>, game_code <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 311 × 20</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    GameCode SeasonCode TeamCode NumAnot Player_ID Player Action_ID Action Points</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>        1 E2023      ASV            4 004194    LAUVE… 3FGA      Misse…      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>        1 E2023      ASV            6 004194    LAUVE… 2FGM      Two P…      2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>        1 E2023      RED            7 LUO       LAZIC… 3FGM      Three…      3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>        1 E2023      ASV           10 004194    LAUVE… 2FGM      Two P…      2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>        1 E2023      RED           11 012711    SIMON… 3FGM      Three…      3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>        1 E2023      ASV           14 012080    LUWAW… 3FGA      Misse…      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>        1 E2023      RED           18 011224    NAPIE… 3FGM      Three…      3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>        1 E2023      ASV           19 012080    LUWAW… 2FGM      Two P…      2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>        1 E2023      RED           21 012711    SIMON… 3FGM      Three…      3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>        1 E2023      RED           26 006436    GIEDR… 2FGM      Two P…      2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    GameCode SeasonCode TeamCode NumberOfPlay Player_ID Player   Action_ID Action</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>        1 E2023      ASV                 4 004194    LAUVERG… 3FGA      Misse…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>        1 E2023      ASV                 6 004194    LAUVERG… 2FGM      Two P…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>        1 E2023      RED                 7 LUO       LAZIC, … 3FGM      Three…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>        1 E2023      ASV                10 004194    LAUVERG… 2FGM      Two P…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>        1 E2023      RED                11 012711    SIMONOV… 3FGM      Three…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>        1 E2023      ASV                14 012080    LUWAWU-… 3FGA      Misse…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>        1 E2023      RED                18 011224    NAPIER,… 3FGM      Three…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>        1 E2023      ASV                19 012080    LUWAWU-… 2FGM      Two P…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>        1 E2023      RED                21 012711    SIMONOV… 3FGM      Three…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>        1 E2023      RED                26 006436    GIEDRAI… 2FGM      Two P…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 301 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 11 more variables: CoordX &lt;int&gt;, CoordY &lt;int&gt;, Zone &lt;chr&gt;, Fastbreak &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   SecondChance &lt;chr&gt;, PointsOffTurnover &lt;chr&gt;, Minute &lt;int&gt;, Console &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   PointsA &lt;int&gt;, PointsB &lt;int&gt;, Utc &lt;dttm&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 12 more variables: Points &lt;int&gt;, CoordX &lt;int&gt;, CoordY &lt;int&gt;, Zone &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Fastbreak &lt;chr&gt;, SecondChance &lt;chr&gt;, PointsOffTurnover &lt;chr&gt;, Minute &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Console &lt;chr&gt;, PointsA &lt;int&gt;, PointsB &lt;int&gt;, Utc &lt;dttm&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
