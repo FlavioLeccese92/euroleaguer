@@ -37,3 +37,4 @@ reference:
   - getGameRound
   - getGamePlayers
   - getGamePlayByPlay
+  - getGameEvolution

@@ -142,3 +142,29 @@
 
   return(out)
 }
+
+#' @name .getGamePlayByPlay
+#' @noRd
+#' @keywords internal
+
+.getGameEvolution = function(game_code, season_code){
+  getin = httr::GET("https://live.euroleague.net/api/Evolution",
+                    query = list(gamecode = game_code,
+                                 seasoncode = season_code)) %>%
+    .$content %>% rawToChar() %>% jsonlite::fromJSON()
+
+  out = NULL
+  out[["EvolutionSummary"]] = getin[c("MinuteMaxA", "MinuteMaxB",
+                                      "ScoreMaxA", "ScoreMaxB",
+                                      "difp", "dA", "dB")] %>%
+    dplyr::bind_rows() %>%
+    dplyr::mutate(dplyr::across(dplyr::everything(), trimws))
+
+  out[["Evolution"]] = dplyr::bind_cols(
+    Minute = getin[["MinutesList"]],
+    getin[["PointsList"]] %>% t() %>% as.data.frame() %>% dplyr::rename(PointsTeamA = .data$V1, PointsTeamB = .data$V2),
+    getin[["ScoreDiffPerMinute"]] %>% t() %>% as.data.frame() %>% dplyr::rename(DiffTeamA = .data$V1, DiffTeamB = .data$V2) %>%
+      dplyr::mutate(DiffTeamB = abs(.data$DiffTeamB))
+  ) %>% tibble::as_tibble()
+  return(out)
+}
