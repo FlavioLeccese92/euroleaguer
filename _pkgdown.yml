@@ -38,3 +38,6 @@ reference:
   - getGamePlayers
   - getGamePlayByPlay
   - getGameEvolution
+- title: Team
+  contents:
+  - getTeam

@@ -168,3 +168,26 @@
   ) %>% tibble::as_tibble()
   return(out)
 }
+
+#' @name .getTeam
+#' @noRd
+#' @keywords internal
+
+.getTeam = function(team_code, season_code){
+  competition_code = ifelse(substr(season_code, 1, 1) %in% c("E", "U"),
+                            substr(season_code, 1, 1),
+                            NULL)
+
+  httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
+                       "competitions/{competition_code}/seasons/{season_code}/clubs/{team_code}")) %>%
+    .$content %>% rawToChar() %>% jsonlite::fromJSON() %>% .$data %>%
+    { if (!is.null(.))
+    { if (is.null(dim(.)))
+      unlist(.) %>% t() %>% tibble::as_tibble()
+      else tibble::as_tibble(.) %>%
+        tidyr::unnest(cols = c(images, country), names_sep = ".")} %>%
+    dplyr::rename_with(.TextFormatType1) %>%
+    dplyr::rename(TeamCode = .data$Code, TeamName = .data$Name)
+    } %>%
+    return()
+}
