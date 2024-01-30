@@ -21,6 +21,7 @@ options(cli.progress_show_after = 0)
   if (len_null > 0) {
     cli::cli_abort(c("x" = "{args_null} argument{?s} cannot be NULL"))
   }
+  # print("CHECK vector NULL!")
   iter_args = expand.grid(this_args, stringsAsFactors = FALSE)
 
   args_names_frmt = iter_args %>% dplyr::rename_with(.TextFormatType2) %>% names()
@@ -40,9 +41,16 @@ options(cli.progress_show_after = 0)
   )
 
   out = NULL
+  out_warnings = c()
+  out_errors = c()
   for (iter in seq_len(nrow(iter_args))) {
     cli::cli_progress_update()
     iter_get = do.call(FUN, iter_args[iter, ])
+
+    if (iter_get$status != "200") {
+      out_warnings = c(out_warnings, iter_get$status)
+    }
+
     iter_data = iter_get$data
     if (!is.null(iter_data)) {
       if (inherits(iter_data, "tbl")) {
@@ -77,6 +85,12 @@ options(cli.progress_show_after = 0)
       else {out = out}
     }
   }
+  if (length(out_warnings) > 0) {
+    cli::cli_warn("{length(out_warnings)} over {nrow(iter_args)} iteration{?s} had status different than 200")
+    }
+  if (is.null(out)) {
+    cli::cli_warn("Result is NULL")
+    }
   return(out)
 }
 
