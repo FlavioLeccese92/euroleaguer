@@ -21,8 +21,6 @@ Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/teams/l
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \examples{
-\dontrun{
 getTeam(team_code = "ASV", season_code = c("E2023", "U2023"))
-}
 
 }

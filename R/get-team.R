@@ -9,9 +9,7 @@
 #'
 #' Reference webpage: [Team](<https://www.euroleaguebasketball.net/euroleague/teams/ldlc-asvel-villeurbanne/roster/asv/?season=2023-24>)
 #' @examples
-#' \dontrun{
 #' getTeam(team_code = "ASV", season_code = c("E2023", "U2023"))
-#' }
 #'
 #' @name getTeam
 #' @rdname getTeam

@@ -42,37 +42,40 @@ options(cli.progress_show_after = 0)
   out = NULL
   for (iter in seq_len(nrow(iter_args))) {
     cli::cli_progress_update()
-    iter_data = do.call(FUN, iter_args[iter, ])
-    if (inherits(iter_data, "tbl")) {
-      out = dplyr::bind_rows(
-        out,
-        iter_data %>%
-          dplyr::bind_cols(iter_args[iter, ], .) %>% tibble::as_tibble() %>%
-          dplyr::select(dplyr::all_of(setdiff(names(.), args_names_frmt))) %>%
-          dplyr::rename_with(~args_names_frmt, dplyr::all_of(args_names))
-      )
-    }
-    else if (inherits(iter_data, "list")) {
-      for (jter in names(iter_data)) {
-        out[[jter]] = dplyr::bind_rows(
-          out[[jter]],
-          iter_data[[jter]] %>%
+    iter_get = do.call(FUN, iter_args[iter, ])
+    iter_data = iter_get$data
+    if (!is.null(iter_data)) {
+      if (inherits(iter_data, "tbl")) {
+        out = dplyr::bind_rows(
+          out,
+          iter_data %>%
             dplyr::bind_cols(iter_args[iter, ], .) %>% tibble::as_tibble() %>%
             dplyr::select(dplyr::all_of(setdiff(names(.), args_names_frmt))) %>%
             dplyr::rename_with(~args_names_frmt, dplyr::all_of(args_names))
         )
       }
+      else if (inherits(iter_data, "list")) {
+        for (jter in names(iter_data)) {
+          out[[jter]] = dplyr::bind_rows(
+            out[[jter]],
+            iter_data[[jter]] %>%
+              dplyr::bind_cols(iter_args[iter, ], .) %>% tibble::as_tibble() %>%
+              dplyr::select(dplyr::all_of(setdiff(names(.), args_names_frmt))) %>%
+              dplyr::rename_with(~args_names_frmt, dplyr::all_of(args_names))
+          )
+        }
+      }
+      else if (inherits(iter_data, "character")) {
+        out = dplyr::bind_rows(
+          out,
+          tibble::tibble(Value = iter_data) %>%
+            dplyr::bind_cols(iter_args[iter, ], .) %>% tibble::as_tibble() %>%
+            dplyr::select(dplyr::all_of(setdiff(names(.), args_names_frmt))) %>%
+            dplyr::rename_with(~args_names_frmt, dplyr::all_of(args_names))
+        )
+      }
+      else {out = out}
     }
-    else if (inherits(iter_data, "character")) {
-      out = dplyr::bind_rows(
-        out,
-        tibble::tibble(Value = iter_data) %>%
-          dplyr::bind_cols(iter_args[iter, ], .) %>% tibble::as_tibble() %>%
-          dplyr::select(dplyr::all_of(setdiff(names(.), args_names_frmt))) %>%
-          dplyr::rename_with(~args_names_frmt, dplyr::all_of(args_names))
-      )
-    }
-    else {out = NULL}
   }
   return(out)
 }
