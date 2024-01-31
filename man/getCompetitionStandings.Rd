@@ -2,7 +2,7 @@
 % Please edit documentation in R/get-competition-standings.R
 \name{getCompetitionStandings}
 \alias{getCompetitionStandings}
-\title{Get competition standings}
+\title{Get competition traditional standings}
 \usage{
 getCompetitionStandings(season_code, round)
 }

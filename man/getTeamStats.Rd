@@ -4,7 +4,7 @@
 \alias{getTeamStats}
 \title{Get team stats}
 \usage{
-getTeamStats(team_code, season_code, phase_type = "")
+getTeamStats(team_code, season_code, phase_type = "ALL")
 }
 \arguments{
 \item{team_code}{The code of the team (examples are \code{ASV}, \code{MAD}, ...)}

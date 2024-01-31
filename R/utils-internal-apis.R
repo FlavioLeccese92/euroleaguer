@@ -301,6 +301,7 @@
   } else {
     cli::cli_abort("{season_code} is not a valid value for season_code")
   }
+  phase_type = phase_type %>% ifelse(. == "ALL", "", .)
 
   getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
                                "competitions/{competition_code}/seasons/{season_code}/clubs/{team_code}/people/stats"),
@@ -347,6 +348,61 @@
   return(out)
 }
 
+#' @name .getCompetitionRounds
+#' @noRd
+#' @keywords internal
+
+.getCompetitionRounds = function(season_code){
+  if (substr(season_code, 1, 1) %in% c("E", "U")) {
+    competition_code = substr(season_code, 1, 1)
+  } else {
+    cli::cli_abort("{season_code} is not a valid value for season_code")
+  }
+
+  getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
+                               "competitions/{competition_code}/seasons/{season_code}/rounds"))
+
+  out = list(status = getin$status_code)
+  if (out$status == 200) {
+    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
+      .$data %>% tibble::as_tibble() %>%
+      dplyr::rename_with(.TextFormatType1)
+  } else {out$data = NULL}
+  return(out)
+}
+
+#' @name .getCompetitionGames
+#' @noRd
+#' @keywords internal
+
+.getCompetitionGames = function(season_code, round, phase_type){
+  if (substr(season_code, 1, 1) %in% c("E", "U")) {
+    competition_code = substr(season_code, 1, 1)
+  } else {
+    cli::cli_abort("{season_code} is not a valid value for season_code")
+  }
+  phase_type = phase_type %>% ifelse(. == "ALL", "", .)
+
+  getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
+                               "competitions/{competition_code}/seasons/{season_code}/games"),
+                    query = list(phaseTypeCode = phase_type,
+                                 roundNumber = round))
+
+  out = list(status = getin$status_code)
+  if (out$status == 200) {
+    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
+      .$data %>% tibble::as_tibble() %>%
+      tidyr::unnest(cols = c(.data$season, .data$competition, .data$group, .data$phaseType,
+                             .data$round, .data$home, .data$away, .data$venue),
+                    names_sep = ".") %>%
+      tidyr::unnest(c(.data$home.quarters, .data$home.coach, .data$home.imageUrls,
+                      .data$away.quarters, .data$away.coach, .data$away.imageUrls),
+             names_sep = ".") %>% dplyr::select(-.data$broadcasters) %>%
+      dplyr::rename_with(.TextFormatType1) %>%
+      return()
+  } else {out$data = NULL}
+  return(out)
+}
 
 #' @name .getCompetitionStandings
 #' @noRd
@@ -454,6 +510,7 @@
   } else {out$data = NULL}
   return(out)
 }
+
 #' @name .getCompetitionMargins
 #' @noRd
 #' @keywords internal

@@ -23,6 +23,6 @@
 #' @rdname getTeamStats
 #' @export
 
-getTeamStats = function(team_code, season_code, phase_type = ""){
+getTeamStats = function(team_code, season_code, phase_type = "ALL"){
   .iterate(.getTeamStats, team_code, season_code, phase_type)
 }

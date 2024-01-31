@@ -2,7 +2,7 @@
 % Please edit documentation in R/get-competition-margins.R
 \name{getCompetitionMargins}
 \alias{getCompetitionMargins}
-\title{Get competition standing margins}
+\title{Get competition margins standings}
 \usage{
 getCompetitionMargins(season_code, round)
 }

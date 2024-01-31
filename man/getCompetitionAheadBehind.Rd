@@ -2,7 +2,7 @@
 % Please edit documentation in R/get-competition-aheadbehind.R
 \name{getCompetitionAheadBehind}
 \alias{getCompetitionAheadBehind}
-\title{Get competition ahead-behind}
+\title{Get competition ahead-behind standings}
 \usage{
 getCompetitionAheadBehind(season_code, round)
 }

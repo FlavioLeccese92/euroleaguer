@@ -2,7 +2,7 @@
 % Please edit documentation in R/get-competition-calendar.R
 \name{getCompetitionCalendar}
 \alias{getCompetitionCalendar}
-\title{Get competition calendar standing}
+\title{Get competition calendar standings}
 \usage{
 getCompetitionCalendar(season_code, round)
 }

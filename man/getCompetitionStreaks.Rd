@@ -2,7 +2,7 @@
 % Please edit documentation in R/get-competition-streaks.R
 \name{getCompetitionStreaks}
 \alias{getCompetitionStreaks}
-\title{Get competition streaks}
+\title{Get competition streaks standings}
 \usage{
 getCompetitionStreaks(season_code, round)
 }

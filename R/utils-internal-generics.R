@@ -21,7 +21,7 @@ options(cli.progress_show_after = 0)
   if (len_null > 0) {
     cli::cli_abort(c("x" = "{args_null} argument{?s} cannot be NULL"))
   }
-  iter_args = expand.grid(this_args, stringsAsFactors = FALSE)
+  iter_args = expand.grid(this_args, stringsAsFactors = FALSE) %>% tibble::as_tibble()
 
   args_names_frmt = iter_args %>% dplyr::rename_with(.TextFormatType2) %>% names()
 
@@ -43,6 +43,7 @@ options(cli.progress_show_after = 0)
   out_warnings = c()
   out_errors = c()
   for (iter in seq_len(nrow(iter_args))) {
+
     cli::cli_progress_update()
     iter_get = do.call(FUN, iter_args[iter, ])
 

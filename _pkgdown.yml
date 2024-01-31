@@ -31,6 +31,8 @@ docsearch:
 reference:
 - title: Competition
   contents:
+  - getCompetitionRounds
+  - getCompetitionGames
   - getCompetitionStandings
   - getCompetitionAheadBehind
   - getCompetitionCalendar

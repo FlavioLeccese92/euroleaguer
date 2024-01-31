@@ -2,7 +2,9 @@
 
 export(getCompetitionAheadBehind)
 export(getCompetitionCalendar)
+export(getCompetitionGames)
 export(getCompetitionMargins)
+export(getCompetitionRounds)
 export(getCompetitionStandings)
 export(getCompetitionStreaks)
 export(getGameBoxScore)
