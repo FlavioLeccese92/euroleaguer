@@ -84,8 +84,8 @@
 
   out = list(status = getin$status_code)
   if (out$status == 200) {
-    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>% .$Rows %>%
-      tibble::as_tibble() %>%
+    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
+      .$Rows %>% tibble::as_tibble() %>%
       dplyr::rename_with(.TextFormatType2) %>%
       dplyr::rename(NumberOfPlay = .data$NumAnot) %>%
       dplyr::mutate(Player_ID = trimws(gsub("P", "", .data$Player_ID)),
@@ -208,12 +208,13 @@
 
   out = list(status = getin$status_code)
   if (out$status == 200) {
-    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>% .$data %>%
+    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
+      .$data %>%
       { if (!is.null(.))
         { if (is.null(dim(.)))
           unlist(.) %>% t() %>% tibble::as_tibble()
         else tibble::as_tibble(.) %>%
-          tidyr::unnest(cols = c(images, country), names_sep = ".")} %>%
+          tidyr::unnest(cols = c(.data$images, .data$country), names_sep = ".")} %>%
           dplyr::rename_with(.TextFormatType1) %>%
           dplyr::rename(TeamCode = .data$Code, TeamName = .data$Name)
       }
@@ -239,15 +240,53 @@
   if (out$status == 200) {
     out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
     tibble::as_tibble() %>%
-    tidyr::unnest(cols = c(person, images, club, season), names_sep = ".") %>%
-    tidyr::unnest(cols = c(person.country, person.birthCountry,
-                    person.images, club.images), names_sep = ".") %>%
+    tidyr::unnest(cols = c(.data$person, .data$images, .data$club, .data$season), names_sep = ".") %>%
+    tidyr::unnest(cols = c(.data$person.country, .data$person.birthCountry,
+                           .data$person.images, .data$club.images), names_sep = ".") %>%
     dplyr::rename_with(.TextFormatType1) %>%
-    mutate(TeamCode = team_code,
-           PersonCode = trimws(.data$PersonCode),
-           Player = paste0(gsub(".*, ", "", .data$PersonName), " ", gsub(",.*", "", .data$PersonName), " #", .data$Dorsal),
-           .before = 1)
+    dplyr::mutate(TeamCode = team_code,
+                  PersonCode = trimws(.data$PersonCode),
+                  Player = paste0(gsub(".*, ", "", .data$PersonName), " ", gsub(",.*", "", .data$PersonName), " #", .data$Dorsal),
+                  .before = 1)
   } else {out$data = NULL}
   return(out)
 }
 
+#' @name .getTeamGames
+#' @noRd
+#' @keywords internal
+
+.getTeamGames = function(team_code, season_code){
+  if (substr(season_code, 1, 1) %in% c("E", "U")) {
+    competition_code = substr(season_code, 1, 1)
+  } else {
+    cli::cli_abort("{season_code} is not a valid value for season_code")
+  }
+
+  getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
+                               "competitions/{competition_code}/seasons/{season_code}/games"),
+                    query = list(TeamCode = team_code))
+
+  out = list(status = getin$status_code)
+  if (out$status == 200) {
+    out$data = getin %>% .$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
+      .$data %>% tibble::as_tibble() %>%
+      tidyr::unnest(cols = c(.data$season, .data$competition, .data$group, .data$phaseType,
+                             .data$round, .data$home, .data$away, .data$venue),
+                    names_sep = ".") %>%
+      tidyr::unnest(c(.data$home.quarters, .data$home.coach, .data$home.imageUrls,
+                      .data$away.quarters, .data$away.coach, .data$away.imageUrls),
+                    names_sep = ".") %>% dplyr::select(-.data$broadcasters) %>%
+      dplyr::rename_with(.TextFormatType1) %>%
+      dplyr::rename(GameId = .data$Id, GameCode = .data$Code, GameDate = .data$Date,
+                    GameStatus = .data$Status, Round = .data$RoundRound) %>%
+      dplyr::mutate(TeamCode = team_code,
+                    WinLoss = ifelse((team_code == .data$HomeCode) == (.data$HomeScore > .data$AwayScore), "Win", "Loss"),
+                    TeamCodeAgainst = ifelse(team_code == .data$HomeCode, .data$AwayCode, .data$HomeCode),
+                    HomeAway = ifelse((team_code == .data$HomeCode), "Home", "Away"),
+                    GameDate = as.Date(.data$GameDate),
+                    TeamScore = ifelse(.data$HomeAway == "Home", .data$HomeScore, .data$AwayScore),
+                    TeamAgainstScore = ifelse(.data$HomeAway == "Away", .data$HomeScore, .data$AwayScore), .before = 1)
+    } else {out$data = NULL}
+  return(out)
+}
