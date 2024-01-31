@@ -19,7 +19,19 @@
     <loc>https://flavioleccese92.github.io/euroleaguer/index.html</loc>
   </url>
   <url>
+    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionAheadBehind.html</loc>
+  </url>
+  <url>
+    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionCalendar.html</loc>
+  </url>
+  <url>
+    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionMargins.html</loc>
+  </url>
+  <url>
     <loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionStandings.html</loc>
+  </url>
+  <url>
+    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionStreaks.html</loc>
   </url>
   <url>
     <loc>https://flavioleccese92.github.io/euroleaguer/reference/getGameBoxScore.html</loc>
