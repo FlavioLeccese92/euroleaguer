@@ -29,9 +29,13 @@ home:
 docsearch:
   search:
 reference:
-- Title: Competition
+- title: Competition
   contents:
   - getCompetitionStandings
+  - getCompetitionAheadBehind
+  - getCompetitionCalendar
+  - getCompetitionMargins
+  - getCompetitionStreaks
 - title: Team
   contents:
   - getTeam

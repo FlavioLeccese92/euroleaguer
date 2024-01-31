@@ -13,7 +13,7 @@ or \code{U2023} for Eurocup 2023)}
 \item{round}{The value of the round. An integer value}
 }
 \value{
-Returns a summary tibble of standings for chose competition and round
+Returns a summary tibble of standings for choseN competition and round
 
 Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/standings/}{Competition}
 }
@@ -21,7 +21,6 @@ Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/standin
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \examples{
-TeamStats = getCompetitionStandings(season_code = c("E2023", "E2022"), round = 1)
-TeamStats$PlayerAveragePerGame
+getCompetitionStandings(season_code = c("E2023", "E2022"), round = 1)
 
 }

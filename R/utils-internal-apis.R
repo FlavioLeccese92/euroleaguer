@@ -367,10 +367,113 @@
     out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
       .$teams %>% tibble::as_tibble()  %>%
       tidyr::unnest(cols = c(.data$club), names_sep = ".") %>%
-      tidyr::unnest(c(.data$club.images), names_sep = ".") %>%
+      tidyr::unnest(cols = c(.data$club.images), names_sep = ".") %>%
       dplyr::rowwise() %>%
       dplyr::mutate(last5Form = paste0(unlist(.data$last5Form), collapse = "-")) %>%
       dplyr::ungroup() %>%
+      dplyr::rename_with(.TextFormatType1) %>%
+      dplyr::rename_with(function(x) {gsub("Club", "Team", x)})
+  } else {out$data = NULL}
+  return(out)
+}
+
+#' @name .getCompetitionStreaks
+#' @noRd
+#' @keywords internal
+
+.getCompetitionStreaks = function(season_code, round){
+  if (substr(season_code, 1, 1) %in% c("E", "U")) {
+    competition_code = substr(season_code, 1, 1)
+  } else {
+    cli::cli_abort("{season_code} is not a valid value for season_code")
+  }
+
+  getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v3/",
+           "competitions/{competition_code}/seasons/{season_code}/rounds/{round}/streaks"))
+
+  out = list(status = getin$status_code)
+  if (out$status == 200) {
+    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
+      .$teams %>% tibble::as_tibble() %>%
+      tidyr::unnest(cols = c(.data$club), names_sep = ".") %>%
+      tidyr::unnest(cols = c(.data$club.images), names_sep = ".") %>%
+      dplyr::rename_with(.TextFormatType1) %>%
+      dplyr::rename_with(function(x) {gsub("Club", "Team", x)})
+  } else {out$data = NULL}
+  return(out)
+}
+
+#' @name .getCompetitionAheadBehind
+#' @noRd
+#' @keywords internal
+
+.getCompetitionAheadBehind = function(season_code, round){
+  if (substr(season_code, 1, 1) %in% c("E", "U")) {
+    competition_code = substr(season_code, 1, 1)
+  } else {
+    cli::cli_abort("{season_code} is not a valid value for season_code")
+  }
+
+  getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v3/",
+                               "competitions/{competition_code}/seasons/{season_code}/rounds/{round}/aheadbehind"))
+
+  out = list(status = getin$status_code)
+  if (out$status == 200) {
+    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
+      .$teams %>% tibble::as_tibble() %>%
+      tidyr::unnest(cols = c(.data$club), names_sep = ".") %>%
+      tidyr::unnest(cols = c(.data$club.images), names_sep = ".") %>%
+      dplyr::rename_with(.TextFormatType1) %>%
+      dplyr::rename_with(function(x) {gsub("Club", "Team", x)})
+  } else {out$data = NULL}
+  return(out)
+}
+
+#' @name .getCompetitionCalendar
+#' @noRd
+#' @keywords internal
+
+.getCompetitionCalendar = function(season_code, round){
+  if (substr(season_code, 1, 1) %in% c("E", "U")) {
+    competition_code = substr(season_code, 1, 1)
+  } else {
+    cli::cli_abort("{season_code} is not a valid value for season_code")
+  }
+
+  getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v3/",
+                               "competitions/{competition_code}/seasons/{season_code}/rounds/{round}/calendarstandings"))
+
+  out = list(status = getin$status_code)
+  if (out$status == 200) {
+    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
+      .$teams %>% tibble::as_tibble() %>%
+      tidyr::unnest(cols = c(.data$club), names_sep = ".") %>%
+      tidyr::unnest(cols = c(.data$club.images), names_sep = ".") %>%
+      dplyr::rename_with(.TextFormatType1) %>%
+      dplyr::rename_with(function(x) {gsub("Club", "Team", x)})
+  } else {out$data = NULL}
+  return(out)
+}
+#' @name .getCompetitionMargins
+#' @noRd
+#' @keywords internal
+
+.getCompetitionMargins = function(season_code, round){
+  if (substr(season_code, 1, 1) %in% c("E", "U")) {
+    competition_code = substr(season_code, 1, 1)
+  } else {
+    cli::cli_abort("{season_code} is not a valid value for season_code")
+  }
+
+  getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v3/",
+                               "competitions/{competition_code}/seasons/{season_code}/rounds/{round}/margins"))
+
+  out = list(status = getin$status_code)
+  if (out$status == 200) {
+    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
+      .$teams %>% tibble::as_tibble() %>%
+      tidyr::unnest(cols = c(.data$club), names_sep = ".") %>%
+      tidyr::unnest(cols = c(.data$club.images), names_sep = ".") %>%
       dplyr::rename_with(.TextFormatType1) %>%
       dplyr::rename_with(function(x) {gsub("Club", "Team", x)})
   } else {out$data = NULL}

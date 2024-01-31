@@ -1,11 +1,11 @@
-#' Get competition standings
+#' Get competition traditional standings
 #'
 #' `r lifecycle::badge('experimental')`
 #'
 #' @param season_code The code of the season (examples are `E2023` for Euroleague
 #' or `U2023` for Eurocup 2023)
 #' @param round The value of the round. An integer value
-#' @return Returns a summary tibble of standings for chose competition and round
+#' @return Returns a summary tibble of standings for choseN competition and round
 #'
 #' Reference webpage: [Competition](<https://www.euroleaguebasketball.net/euroleague/standings/>)
 #' @examples
