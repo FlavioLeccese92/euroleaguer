@@ -197,9 +197,11 @@
 #' @keywords internal
 
 .getTeam = function(team_code, season_code){
-  competition_code = ifelse(substr(season_code, 1, 1) %in% c("E", "U"),
-                            substr(season_code, 1, 1),
-                            NULL)
+  if (substr(season_code, 1, 1) %in% c("E", "U")) {
+    competition_code = substr(season_code, 1, 1)
+  } else {
+    cli::cli_abort("{season_code} is not a valid value for season_code")
+  }
 
   getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
                                "competitions/{competition_code}/seasons/{season_code}/clubs/{team_code}"))
@@ -218,3 +220,34 @@
   } else {out$data = NULL}
   return(out)
 }
+
+#' @name .getTeamPeople
+#' @noRd
+#' @keywords internal
+
+.getTeamPeople = function(team_code, season_code){
+  if (substr(season_code, 1, 1) %in% c("E", "U")) {
+    competition_code = substr(season_code, 1, 1)
+  } else {
+    cli::cli_abort("{season_code} is not a valid value for season_code")
+  }
+
+  getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
+                               "competitions/{competition_code}/seasons/{season_code}/clubs/{team_code}/people"))
+
+  out = list(status = getin$status_code)
+  if (out$status == 200) {
+    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
+    tibble::as_tibble() %>%
+    tidyr::unnest(cols = c(person, images, club, season), names_sep = ".") %>%
+    tidyr::unnest(cols = c(person.country, person.birthCountry,
+                    person.images, club.images), names_sep = ".") %>%
+    dplyr::rename_with(.TextFormatType1) %>%
+    mutate(TeamCode = team_code,
+           PersonCode = trimws(.data$PersonCode),
+           Player = paste0(gsub(".*, ", "", .data$PersonName), " ", gsub(",.*", "", .data$PersonName), " #", .data$Dorsal),
+           .before = 1)
+  } else {out$data = NULL}
+  return(out)
+}
+

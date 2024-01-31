@@ -21,7 +21,6 @@ options(cli.progress_show_after = 0)
   if (len_null > 0) {
     cli::cli_abort(c("x" = "{args_null} argument{?s} cannot be NULL"))
   }
-  # print("CHECK vector NULL!")
   iter_args = expand.grid(this_args, stringsAsFactors = FALSE)
 
   args_names_frmt = iter_args %>% dplyr::rename_with(.TextFormatType2) %>% names()
