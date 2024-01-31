@@ -70,16 +70,16 @@
 
 
 <dt>season_code</dt>
-<dd><p>The code of the season (examples are "E2023" for Euroleague
-or "U2023" for Eurocup 2023)</p></dd>
+<dd><p>The code of the season (examples are <code>E2023</code> for Euroleague
+or <code>U2023</code> for Eurocup 2023)</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>Returns a list of two elements for the chosen games and seasons</p><ul><li><p><em>PlayByPlaySummary</em>. Overall information about the games, teams involved and status (live or not)</p></li>
-<li><p><em>PlayByPlay</em>. Detailed information about the games, particularly <strong>NumberOfPlay</strong> and <strong>TypeOfPlay</strong></p></li>
+<p>Returns a list of two elements for the chosen games and seasons</p><ul><li><p><strong>PlayByPlaySummary</strong>. Overall information about the games, teams involved and status (live or not)</p></li>
+<li><p><strong>PlayByPlay</strong>. Detailed information about the games, particularly <strong>NumberOfPlay</strong> and <strong>TypeOfPlay</strong></p></li>
 </ul><p>Reference webpage: <a href="https://www.euroleaguebasketball.net/euroleague/game-center/2023-24/crvena-zvezda-meridianbet-belgrade-ldlc-asvel-villeurbanne/E2023/1/#play-by-play" class="external-link">PlayByPlay</a></p>
 
 
@@ -87,15 +87,7 @@ or "U2023" for Eurocup 2023)</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">getGamePlayByPlay</span><span class="op">(</span>season_code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"E2023"</span>, <span class="st">"U2023"</span><span class="op">)</span>, game_code <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $PlayByPlaySummary</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   GameCode SeasonCode Live  TeamA        TeamB CodeTeamA CodeTeamB ActualQuarter</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 E2023      FALSE Crvena Zvez… LDLC… RED       ASV       4            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        1 U2023      FALSE Prometey Sl… Veol… PMT       HAM       4            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $PlayByPlay</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">getGamePlayByPlay</span><span class="op">(</span>season_code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"E2023"</span>, <span class="st">"U2023"</span><span class="op">)</span>, game_code <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">$</span><span class="va">PlayByPlay</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,105 × 17</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    GameCode SeasonCode Quarter  Type NumberOfPlay CodeTeam IdPlayer PlayType</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
@@ -113,7 +105,6 @@ or "U2023" for Eurocup 2023)</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 9 more variables: Player &lt;chr&gt;, Team &lt;chr&gt;, Dorsal &lt;chr&gt;, Minute &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Markertime &lt;chr&gt;, PointsA &lt;int&gt;, PointsB &lt;int&gt;, Comment &lt;lgl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   PlayInfo &lt;chr&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
