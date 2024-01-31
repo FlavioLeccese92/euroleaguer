@@ -287,6 +287,62 @@
                     GameDate = as.Date(.data$GameDate),
                     TeamScore = ifelse(.data$HomeAway == "Home", .data$HomeScore, .data$AwayScore),
                     TeamAgainstScore = ifelse(.data$HomeAway == "Away", .data$HomeScore, .data$AwayScore), .before = 1)
-    } else {out$data = NULL}
+  } else {out$data = NULL}
+  return(out)
+}
+
+#' @name .getTeamStats
+#' @noRd
+#' @keywords internal
+
+.getTeamStats = function(team_code, season_code, phase_type){
+  if (substr(season_code, 1, 1) %in% c("E", "U")) {
+    competition_code = substr(season_code, 1, 1)
+  } else {
+    cli::cli_abort("{season_code} is not a valid value for season_code")
+  }
+
+  getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
+                               "competitions/{competition_code}/seasons/{season_code}/clubs/{team_code}/people/stats"),
+                    query = list(phaseTypeCode = phase_type))
+
+  out = list(status = getin$status_code)
+  if (out$status == 200) {
+    getin_data = getin$content %>% rawToChar() %>% jsonlite::fromJSON()
+
+    out$data[["PlayerAccumulated"]] = getin_data[["playerStats"]] %>%
+      tibble::as_tibble() %>%
+      dplyr::select(-.data$averagePerGame) %>%
+      tidyr::unnest(., cols = c(.data$player, .data$accumulated), names_sep = ".") %>%
+      dplyr::rename_with(function(x) {gsub("accumulated\\.", "", x)} ) %>%
+      .rename_stat() %>%
+      dplyr::mutate(TeamCode = team_code,
+                    Player_ID = trimws(.data$PlayerCode), .before = 1, .keep = "unused") %>%
+      dplyr::mutate(dplyr::across(dplyr::contains("%"), ~as.numeric(gsub("%", "", .))))
+
+    out$data[["PlayerAveragePerGame"]] = getin_data[["playerStats"]] %>%
+      tibble::as_tibble() %>%
+      dplyr::select(-.data$accumulated) %>%
+      tidyr::unnest(., cols = c(.data$player, .data$averagePerGame), names_sep = ".") %>%
+      dplyr::rename_with(function(x) {gsub("averagePerGame\\.", "", x)}) %>%
+      .rename_stat() %>%
+      dplyr::mutate(TeamCode = team_code,
+                    Player_ID = trimws(.data$PlayerCode), .before = 1, .keep = "unused") %>%
+      dplyr::mutate(dplyr::across(dplyr::contains("%"), ~as.numeric(gsub("%", "", .))))
+
+    out$data[["PlayerAveragePer40"]] = out$data[["PlayerAccumulated"]] %>%
+      dplyr::mutate(dplyr::across(-c("TeamCode", dplyr::contains("Player"), dplyr::contains("%")),
+                                  ~ round(40*60*./.data$TimePlayed, 2)))
+
+    out$data[["TeamAccumulated"]] = getin_data[["accumulated"]] %>%
+      tibble::as_tibble() %>% tidyr::unnest(cols = dplyr::everything()) %>%
+      dplyr::mutate(TeamCode = team_code, .before = 1) %>% .rename_stat() %>%
+      dplyr::mutate(dplyr::across(dplyr::contains("%"), ~as.numeric(gsub("%", "", .))))
+
+    out$data[["TeamAveragePerGame"]] = getin_data[["averagePerGame"]] %>%
+      tibble::as_tibble() %>% tidyr::unnest(cols = dplyr::everything()) %>%
+      dplyr::mutate(TeamCode = team_code, .before = 1) %>% .rename_stat() %>%
+      dplyr::mutate(dplyr::across(dplyr::contains("%"), ~as.numeric(gsub("%", "", .))))
+  } else {out$data = NULL}
   return(out)
 }
