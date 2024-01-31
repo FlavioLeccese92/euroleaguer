@@ -7,10 +7,10 @@
 getTeam(team_code, season_code)
 }
 \arguments{
-\item{team_code}{The code of the team (examples are "ASV", "MAD", ...)}
+\item{team_code}{The code of the team (examples are \code{ASV}, \code{MAD}, ...)}
 
-\item{season_code}{The code of the season (examples are "E2023" for Euroleague
-or "U2023" for Eurocup 2023)}
+\item{season_code}{The code of the season (examples are \code{E2023} for Euroleague
+or \code{U2023} for Eurocup 2023)}
 }
 \value{
 Returns summary information about teams by season

@@ -7,22 +7,22 @@
 getTeamStats(team_code, season_code, phase_type = "")
 }
 \arguments{
-\item{team_code}{The code of the team (examples are "ASV", "MAD", ...)}
+\item{team_code}{The code of the team (examples are \code{ASV}, \code{MAD}, ...)}
 
-\item{season_code}{The code of the season (examples are "E2023" for Euroleague
-or "U2023" for Eurocup 2023)}
+\item{season_code}{The code of the season (examples are \code{E2023} for Euroleague
+or \code{U2023} for Eurocup 2023)}
 
-\item{phase_type}{The code of competition phase ("RS" for regular season, "PO"
-for playoffs and "FF" for final four). Default is "" for all.}
+\item{phase_type}{The code of competition phase (\code{RS} for regular season, \code{PO}
+for playoffs and \code{FF} for final four). Default is \code{ALL} for all.}
 }
 \value{
 Returns a list of elements for the chosen teams and seasons
 \itemize{
-\item \emph{PlayerAccumulated}. Total sum of statistics by player
-\item \emph{PlayerAveragePerGame}. Average per game of statistics by player
-\item \emph{PlayerAveragePer40}. Average per 40 minutes of statistics by player
-\item \emph{TeamAccumulated}. Total sum of statistics of team
-\item \emph{TeamAveragePerGame}. Average per game of statistics of teams
+\item \strong{PlayerAccumulated}. Total sum of statistics by player
+\item \strong{PlayerAveragePerGame}. Average per game of statistics by player
+\item \strong{PlayerAveragePer40}. Average per 40 minutes of statistics by player
+\item \strong{TeamAccumulated}. Total sum of statistics of team
+\item \strong{TeamAveragePerGame}. Average per game of statistics of teams
 }
 
 Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/teams/ldlc-asvel-villeurbanne/statistics/asv/?season=2023-24&phase=All\%20phases}{Team}
@@ -31,6 +31,7 @@ Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/teams/l
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \examples{
-getTeamStats(team_code = "ASV", season_code = c("E2023", "E2022"), phasetype = "RS")
+TeamStats = getTeamStats(team_code = "ASV", season_code = c("E2023", "E2022"), phase_type = "RS")
+TeamStats$PlayerAveragePerGame
 
 }

@@ -9,18 +9,18 @@ getGameBoxScore(game_code, season_code)
 \arguments{
 \item{game_code}{The code of the game. An integer value}
 
-\item{season_code}{The code of the season (examples are "E2023" for Euroleague
-or "U2023" for Eurocup 2023)}
+\item{season_code}{The code of the season (examples are \code{E2023} for Euroleague
+or \code{U2023} for Eurocup 2023)}
 }
 \value{
 Returns a list of elements for the chosen games and seasons
 \itemize{
-\item \emph{Team}. Name of the teams
-\item \emph{Coach}. Name of the coaches
-\item \emph{EndOfQuarter}. Team accumulated points by quarter
-\item \emph{ByQuarter}. Team points for each quarter
-\item \emph{PlayerStats}. Statistics for each player in the game
-\item \emph{TeamStats}. Aggregated statistics for each team in the game
+\item \strong{Team}. Name of the teams
+\item \strong{Coach}. Name of the coaches
+\item \strong{EndOfQuarter}. Team accumulated points by quarter
+\item \strong{ByQuarter}. Team points for each quarter
+\item \strong{PlayerStats}. Statistics for each player in the game
+\item \strong{TeamStats}. Aggregated statistics for each team in the game
 }
 
 Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/game-center/2023-24/crvena-zvezda-meridianbet-belgrade-ldlc-asvel-villeurbanne/E2023/1/#boxscore}{BoxScore}
