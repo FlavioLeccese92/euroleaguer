@@ -29,6 +29,15 @@ home:
 docsearch:
   search:
 reference:
+- Title: Competition
+  contents:
+  - getCompetitionStandings
+- title: Team
+  contents:
+  - getTeam
+  - getTeamPeople
+  - getTeamGames
+  - getTeamStats
 - title: Game
   contents:
   - getGameHeader
@@ -38,9 +47,3 @@ reference:
   - getGamePlayers
   - getGamePlayByPlay
   - getGameEvolution
-- title: Team
-  contents:
-  - getTeam
-  - getTeamPeople
-  - getTeamGames
-  - getTeamStats
