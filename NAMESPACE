@@ -3,6 +3,7 @@
 export(getCompetitionAheadBehind)
 export(getCompetitionCalendar)
 export(getCompetitionGames)
+export(getCompetitionHistory)
 export(getCompetitionMargins)
 export(getCompetitionRounds)
 export(getCompetitionStandings)
