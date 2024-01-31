@@ -107,7 +107,10 @@ options(cli.progress_show_after = 0)
                "FTM", "FTA", "FGM", "FGA",
                "REB", "OREB", "DREB", "AST", "STL",
                "BLK", "BLKA", "TO", "FC", "FR", "2FG%", "3FG%", "FT%",
-               "GP", "AM", "AA"),
+               "GP", "AM", "AA",
+               "PTS", "2FGM", "2FGA", "2FG%", "3FGM", "3FGA", "3FG%",
+               "FTM", "FTA", "FT%", "OREB","DREB", "REB",
+               "AST", "STL", "TO", "BLK", "BLKA", "FC", "FR", "PIR"),
     col_from = c("valuation", "plusminus", "points", "fieldgoalsmade2",
                  "fieldgoalsattempted2", "fieldgoalsmade3", "fieldgoalsattempted3",
                  "freethrowsmade", "freethrowsattempted",
@@ -116,8 +119,17 @@ options(cli.progress_show_after = 0)
                  "steals", "blocksfavour", "blocksagainst", "turnovers", "foulscommited",
                  "foulsreceived", "twopointshootingpercentage",
                  "threepointshootingpercentage", "freethrowshootingpercentage",
-                 "gamesplayed", "accuracymade", "accuracyattempted")
-  )
+                 "gamesplayed", "accuracymade", "accuracyattempted",
+                 "pointsscored", "twopointersmade", "twopointersattempted",
+                 "twopointerspercentage", "threepointersmade",
+                 "threepointersattempted", "threepointerspercentage",
+                 "freethrowsmade", "freethrowsattempted",
+                 "freethrowspercentage", "offensiverebounds",
+                 "defensiverebounds", "totalrebounds",
+                 "assists", "steals", "turnovers", "blocks",
+                 "blocksagainst", "foulscommited", "foulsdrawn", "pir"
+                 )
+    ) %>% unique()
 
   names(data) = tibble::tibble(col_data = names(data)) %>%
     dplyr::mutate(col_data_lower = .data$col_data %>% tolower()) %>%
