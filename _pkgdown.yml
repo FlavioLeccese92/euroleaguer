@@ -40,6 +40,6 @@ reference:
   - getGameEvolution
 - title: Team
   contents:
-  - getTeam,
+  - getTeam
   - getTeamPeople
   - getTeamGames
