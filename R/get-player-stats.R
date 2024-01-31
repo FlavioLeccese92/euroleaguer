@@ -8,7 +8,7 @@
 #' `perGame`, `perMinute` or `accumulated`
 #' @return Returns a summary tibble of players statistics for chosen competition
 #'
-#' Reference webpage: [Competition](<https://www.euroleaguebasketball.net/euroleague/stats/expanded/?size=1000&viewType=traditional&seasonCode=E2023&statisticMode=perGame&seasonMode=Single&sortDirection=descending&statistic=blocksFavour>)
+#' Reference webpage: [Stats](<https://www.euroleaguebasketball.net/euroleague/stats/expanded/?size=1000&viewType=traditional&seasonCode=E2023&statisticMode=perGame&seasonMode=Single&sortDirection=descending&statistic=blocksFavour>)
 #' @examples
 #' getPlayerStats(season_code = "E2023", statistic_mode = "perGame")
 #'
