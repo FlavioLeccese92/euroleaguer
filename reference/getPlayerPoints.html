@@ -92,26 +92,8 @@ or <code>U2023</code> for Eurocup 2023)</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="getPlayerStats.html">getPlayerStats</a></span><span class="op">(</span>season_code <span class="op">=</span> <span class="st">"E2023"</span>, statistic_mode <span class="op">=</span> <span class="st">"perGame"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 208 × 36</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    SeasonCode StatisticMode Total Ranking Code   Name      Age ImageUrl TeamCode</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> E2023      perGame         208       1 007200 LARKIN…    31 https:/… IST     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> E2023      perGame         208       2 008962 HAYES-…    29 https:/… ULK     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> E2023      perGame         208       3 005985 JAMES,…    33 https:/… MCO     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> E2023      perGame         208       4 008987 LEDAY,…    29 https:/… PAR     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> E2023      perGame         208       5 007831 SHIELD…    29 https:/… MIL     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> E2023      perGame         208       6 009622 BROWN,…    33 https:/… TEL     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> E2023      perGame         208       7 007866 MITOGL…    27 https:/… PAN     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> E2023      perGame         208       8 011204 GRANT,…    31 https:/… PAN     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> E2023      perGame         208       9 012080 LUWAWU…    28 https:/… ASV     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> E2023      perGame         208      10 011225 LEE, P…    28 https:/… ASV     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 198 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 27 more variables: TeamTvCodes &lt;chr&gt;, TeamName &lt;chr&gt;, TeamImageUrl &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   GP &lt;dbl&gt;, GS &lt;dbl&gt;, MIN &lt;dbl&gt;, PTS &lt;dbl&gt;, `2FGM` &lt;dbl&gt;, `2FGA` &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2FG%` &lt;chr&gt;, `3FGM` &lt;dbl&gt;, `3FGA` &lt;dbl&gt;, `3FG%` &lt;chr&gt;, FTM &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   FTA &lt;dbl&gt;, `FT%` &lt;chr&gt;, OREB &lt;dbl&gt;, DREB &lt;dbl&gt;, REB &lt;dbl&gt;, AST &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   STL &lt;dbl&gt;, TO &lt;dbl&gt;, BLK &lt;dbl&gt;, BLKA &lt;dbl&gt;, FC &lt;dbl&gt;, FR &lt;dbl&gt;, PIR &lt;dbl&gt;</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">getPlayerPoints</span><span class="op">(</span>season_code <span class="op">=</span> <span class="st">"E2023"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in names(this_args) &lt;- args_names:</span> 'names' attribute [2] must be the same length as the vector [1]</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
