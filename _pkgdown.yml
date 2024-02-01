@@ -58,3 +58,4 @@ reference:
   contents:
   - getPlayerStats
   - getPlayerAdvanced
+  - getPlayerMisc

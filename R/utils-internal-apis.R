@@ -625,3 +625,36 @@
   } else {out$data = NULL}
   return(out)
 }
+
+#' @name .getPlayerMisc
+#' @noRd
+#' @keywords internal
+
+.getPlayerMisc = function(season_code, statistic_mode){
+  if (substr(season_code, 1, 1) %in% c("E", "U")) {
+    competition_code = substr(season_code, 1, 1)
+  } else {
+    cli::cli_abort("{season_code} is not a valid value for season_code")
+  }
+
+  getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v3/",
+                               "competitions/{competition_code}/statistics/players/misc"),
+                    query = list(seasonMode = "Single",
+                                 statistic = "gamesPlayed",
+                                 limit = 1000,
+                                 sortDirection = "descending",
+                                 seasonCode = season_code,
+                                 statisticMode = "accumulated"))
+
+  out = list(status = getin$status_code)
+  if (out$status == 200) {
+    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
+      tibble::as_tibble() %>%
+      tidyr::unnest(cols = c(.data$players), names_sep = ".") %>%
+      tidyr::unnest(cols = c(.data$players.player), names_sep = ".") %>%
+      tidyr::unnest(cols = c(.data$players.player.team), names_sep = ".") %>%
+      dplyr::rename_with(function(x) {gsub("players|player", "", x)}) %>%
+      .rename_stat()
+  } else {out$data = NULL}
+  return(out)
+}
