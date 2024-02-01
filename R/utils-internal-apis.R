@@ -663,7 +663,7 @@
 #' @noRd
 #' @keywords internal
 
-.getPlayerPoints = function(season_code, statistic_mode){
+.getPlayerPoints = function(season_code){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
     competition_code = substr(season_code, 1, 1)
   } else {
