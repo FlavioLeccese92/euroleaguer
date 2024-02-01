@@ -59,3 +59,4 @@ reference:
   - getPlayerStats
   - getPlayerAdvanced
   - getPlayerMisc
+  - getPlayerPoints

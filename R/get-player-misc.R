@@ -10,10 +10,10 @@
 #'
 #' Reference webpage: [Stats](<https://www.euroleaguebasketball.net/euroleague/stats/expanded/?size=1000&viewType=miscellaneous&seasonCode=E2023&statisticMode=accumulated&seasonMode=Single&sortDirection=descending&statistic=gamesPlayed>)
 #' @examples
-#' getPlayerStats(season_code = "E2023", statistic_mode = "perGame")
+#' getPlayerMisc(season_code = "E2023")
 #'
-#' @name getPlayerStats
-#' @rdname getPlayerStats
+#' @name getPlayerMisc
+#' @rdname getPlayerMisc
 #' @export
 
 getPlayerMisc = function(season_code){

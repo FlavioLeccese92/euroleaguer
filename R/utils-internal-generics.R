@@ -113,7 +113,9 @@ options(cli.progress_show_after = 0)
                "AST", "STL", "TO", "BLK", "BLKA", "FC", "FR", "PIR",
                "EFG%", "TS%", "OREB%", "DREB%", "REB%", "AST/TO", "AST-R", "TO-R",
                "2PTA-R", "3PTA-R", "FT-RT",
-               "MIN", "W", "L", "GS", "DD2", "TD3"),
+               "MIN", "W", "L", "GS", "DD2", "TD3",
+               "2PTA-S", "3PTA-S", "FTA-S", "2PTM-S", "3PTM-S",
+               "FTM-S", "2PT-RT", "2PT-RT", "%2PT", "%3PT", "%FT"),
     col_from = c("valuation", "plusminus", "points", "fieldgoalsmade2",
                  "fieldgoalsattempted2", "fieldgoalsmade3", "fieldgoalsattempted3",
                  "freethrowsmade", "freethrowsattempted",
@@ -138,7 +140,14 @@ options(cli.progress_show_after = 0)
                  "twopointattemptsratio", "threepointattemptsratio",
                  "freethrowsrate",
                  "minutesplayed", "wins", "losses", "gamesstarted",
-                 "doubledoubles", "tripledoubles")
+                 "doubledoubles", "tripledoubles",
+                 "twopointattemptsshare", "threepointattemptsshare",
+                 "freethrowsattemptsshare", "twopointersmadeshare",
+                 "threepointersmadeshare", "freethrowsmadeshare",
+                 "twopointrate", "threepointrate",
+                 "pointsfromtwopointerspercentage",
+                 "pointsfromthreepointerspercentage",
+                 "pointsfromfreethrowspercentage" )
     ) %>% unique()
 
   names(data) = tibble::tibble(col_data = names(data)) %>%
