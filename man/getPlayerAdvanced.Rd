@@ -19,17 +19,17 @@ or \code{U2023} for Eurocup 2023)}
 \value{
 Returns a summary tibble of advanced players statistics for chosen seasons
 \itemize{
-\item eFG\% (Effective field goal \%) - Combined two- and three-point shooting effectiveness
-\item TS\% (True shooting \%) - Percentage of points vs. points attempted
-\item OREB\% (Offensive rebound \%) - Estimated \% of available offensive rebounds obtained while on court
-\item DREB\% (Defensive rebound \%) - Estimated \% of available defensive rebounds obtained while on court
-\item REB\% (Rebound \%) - Estimated \% of available rebounds obtained while on court
-\item AST/TO (Assist to turnover ratio) - Ratio of assists made to turnovers committed
-\item AST-R (Assist ratio) - Estimated \% of assists per player's offensive possessions
-\item TO-R (Turnover ratio) - Estimated \% of turnovers per player's offensive possessions
-\item 2PTA-R (Two-point attempts ratio) - Estimated \% of two-point attempts per player's offensive possessions
-\item 3PTA-R (Three-point attempts ratio) - Estimated \% of three-point attempts per player's offensive possessions
-\item FT-RT (Free Throw rate) - Measure of free throw attempts vs. field goal attempts
+\item \strong{eFG\%} (Effective field goal \%) - Combined two- and three-point shooting effectiveness
+\item \strong{TS\%} (True shooting \%) - Percentage of points vs. points attempted
+\item \strong{OREB\%} (Offensive rebound \%) - Estimated \% of available offensive rebounds obtained while on court
+\item \strong{DREB\%} (Defensive rebound \%) - Estimated \% of available defensive rebounds obtained while on court
+\item \strong{REB\%} (Rebound \%) - Estimated \% of available rebounds obtained while on court
+\item \strong{AST/TO} (Assist to turnover ratio) - Ratio of assists made to turnovers committed
+\item \strong{AST-R} (Assist ratio) - Estimated \% of assists per player's offensive possessions
+\item \strong{TO-R} (Turnover ratio) - Estimated \% of turnovers per player's offensive possessions
+\item \strong{2PTA-R} (Two-point attempts ratio) - Estimated \% of two-point attempts per player's offensive possessions
+\item \strong{3PTA-R} (Three-point attempts ratio) - Estimated \% of three-point attempts per player's offensive possessions
+\item \strong{FT-RT} (Free Throw rate) - Measure of free throw attempts vs. field goal attempts
 }
 
 Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/stats/expanded/?size=1000&viewType=advanced&seasonCode=E2023&statisticMode=perGame&seasonMode=Single&sortDirection=descending&statistic=blocksFavour}{Stats}
