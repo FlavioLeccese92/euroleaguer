@@ -19,7 +19,7 @@
 #'
 #' Reference webpage: [Stats](<https://www.euroleaguebasketball.net/euroleague/stats/expanded/?size=1000&viewType=scoring&seasonCode=E2023&statisticMode=perGame&seasonMode=Single&sortDirection=descending&statistic=fieldGoals2Percent>)
 #' @examples
-#' getPlayerStats(season_code = "E2023", statistic_mode = "perGame")
+#' getPlayerPoints(season_code = "E2023")
 #'
 #' @name getPlayerPoints
 #' @rdname getPlayerPoints
