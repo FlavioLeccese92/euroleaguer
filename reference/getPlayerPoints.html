@@ -93,7 +93,27 @@ or <code>U2023</code> for Eurocup 2023)</p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">getPlayerPoints</span><span class="op">(</span>season_code <span class="op">=</span> <span class="st">"E2023"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in names(this_args) &lt;- args_names:</span> 'names' attribute [2] must be the same length as the vector [1]</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> New names:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `2PT-RT` -&gt; `2PT-RT...20`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> `2PT-RT` -&gt; `2PT-RT...21`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 211 × 24</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    SeasonCode Total Ranking Code   Name        Age ImageUrl TeamCode TeamTvCodes</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> E2023        211       1 003733 ABALDE, …    28 https:/… MAD      RMB        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> E2023        211       1 003527 ABASS, A…    30 https:/… VIR      VIR        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> E2023        211       1 003478 ABRINES,…    30 https:/… BAR      BAR        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> E2023        211       1 000956 ANDJUSIC…    32 https:/… PAR      PAR        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> E2023        211       1 011221 ANTETOKO…    26 https:/… PAN      PAO        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> E2023        211       1 003983 AVRAMOVI…    29 https:/… PAR      PAR        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> E2023        211       1 007553 BALCEROW…    23 https:/… PAN      PAO        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> E2023        211       1 009863 BALDWIN …    27 https:/… TEL      MTA        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> E2023        211       1 012721 BEAN, JU…    27 https:/… BER      BER        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> E2023        211       1 006590 BEAUBOIS…    35 https:/… IST      EFS        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 201 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 15 more variables: TeamName &lt;chr&gt;, TeamImageUrl &lt;chr&gt;, GP &lt;dbl&gt;, GS &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `2PTA-S` &lt;chr&gt;, `3PTA-S` &lt;chr&gt;, `FTA-S` &lt;chr&gt;, `2PTM-S` &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `3PTM-S` &lt;chr&gt;, `FTM-S` &lt;chr&gt;, `2PT-RT...20` &lt;chr&gt;, `2PT-RT...21` &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `%2PT` &lt;chr&gt;, `%3PT` &lt;chr&gt;, `%FT` &lt;chr&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
