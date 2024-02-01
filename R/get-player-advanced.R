@@ -23,11 +23,11 @@
 #' @examples
 #' getPlayerStats(season_code = "E2023", statistic_mode = "perGame")
 #'
-#' @name getPlayerStats
-#' @rdname getPlayerStats
+#' @name getPlayerAdvanced
+#' @rdname getPlayerAdvanced
 #' @export
 
-getPlayerStats = function(season_code,
+getPlayerAdvanced = function(season_code,
                           statistic_mode = c("perGame", "perMinute", "accumulated")){
-  .iterate(.getPlayerStats, season_code, statistic_mode)
+  .iterate(.getPlayerAdvanced, season_code, statistic_mode)
 }

@@ -57,3 +57,4 @@ reference:
 - title: Player
   contents:
   - getPlayerStats
+  - getPlayerAdvanced
