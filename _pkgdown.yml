@@ -6,7 +6,7 @@ template:
     heading_font: {google: "Inconsolata"}
     bg: '#f2f2f2'
     fg: '#050505'
-    primary: '#E91D26'
+    primary: '#ff8113'
 navbar:
   structure:
     left:  [intro, reference, articles, news]
@@ -29,7 +29,7 @@ home:
 docsearch:
   search:
 reference:
-- title: Competition
+- title: Competition overview
   contents:
   - getCompetitionHistory
   - getCompetitionPhases
