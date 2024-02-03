@@ -301,7 +301,7 @@
   } else {
     cli::cli_abort("{season_code} is not a valid value for season_code")
   }
-  phase_type = phase_type %>% ifelse(. == "ALL", "", .)
+  phase_type = phase_type %>% ifelse(. == "All", "", .)
 
   getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
                                "competitions/{competition_code}/seasons/{season_code}/clubs/{team_code}/people/stats"),
@@ -348,6 +348,72 @@
   return(out)
 }
 
+#' @name .getTeamLeadStats
+#' @noRd
+#' @keywords internal
+
+.getTeamLeadStats = function(season_code, phase_type, subset){
+  if (substr(season_code, 1, 1) %in% c("E", "U")) {
+    competition_code = substr(season_code, 1, 1)
+  } else {
+    cli::cli_abort("{season_code} is not a valid value for season_code")
+  }
+
+  phase_type = ifelse(phase_type == "All", "", phase_type)
+  subset = ifelse(subset == "All", "", subset)
+  categories = c(
+    "Valuation", "Score", "FreeThrowsMade",
+    "FreeThrowsAttempted", "FreeThrowsPercent",
+    "FieldGoalsMade2", "FieldGoalsAttempted2", "FieldGoals2Percent",
+    "FieldGoalsMade3", "FieldGoalsAttempted3", "FieldGoals3Percent",
+    "FieldGoalsMadeTotal", "FieldGoalsAttemptedTotal", "FieldGoalsPercent",
+    "TotalRebounds", "OffensiveRebounds", "DefensiveRebounds",
+    "Assistances", "Steals", "BlocksFavour", "BlocksAgainst",
+    "Turnovers", "FoulsReceived", "FoulsCommited")
+
+  temp = NULL
+  for (internal_category in categories) {
+    getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
+                                 "competitions/{competition_code}/stats/clubs/leaders"),
+                                 query = list(
+                                   category = internal_category,
+                                   seasonMode = "Single",
+                                   seasonCode = season_code,
+                                   misc = subset,
+                                   limit = 200,
+                                   aggregate = "accumulated"
+                                 ))
+
+    out = list(status = getin$status_code)
+    if (out$status == 200) {
+
+      temp = dplyr::bind_rows(
+        temp,
+        getin_data = getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
+          .$data %>% tibble::as_tibble() %>% dplyr::mutate(Stat = internal_category, .before = 1)
+      )
+
+    } else {
+      out$data = NULL
+      return(out)
+    }
+  }
+
+  out$data[["TeamAccumulated"]] = temp %>%
+    dplyr::select(.data$Stat, .data$clubCode, .data$gamesPlayed, .data$timePlayedSeconds, .data$total) %>%
+    tidyr::pivot_wider(names_from = "Stat", values_from = "total") %>%
+    .rename_stat() %>%
+    dplyr::rename_with(function(x) {gsub("Club", "Team", x)})
+
+  out$data[["TeamAveragePerGame"]] = temp %>%
+    dplyr::select(.data$Stat, .data$clubCode, .data$gamesPlayed, .data$timePlayedSeconds, .data$averagePerGame) %>%
+    tidyr::pivot_wider(names_from = "Stat", values_from = "averagePerGame") %>%
+    .rename_stat() %>%
+    dplyr::rename_with(function(x) {gsub("Club", "Team", x)})
+
+  return(out)
+}
+
 #' @name .getCompetitionRounds
 #' @noRd
 #' @keywords internal
@@ -381,7 +447,7 @@
   } else {
     cli::cli_abort("{season_code} is not a valid value for season_code")
   }
-  phase_type = phase_type %>% ifelse(. == "ALL", "", .)
+  phase_type = phase_type %>% ifelse(. == "All", "", .)
 
   getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
                                "competitions/{competition_code}/seasons/{season_code}/games"),

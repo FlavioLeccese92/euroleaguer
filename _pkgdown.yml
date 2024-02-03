@@ -45,6 +45,7 @@ reference:
   - getTeamPeople
   - getTeamGames
   - getTeamStats
+  - getTeamLeadStats
 - title: Game
   contents:
   - getGameHeader

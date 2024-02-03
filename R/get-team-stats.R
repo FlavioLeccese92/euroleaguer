@@ -6,7 +6,7 @@
 #' @param season_code The code of the season (examples are `E2023` for Euroleague
 #' or `U2023` for Eurocup 2023)
 #' @param phase_type The code of competition phase (`RS` for regular season, `PO`
-#' for playoffs and `FF` for final four). Default is `ALL` for all.
+#' for playoffs and `FF` for final four). Default is `All` for all.
 #' @return Returns a list of elements for the chosen teams and seasons
 #' - **PlayerAccumulated**. Total sum of statistics by player
 #' - **PlayerAveragePerGame**. Average per game of statistics by player
@@ -23,6 +23,6 @@
 #' @rdname getTeamStats
 #' @export
 
-getTeamStats = function(team_code, season_code, phase_type = "ALL"){
+getTeamStats = function(team_code, season_code, phase_type = "All"){
   .iterate(.getTeamStats, team_code, season_code, phase_type)
 }

@@ -4,7 +4,7 @@
 \alias{getTeamStats}
 \title{Get team stats}
 \usage{
-getTeamStats(team_code, season_code, phase_type = "ALL")
+getTeamStats(team_code, season_code, phase_type = "All")
 }
 \arguments{
 \item{team_code}{The code of the team (examples are \code{ASV}, \code{MAD}, ...)}
@@ -13,7 +13,7 @@ getTeamStats(team_code, season_code, phase_type = "ALL")
 or \code{U2023} for Eurocup 2023)}
 
 \item{phase_type}{The code of competition phase (\code{RS} for regular season, \code{PO}
-for playoffs and \code{FF} for final four). Default is \code{ALL} for all.}
+for playoffs and \code{FF} for final four). Default is \code{All} for all.}
 }
 \value{
 Returns a list of elements for the chosen teams and seasons

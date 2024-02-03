@@ -6,7 +6,7 @@
 #' or `U2023` for Eurocup 2023)
 #' @param round The value of the round. An integer value
 #' @param phase_type The code of competition phase (`RS` for regular season, `PO`
-#' for playoffs and `FF` for final four). Default is `ALL` for all.
+#' for playoffs and `FF` for final four). Default is `All` for all.
 #' @return Returns a summary tibble of games for chosen competitions
 #'
 #' @examples
@@ -16,6 +16,6 @@
 #' @rdname getCompetitionGames
 #' @export
 
-getCompetitionGames = function(season_code, round, phase_type = "ALL"){
+getCompetitionGames = function(season_code, round, phase_type = "All"){
   .iterate(.getCompetitionGames, season_code, round, phase_type)
 }
