@@ -2,9 +2,8 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @param game_code The code of the game. An integer value
-#' @param season_code The code of the season (examples are `E2023` for Euroleague
-#' or `U2023` for Eurocup 2023)
+#' @inheritParams .inheritParams
+#'
 #' @return Returns scoring information of each player for the chosen games and seasons (subset of play-by-play data).
 #' In particular:
 #' - **NumberOfPlay**. Reference id of the action (useful for join with results of `getPlayByPlay`)

@@ -2,18 +2,20 @@
 % Please edit documentation in R/get-team-stats.R
 \name{getTeamStats}
 \alias{getTeamStats}
-\title{Get team stats}
+\title{Get team statistics}
 \usage{
 getTeamStats(team_code, season_code, phase_type = "All")
 }
 \arguments{
-\item{team_code}{The code of the team (examples are \code{ASV}, \code{MAD}, ...)}
+\item{team_code}{The code of the team.\cr
+Examples are \code{ASV}, \code{MAD}, ...}
 
-\item{season_code}{The code of the season (examples are \code{E2023} for Euroleague
-or \code{U2023} for Eurocup 2023)}
+\item{season_code}{The code of the season as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
+Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 
-\item{phase_type}{The code of competition phase (\code{RS} for regular season, \code{PO}
-for playoffs and \code{FF} for final four). Default is \code{All} for all.}
+\item{phase_type}{The code of competition phase.\cr
+Admitted values are \code{RS} for regular season, \code{PO} for playoffs and \code{FF} for final four.
+Default is \code{All} for all.}
 }
 \value{
 Returns a list of elements for the chosen teams and seasons

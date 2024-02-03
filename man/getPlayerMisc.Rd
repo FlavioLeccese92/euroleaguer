@@ -7,8 +7,8 @@
 getPlayerMisc(season_code)
 }
 \arguments{
-\item{season_code}{The code of the season (examples are \code{E2023} for Euroleague
-or \code{U2023} for Eurocup 2023)}
+\item{season_code}{The code of the season as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
+Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 }
 \value{
 Returns a summary tibble of miscellaneous players statistics for chosen seasons

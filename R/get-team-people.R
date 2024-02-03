@@ -2,9 +2,8 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @param team_code The code of the team (examples are `ASV`, `MAD`, ...)
-#' @param season_code The code of the season (examples are `E2023` for Euroleague
-#' or `U2023` for Eurocup 2023)
+#' @inheritParams .inheritParams
+#'
 #' @return Returns summary information about team people by season
 #'
 #' Reference webpage: [Team](<https://www.euroleaguebasketball.net/euroleague/teams/ldlc-asvel-villeurbanne/roster/asv/?season=2023-24>)

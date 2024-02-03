@@ -7,16 +7,17 @@
 getGamePlayers(game_code, team_code, season_code)
 }
 \arguments{
-\item{game_code}{The code of the game. An integer value}
+\item{game_code}{The code of the game as obtained from \code{\link[=getCompetitionGames]{getCompetitionGames()}}.}
 
-\item{team_code}{The code of the team (examples are \code{ASV}, \code{MAD}, ...)}
+\item{team_code}{The code of the team.\cr
+Examples are \code{ASV}, \code{MAD}, ...}
 
-\item{season_code}{The code of the season (examples are \code{E2023} for Euroleague
-or \code{U2023} for Eurocup 2023)}
+\item{season_code}{The code of the season as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
+Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 }
 \value{
-Returns a tibble of players with related information for the given game
-and season
+Returns a tibble of players with related information for the chosen games
+and seasons
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}

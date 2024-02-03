@@ -2,10 +2,9 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @param season_code The code of the season (examples are `E2023` for Euroleague
-#' or `U2023` for Eurocup 2023)
-#' @param round The value of the round. An integer value
-#' @return Returns a summary tibble of streaks for chosen competition and round
+#' @inheritParams .inheritParams
+#'
+#' @return Returns a summary tibble of streaks for chosen competitions and rounds
 #'
 #' Reference webpage: [Competition](<https://www.euroleaguebasketball.net/euroleague/standings/?season=2023-24&type=Streaks&phase=REGULAR%20SEASON>)
 #' @examples

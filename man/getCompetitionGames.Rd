@@ -7,13 +7,14 @@
 getCompetitionGames(season_code, round, phase_type = "All")
 }
 \arguments{
-\item{season_code}{The code of the season (examples are \code{E2023} for Euroleague
-or \code{U2023} for Eurocup 2023)}
+\item{season_code}{The code of the season as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
+Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 
-\item{round}{The value of the round. An integer value}
+\item{round}{The value of the round as obtained from \code{\link[=getCompetitionRounds]{getCompetitionRounds()}}.}
 
-\item{phase_type}{The code of competition phase (\code{RS} for regular season, \code{PO}
-for playoffs and \code{FF} for final four). Default is \code{All} for all.}
+\item{phase_type}{The code of competition phase.\cr
+Admitted values are \code{RS} for regular season, \code{PO} for playoffs and \code{FF} for final four.
+Default is \code{All} for all.}
 }
 \value{
 Returns a summary tibble of games for chosen competitions

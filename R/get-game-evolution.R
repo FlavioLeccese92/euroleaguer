@@ -2,9 +2,8 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @param game_code The code of the game. An integer value
-#' @param season_code The code of the season (examples are `E2023` for Euroleague
-#' or `U2023` for Eurocup 2023)
+#' @inheritParams .inheritParams
+#'
 #' @return Returns a list of two elements for the chosen games and seasons
 #' - **EvolutionSummary**. Overall information about minimum and maximum difference of scores
 #' between teams

@@ -1,14 +1,9 @@
-#' Get team lead stats
+#' Get team lead statistics
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @param season_code The code of the season (examples are `E2023` for Euroleague
-#' or `U2023` for Eurocup 2023)
-#' @param phase_type The code of competition phase. Possible values are `RS` for
-#' regular season, `PO` for playoffs and `FF` for final four and `All`. Default is `All`.
-#' @param subset A particular subset of games. Possible values are `HomeGames`,
-#' `AwayGames`, `GamesWon`, `GamesLost`, `ResultsIn5Points` (for games resulted in +/-5 points)
-#' and `All`. Default is `All`.
+#' @inheritParams .inheritParams
+#'
 #' @return Returns a list of elements for the chosen seasons, phase_type and subset.
 #' - **TeamAccumulated**. Total sum of statistics of all teams team
 #' - **TeamAveragePerGame**. Average per game of statistics of all teams

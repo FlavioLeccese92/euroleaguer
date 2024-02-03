@@ -2,8 +2,8 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @param season_code The code of the season (examples are `E2023` for Euroleague
-#' or `U2023` for Eurocup 2023)
+#' @inheritParams .inheritParams
+#'
 #' @return Returns a summary tibble of points players statistics for chosen seasons
 #' - **2PTA-S** (Two-point attempts share) - Player's share of team's total two-point attempts
 #' - **3PTA-S** (Three-point attempts share) - Player's share of team's total three-point attempts

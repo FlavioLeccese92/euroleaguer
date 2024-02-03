@@ -7,10 +7,10 @@
 getGameHeader(game_code, season_code)
 }
 \arguments{
-\item{game_code}{The code of the game. An integer value}
+\item{game_code}{The code of the game as obtained from \code{\link[=getCompetitionGames]{getCompetitionGames()}}.}
 
-\item{season_code}{The code of the season (examples are \code{E2023} for Euroleague
-or \code{U2023} for Eurocup 2023)}
+\item{season_code}{The code of the season as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
+Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 }
 \value{
 Returns a summary for the chosen games and seasons

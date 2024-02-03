@@ -8,7 +8,37 @@
 #' parameters, making it easier to retrieve data for users.
 #'
 #' `r lifecycle::badge('experimental')`
+
+#' @name .inheritParams
+#' @keywords internal
 #'
+#' @param competition_code One or more competition codes.\cr
+#' Admitted values are `E` for Euroleague and `U` for Eurocup.
+#'
+#' @param team_code One or more team codes.\cr
+#' Examples are `ASV`, `MAD`, ...
+#'
+#' @param game_code One or more game codes as obtained from [getCompetitionGames()].
+#'
+#' @param season_code One or more season codes as obtained from [getCompetitionHistory()].\cr
+#' Examples are `E2023` for Euroleague or `U2023` for Eurocup 2023.
+#'
+#' @param round One or more round codes as obtained from [getCompetitionRounds()].
+#'
+#' @param phase_type One or more phase type codes.\cr
+#' Admitted values are `RS` for regular season, `PO` for playoffs and `FF` for final four.
+#' Default is `All` for all.
+#'
+#' @param subset One or more game subsets.\cr
+#' Admitted values are `HomeGames`, `AwayGames`, `GamesWon`, `GamesLost`,
+#' `ResultsIn5Points` (for games resulted in +/-5 points) and `All`.
+#' Default is `All`.
+#'
+#' @param statistic_mode One or more aggregation modes of statistics.\cr
+#' Admitted values are `perGame`, `perMinute` and `accumulated`.
+#'
+NULL
+
 #' @name .getGameHeader
 #' @noRd
 

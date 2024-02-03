@@ -2,8 +2,8 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @param competition_code The code of the competition. Possible values are `E`
-#' for Euroleague and `U` for Eurocup)
+#' @inheritParams .inheritParams
+#'
 #' @return Returns a summary tibble of history for chosen competitions
 #'
 #' @examples

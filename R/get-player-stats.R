@@ -2,10 +2,8 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @param season_code The code of the season (examples are `E2023` for Euroleague
-#' or `U2023` for Eurocup 2023)
-#' @param statistic_mode Type of aggregation of statistics. Available values are
-#' `perGame`, `perMinute` or `accumulated`
+#' @inheritParams .inheritParams
+#'
 #' @return Returns a summary tibble of players statistics for chosen seasons
 #' - **PTS** (Points scored)
 #' - **2PM** (Two-pointers made)

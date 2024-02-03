@@ -1,12 +1,9 @@
-#' Get team stats
+#' Get team statistics
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @param team_code The code of the team (examples are `ASV`, `MAD`, ...)
-#' @param season_code The code of the season (examples are `E2023` for Euroleague
-#' or `U2023` for Eurocup 2023)
-#' @param phase_type The code of competition phase (`RS` for regular season, `PO`
-#' for playoffs and `FF` for final four). Default is `All` for all.
+#' @inheritParams .inheritParams
+#'
 #' @return Returns a list of elements for the chosen teams and seasons
 #' - **PlayerAccumulated**. Total sum of statistics by player
 #' - **PlayerAveragePerGame**. Average per game of statistics by player

@@ -2,8 +2,8 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @param season_code The code of the season (examples are `E2023` for Euroleague
-#' or `U2023` for Eurocup 2023)
+#' @inheritParams .inheritParams
+#'
 #' @return Returns a summary tibble of miscellaneous players statistics for chosen seasons
 #' - **DD2** (Double-doubles) - Games with double-digit totals in two of: points, rebounds, assists, steals and blocks
 #' - **TD3** (Triple-doubles) - Games with double-digit totals in three of: points, rebounds, assists, steals and blocks
