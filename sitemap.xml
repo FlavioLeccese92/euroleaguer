@@ -19,9 +19,6 @@
     <loc>https://flavioleccese92.github.io/euroleaguer/index.html</loc>
   </url>
   <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/dot-inheritParams.html</loc>
-  </url>
-  <url>
     <loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionAheadBehind.html</loc>
   </url>
   <url>
@@ -101,5 +98,8 @@
   </url>
   <url>
     <loc>https://flavioleccese92.github.io/euroleaguer/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://flavioleccese92.github.io/euroleaguer/reference/inheritParams.html</loc>
   </url>
 </urlset>
