@@ -2,7 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @inheritParams .inheritParams
+#' @inheritParams inheritParams
 #'
 #' @return Returns a list of elements for the chosen teams and seasons
 #' - **PlayerAccumulated**. Total sum of statistics by player
@@ -16,8 +16,6 @@
 #' TeamStats = getTeamStats(team_code = "ASV", season_code = c("E2023", "E2022"), phase_type = "RS")
 #' TeamStats$PlayerAveragePerGame
 #'
-#' @name getTeamStats
-#' @rdname getTeamStats
 #' @export
 
 getTeamStats = function(team_code, season_code, phase_type = "All"){

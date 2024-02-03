@@ -2,7 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @inheritParams .inheritParams
+#' @inheritParams inheritParams
 #'
 #' @return Returns a summary tibble of points players statistics for chosen seasons
 #' - **2PTA-S** (Two-point attempts share) - Player's share of team's total two-point attempts
@@ -21,8 +21,6 @@
 #' @examples
 #' getPlayerPoints(season_code = "E2023")
 #'
-#' @name getPlayerPoints
-#' @rdname getPlayerPoints
 #' @export
 
 getPlayerPoints = function(season_code){

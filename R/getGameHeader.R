@@ -2,14 +2,12 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @inheritParams .inheritParams
+#' @inheritParams inheritParams
 #'
 #' @return Returns a summary for the chosen games and seasons
 #' @examples
 #' getGameHeader(season_code = c("E2023", "U2023"), game_code = 1)
 #'
-#' @name getGameHeader
-#' @rdname getGameHeader
 #' @export
 
 getGameHeader = function(game_code, season_code){

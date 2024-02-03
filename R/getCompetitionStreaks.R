@@ -2,7 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @inheritParams .inheritParams
+#' @inheritParams inheritParams
 #'
 #' @return Returns a summary tibble of streaks for chosen competitions and rounds
 #'
@@ -10,8 +10,6 @@
 #' @examples
 #' getCompetitionStreaks(season_code = c("E2023", "E2022"), round = 1)
 #'
-#' @name getCompetitionStreaks
-#' @rdname getCompetitionStreaks
 #' @export
 
 getCompetitionStreaks = function(season_code, round){

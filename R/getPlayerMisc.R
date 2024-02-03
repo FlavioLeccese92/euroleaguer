@@ -2,7 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @inheritParams .inheritParams
+#' @inheritParams inheritParams
 #'
 #' @return Returns a summary tibble of miscellaneous players statistics for chosen seasons
 #' - **DD2** (Double-doubles) - Games with double-digit totals in two of: points, rebounds, assists, steals and blocks
@@ -12,8 +12,6 @@
 #' @examples
 #' getPlayerMisc(season_code = "E2023")
 #'
-#' @name getPlayerMisc
-#' @rdname getPlayerMisc
 #' @export
 
 getPlayerMisc = function(season_code){

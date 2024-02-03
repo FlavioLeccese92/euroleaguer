@@ -2,7 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @inheritParams .inheritParams
+#' @inheritParams inheritParams
 #'
 #' @return Returns a list of two elements for the chosen games and seasons
 #' - **PlayByPlaySummary**. Overall information about the games, teams involved and status (live or not)
@@ -12,8 +12,6 @@
 #' @examples
 #' getGamePlayByPlay(season_code = c("E2023", "U2023"), game_code = 1)$PlayByPlay
 #'
-#' @name getGamePlayByPlay
-#' @rdname getGamePlayByPlay
 #' @export
 
 getGamePlayByPlay = function(game_code, season_code){

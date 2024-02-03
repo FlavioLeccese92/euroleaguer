@@ -9,7 +9,6 @@
 #'
 #' `r lifecycle::badge('experimental')`
 
-#' @name .inheritParams
 #' @keywords internal
 #'
 #' @param competition_code One or more competition codes.\cr
@@ -39,7 +38,7 @@
 #'
 NULL
 
-#' @name .getGameHeader
+#' @keywords internal
 #' @noRd
 
 .getGameHeader = function(game_code, season_code){
@@ -56,9 +55,8 @@ NULL
   return(out)
 }
 
-#' @name .getGameBoxScore
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getGameBoxScore = function(game_code, season_code){
   getin = httr::GET("https://live.euroleague.net/api/BoxScore",
@@ -103,9 +101,8 @@ NULL
   return(out)
 }
 
-#' @name .getGamePoints
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getGamePoints = function(game_code, season_code){
   getin = httr::GET("https://live.euroleague.net/api/Points",
@@ -126,9 +123,8 @@ NULL
   return(out)
 }
 
-#' @name .getGameRound
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getGameRound = function(game_code, season_code){
   getin = httr::GET("https://live.euroleague.net/api/Round",
@@ -142,9 +138,8 @@ NULL
   return(out)
 }
 
-#' @name .getGamePlayers
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getGamePlayers = function(game_code, team_code = "VIR", season_code = "E2023"){
   getin = httr::GET("https://live.euroleague.net/api/Players",
@@ -162,9 +157,8 @@ NULL
   return(out)
 }
 
-#' @name .getGamePlayByPlay
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getGamePlayByPlay = function(game_code, season_code){
   getin = httr::GET("https://live.euroleague.net/api/PlayByPlay",
@@ -195,9 +189,8 @@ NULL
   return(out)
 }
 
-#' @name .getGamePlayByPlay
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getGameEvolution = function(game_code, season_code){
   getin = httr::GET("https://live.euroleague.net/api/Evolution",
@@ -222,9 +215,8 @@ NULL
   return(out)
 }
 
-#' @name .getTeam
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getTeam = function(team_code, season_code){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -250,9 +242,8 @@ NULL
   return(out)
 }
 
-#' @name .getTeamPeople
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getTeamPeople = function(team_code, season_code){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -280,9 +271,8 @@ NULL
   return(out)
 }
 
-#' @name .getTeamGames
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getTeamGames = function(team_code, season_code){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -319,9 +309,8 @@ NULL
   return(out)
 }
 
-#' @name .getTeamStats
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getTeamStats = function(team_code, season_code, phase_type){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -376,9 +365,8 @@ NULL
   return(out)
 }
 
-#' @name .getTeamLeadStats
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getTeamLeadStats = function(season_code, phase_type, subset){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -442,9 +430,8 @@ NULL
   return(out)
 }
 
-#' @name .getCompetitionHistory
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getCompetitionHistory = function(competition_code){
 
@@ -463,9 +450,8 @@ NULL
   return(out)
 }
 
-#' @name .getCompetitionPhases
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getCompetitionPhases = function(season_code){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -489,9 +475,8 @@ NULL
   return(out)
 }
 
-#' @name .getCompetitionRounds
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getCompetitionRounds = function(season_code){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -512,9 +497,8 @@ NULL
   return(out)
 }
 
-#' @name .getCompetitionTeams
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getCompetitionTeams = function(season_code){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -537,9 +521,8 @@ NULL
   return(out)
 }
 
-#' @name .getCompetitionGames
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getCompetitionGames = function(season_code, round, phase_type){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -570,9 +553,8 @@ NULL
   return(out)
 }
 
-#' @name .getCompetitionStandings
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getCompetitionStandings = function(season_code, round){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -599,9 +581,8 @@ NULL
   return(out)
 }
 
-#' @name .getCompetitionStreaks
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getCompetitionStreaks = function(season_code, round){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -625,9 +606,8 @@ NULL
   return(out)
 }
 
-#' @name .getCompetitionAheadBehind
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getCompetitionAheadBehind = function(season_code, round){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -651,9 +631,8 @@ NULL
   return(out)
 }
 
-#' @name .getCompetitionCalendar
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getCompetitionCalendar = function(season_code, round){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -677,9 +656,8 @@ NULL
   return(out)
 }
 
-#' @name .getCompetitionMargins
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getCompetitionMargins = function(season_code, round){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -703,9 +681,8 @@ NULL
   return(out)
 }
 
-#' @name .getPlayerStats
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getPlayerStats = function(season_code, statistic_mode){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -737,9 +714,8 @@ NULL
   return(out)
 }
 
-#' @name .getPlayerAdvanced
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getPlayerAdvanced = function(season_code, statistic_mode){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -771,9 +747,8 @@ NULL
   return(out)
 }
 
-#' @name .getPlayerMisc
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getPlayerMisc = function(season_code){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
@@ -804,9 +779,8 @@ NULL
   return(out)
 }
 
-#' @name .getPlayerPoints
-#' @noRd
 #' @keywords internal
+#' @noRd
 
 .getPlayerPoints = function(season_code){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {

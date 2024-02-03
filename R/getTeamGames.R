@@ -2,7 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @inheritParams .inheritParams
+#' @inheritParams inheritParams
 #'
 #' @return Returns summary information about team games by season
 #'
@@ -10,8 +10,6 @@
 #' @examples
 #' getTeamGames(team_code = "ASV", season_code = c("E2023", "E2022"))
 #'
-#' @name getTeamGames
-#' @rdname getTeamGames
 #' @export
 
 getTeamGames = function(team_code, season_code){

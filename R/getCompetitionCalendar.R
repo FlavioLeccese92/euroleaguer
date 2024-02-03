@@ -2,7 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @inheritParams .inheritParams
+#' @inheritParams inheritParams
 #'
 #' @return Returns a summary tibble of ahead-behind for chosen competition and round
 #'
@@ -10,8 +10,6 @@
 #' @examples
 #' getCompetitionCalendar(season_code = c("E2023", "E2022"), round = 1)
 #'
-#' @name getCompetitionCalendar
-#' @rdname getCompetitionCalendar
 #' @export
 
 getCompetitionCalendar = function(season_code, round){

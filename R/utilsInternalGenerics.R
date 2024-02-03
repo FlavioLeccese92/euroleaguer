@@ -4,7 +4,6 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @name .iterate
 #' @noRd
 
 options(cli.progress_show_after = 0)
@@ -95,7 +94,6 @@ options(cli.progress_show_after = 0)
 }
 
 
-#' @name .rename_stat
 #' @noRd
 
 .rename_stat = function(data) {
@@ -162,7 +160,6 @@ options(cli.progress_show_after = 0)
   return(data)
 }
 
-#' @name .StatsRange
 #' @noRd
 
 .StatsRange = tibble::tibble(
@@ -182,7 +179,6 @@ options(cli.progress_show_after = 0)
            "Valuation (PIR)")
 )
 
-#' @name .TextFormatType1
 #' @noRd
 
 .TextFormatType1 = function(x){
@@ -194,7 +190,6 @@ options(cli.progress_show_after = 0)
     return()
 }
 
-#' @name .TextFormatType2
 #' @noRd
 
 .TextFormatType2 = function(x){
@@ -207,7 +202,6 @@ options(cli.progress_show_after = 0)
     return()
 }
 
-#' @name .TextFormatType3
 #' @noRd
 
 .TextFormatType3 = function(x){

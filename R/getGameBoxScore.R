@@ -2,7 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @inheritParams .inheritParams
+#' @inheritParams inheritParams
 #'
 #' @return Returns a list of elements for the chosen games and seasons
 #' - **Team**. Name of the teams
@@ -16,8 +16,6 @@
 #' @examples
 #' getGameBoxScore(season_code = c("E2023", "U2023"), game_code = 1)
 #'
-#' @name getGameBoxScore
-#' @rdname getGameBoxScore
 #' @export
 
 getGameBoxScore = function(game_code, season_code){

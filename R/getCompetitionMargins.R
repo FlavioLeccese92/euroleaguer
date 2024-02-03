@@ -2,7 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @inheritParams .inheritParams
+#' @inheritParams inheritParams
 #'
 #' @return Returns a summary tibble of standing margins for chosen competition and round
 #'
@@ -10,8 +10,6 @@
 #' @examples
 #' getCompetitionMargins(season_code = c("E2023", "E2022"), round = 1)
 #'
-#' @name getCompetitionMargins
-#' @rdname getCompetitionMargins
 #' @export
 
 getCompetitionMargins = function(season_code, round){

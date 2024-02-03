@@ -2,7 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @inheritParams .inheritParams
+#' @inheritParams inheritParams
 #'
 #' @return Returns summary information about team people by season
 #'
@@ -10,8 +10,6 @@
 #' @examples
 #' getTeamPeople(team_code = "ASV", season_code = c("E2023", "E2022"))
 #'
-#' @name getTeamPeople
-#' @rdname getTeamPeople
 #' @export
 
 getTeamPeople = function(team_code, season_code){

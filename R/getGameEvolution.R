@@ -2,7 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @inheritParams .inheritParams
+#' @inheritParams inheritParams
 #'
 #' @return Returns a list of two elements for the chosen games and seasons
 #' - **EvolutionSummary**. Overall information about minimum and maximum difference of scores
@@ -13,8 +13,6 @@
 #' @examples
 #' getGameEvolution(season_code = c("E2023", "U2023"), game_code = 1)
 #'
-#' @name getGameEvolution
-#' @rdname getGameEvolution
 #' @export
 
 getGameEvolution = function(game_code, season_code){

@@ -2,7 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @inheritParams .inheritParams
+#' @inheritParams inheritParams
 #'
 #' @return Returns a summary tibble of advanced players statistics for chosen seasons
 #' - **eFG%** (Effective field goal %) - Combined two- and three-point shooting effectiveness
@@ -21,8 +21,6 @@
 #' @examples
 #' getPlayerStats(season_code = "E2023", statistic_mode = "perGame")
 #'
-#' @name getPlayerAdvanced
-#' @rdname getPlayerAdvanced
 #' @export
 
 getPlayerAdvanced = function(season_code,

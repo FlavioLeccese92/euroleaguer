@@ -2,7 +2,7 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' @inheritParams .inheritParams
+#' @inheritParams inheritParams
 #'
 #' @return Returns a summary tibble of players statistics for chosen seasons
 #' - **PTS** (Points scored)
@@ -31,8 +31,6 @@
 #' @examples
 #' getPlayerStats(season_code = "E2023", statistic_mode = "perGame")
 #'
-#' @name getPlayerStats
-#' @rdname getPlayerStats
 #' @export
 
 getPlayerStats = function(season_code,
