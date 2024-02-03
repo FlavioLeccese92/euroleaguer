@@ -7,14 +7,14 @@
 getTeamLeadStats(season_code, phase_type = "All", subset = "All")
 }
 \arguments{
-\item{season_code}{The code of the season as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
+\item{season_code}{One or more season codes as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
 Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 
-\item{phase_type}{The code of competition phase.\cr
+\item{phase_type}{One or more phase type codes as obtained from \code{\link[=getCompetitionPhases]{getCompetitionPhases()}}.\cr
 Admitted values are \code{RS} for regular season, \code{PO} for playoffs and \code{FF} for final four.
 Default is \code{All} for all.}
 
-\item{subset}{A particular subset of games.\cr
+\item{subset}{One or more game subsets.\cr
 Admitted values are \code{HomeGames}, \code{AwayGames}, \code{GamesWon}, \code{GamesLost},
 \code{ResultsIn5Points} (for games resulted in +/-5 points) and \code{All}.
 Default is \code{All}.}

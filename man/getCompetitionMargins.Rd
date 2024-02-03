@@ -7,10 +7,10 @@
 getCompetitionMargins(season_code, round)
 }
 \arguments{
-\item{season_code}{The code of the season as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
+\item{season_code}{One or more season codes as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
 Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 
-\item{round}{The value of the round as obtained from \code{\link[=getCompetitionRounds]{getCompetitionRounds()}}.}
+\item{round}{One or more round codes as obtained from \code{\link[=getCompetitionRounds]{getCompetitionRounds()}}.}
 }
 \value{
 Returns a summary tibble of standing margins for chosen competition and round

@@ -15,7 +15,7 @@
 #' @param competition_code One or more competition codes.\cr
 #' Admitted values are `E` for Euroleague and `U` for Eurocup.
 #'
-#' @param team_code One or more team codes.\cr
+#' @param team_code One or more team codes as obtained from [getCompetitionTeams()].\cr
 #' Examples are `ASV`, `MAD`, ...
 #'
 #' @param game_code One or more game codes as obtained from [getCompetitionGames()].
@@ -25,7 +25,7 @@
 #'
 #' @param round One or more round codes as obtained from [getCompetitionRounds()].
 #'
-#' @param phase_type One or more phase type codes.\cr
+#' @param phase_type One or more phase type codes as obtained from [getCompetitionPhases()].\cr
 #' Admitted values are `RS` for regular season, `PO` for playoffs and `FF` for final four.
 #' Default is `All` for all.
 #'
@@ -240,14 +240,12 @@ NULL
   if (out$status == 200) {
     out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
       .$data %>%
-      { if (!is.null(.))
         { if (is.null(dim(.)))
           unlist(.) %>% t() %>% tibble::as_tibble()
         else tibble::as_tibble(.) %>%
           tidyr::unnest(cols = c(.data$images, .data$country), names_sep = ".")} %>%
           dplyr::rename_with(.TextFormatType1) %>%
           dplyr::rename(TeamCode = .data$Code, TeamName = .data$Name)
-      }
   } else {out$data = NULL}
   return(out)
 }
@@ -444,6 +442,53 @@ NULL
   return(out)
 }
 
+#' @name .getCompetitionHistory
+#' @noRd
+#' @keywords internal
+
+.getCompetitionHistory = function(competition_code){
+
+  getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
+                               "competitions/{competition_code}/seasons"))
+
+  out = list(status = getin$status_code)
+  if (out$status == 200) {
+    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
+      .$data %>% tibble::as_tibble() %>%
+      tidyr::unnest(cols = c(.data$winner), names_sep = ".") %>%
+      tidyr::unnest(cols = c(.data$winner.images), names_sep = ".") %>%
+      dplyr::rename_with(.TextFormatType1) %>%
+      dplyr::rename(SeasonCode = .data$Code, WinnerImages = .data$WinnerImagesCrest)
+  } else {out$data = NULL}
+  return(out)
+}
+
+#' @name .getCompetitionPhases
+#' @noRd
+#' @keywords internal
+
+.getCompetitionPhases = function(season_code){
+  if (substr(season_code, 1, 1) %in% c("E", "U")) {
+    competition_code = substr(season_code, 1, 1)
+  } else {
+    cli::cli_abort("{season_code} is not a valid value for season_code")
+  }
+
+  getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
+                               "competitions/{competition_code}/seasons/{season_code}/phases"))
+
+  out = list(status = getin$status_code)
+  if (out$status == 200) {
+    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
+      tibble::as_tibble() %>%
+      tidyr::unnest(cols = c(.data$season), names_sep = ".") %>%
+      tidyr::unnest(cols = c(.data$phaseType), names_sep = ".") %>%
+      dplyr::rename_with(.TextFormatType1) %>%
+      dplyr::rename(PhaseType = .data$PhaseTypeCode)
+  } else {out$data = NULL}
+  return(out)
+}
+
 #' @name .getCompetitionRounds
 #' @noRd
 #' @keywords internal
@@ -463,6 +508,31 @@ NULL
     out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
       .$data %>% tibble::as_tibble() %>%
       dplyr::rename_with(.TextFormatType1)
+  } else {out$data = NULL}
+  return(out)
+}
+
+#' @name .getCompetitionTeams
+#' @noRd
+#' @keywords internal
+
+.getCompetitionTeams = function(season_code){
+  if (substr(season_code, 1, 1) %in% c("E", "U")) {
+    competition_code = substr(season_code, 1, 1)
+  } else {
+    cli::cli_abort("{season_code} is not a valid value for season_code")
+  }
+
+  getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
+                               "competitions/{competition_code}/seasons/{season_code}/clubs"))
+
+  out = list(status = getin$status_code)
+  if (out$status == 200) {
+    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
+      .$data %>% tibble::as_tibble() %>%
+      tidyr::unnest(cols = c(.data$images, .data$country), names_sep = ".") %>%
+      dplyr::rename_with(.TextFormatType1) %>%
+      dplyr::rename(TeamCode = .data$Code, TeamName = .data$Name)
   } else {out$data = NULL}
   return(out)
 }
@@ -496,27 +566,6 @@ NULL
              names_sep = ".") %>% dplyr::select(-.data$broadcasters) %>%
       dplyr::rename_with(.TextFormatType1) %>%
       return()
-  } else {out$data = NULL}
-  return(out)
-}
-
-#' @name .getCompetitionHistory
-#' @noRd
-#' @keywords internal
-
-.getCompetitionHistory = function(competition_code){
-
-  getin = httr::GET(glue::glue("https://feeds.incrowdsports.com/provider/euroleague-feeds/v2/",
-                               "competitions/{competition_code}/seasons"))
-
-  out = list(status = getin$status_code)
-  if (out$status == 200) {
-    out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
-      .$data %>% tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$winner), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$winner.images), names_sep = ".") %>%
-      dplyr::rename_with(.TextFormatType1) %>%
-      dplyr::rename(SeasonCode = .data$Code, WinnerImages = .data$WinnerImagesCrest)
   } else {out$data = NULL}
   return(out)
 }

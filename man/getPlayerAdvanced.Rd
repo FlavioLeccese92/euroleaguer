@@ -10,10 +10,10 @@ getPlayerAdvanced(
 )
 }
 \arguments{
-\item{season_code}{The code of the season as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
+\item{season_code}{One or more season codes as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
 Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 
-\item{statistic_mode}{Type of aggregation of statistics.\cr
+\item{statistic_mode}{One or more aggregation modes of statistics.\cr
 Admitted values are \code{perGame}, \code{perMinute} and \code{accumulated}.}
 }
 \value{

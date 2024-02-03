@@ -7,12 +7,12 @@
 getGamePlayers(game_code, team_code, season_code)
 }
 \arguments{
-\item{game_code}{The code of the game as obtained from \code{\link[=getCompetitionGames]{getCompetitionGames()}}.}
+\item{game_code}{One or more game codes as obtained from \code{\link[=getCompetitionGames]{getCompetitionGames()}}.}
 
-\item{team_code}{The code of the team.\cr
+\item{team_code}{One or more team codes as obtained from \code{\link[=getCompetitionTeams]{getCompetitionTeams()}}.\cr
 Examples are \code{ASV}, \code{MAD}, ...}
 
-\item{season_code}{The code of the season as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
+\item{season_code}{One or more season codes as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
 Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 }
 \value{

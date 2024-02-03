@@ -4,29 +4,29 @@
 \alias{.inheritParams}
 \title{Api internal functions}
 \arguments{
-\item{competition_code}{The code of the competition.\cr
+\item{competition_code}{One or more competition codes.\cr
 Admitted values are \code{E} for Euroleague and \code{U} for Eurocup.}
 
-\item{team_code}{The code of the team.\cr
+\item{team_code}{One or more team codes as obtained from \code{\link[=getCompetitionTeams]{getCompetitionTeams()}}.\cr
 Examples are \code{ASV}, \code{MAD}, ...}
 
-\item{game_code}{The code of the game as obtained from \code{\link[=getCompetitionGames]{getCompetitionGames()}}.}
+\item{game_code}{One or more game codes as obtained from \code{\link[=getCompetitionGames]{getCompetitionGames()}}.}
 
-\item{season_code}{The code of the season as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
+\item{season_code}{One or more season codes as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
 Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 
-\item{round}{The value of the round as obtained from \code{\link[=getCompetitionRounds]{getCompetitionRounds()}}.}
+\item{round}{One or more round codes as obtained from \code{\link[=getCompetitionRounds]{getCompetitionRounds()}}.}
 
-\item{phase_type}{The code of competition phase.\cr
+\item{phase_type}{One or more phase type codes as obtained from \code{\link[=getCompetitionPhases]{getCompetitionPhases()}}.\cr
 Admitted values are \code{RS} for regular season, \code{PO} for playoffs and \code{FF} for final four.
 Default is \code{All} for all.}
 
-\item{subset}{A particular subset of games.\cr
+\item{subset}{One or more game subsets.\cr
 Admitted values are \code{HomeGames}, \code{AwayGames}, \code{GamesWon}, \code{GamesLost},
 \code{ResultsIn5Points} (for games resulted in +/-5 points) and \code{All}.
 Default is \code{All}.}
 
-\item{statistic_mode}{Type of aggregation of statistics.\cr
+\item{statistic_mode}{One or more aggregation modes of statistics.\cr
 Admitted values are \code{perGame}, \code{perMinute} and \code{accumulated}.}
 }
 \description{

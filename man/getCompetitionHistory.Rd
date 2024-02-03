@@ -7,7 +7,7 @@
 getCompetitionHistory(competition_code)
 }
 \arguments{
-\item{competition_code}{The code of the competition.\cr
+\item{competition_code}{One or more competition codes.\cr
 Admitted values are \code{E} for Euroleague and \code{U} for Eurocup.}
 }
 \value{

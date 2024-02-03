@@ -32,11 +32,13 @@ reference:
 - title: Competition
   contents:
   - getCompetitionHistory
+  - getCompetitionPhases
   - getCompetitionRounds
+  - getCompetitionTeams
   - getCompetitionGames
+  - getCompetitionCalendar
   - getCompetitionStandings
   - getCompetitionAheadBehind
-  - getCompetitionCalendar
   - getCompetitionMargins
   - getCompetitionStreaks
 - title: Team

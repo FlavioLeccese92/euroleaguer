@@ -7,9 +7,9 @@
 getGameRound(game_code, season_code)
 }
 \arguments{
-\item{game_code}{The code of the game as obtained from \code{\link[=getCompetitionGames]{getCompetitionGames()}}.}
+\item{game_code}{One or more game codes as obtained from \code{\link[=getCompetitionGames]{getCompetitionGames()}}.}
 
-\item{season_code}{The code of the season as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
+\item{season_code}{One or more season codes as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
 Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 }
 \value{
