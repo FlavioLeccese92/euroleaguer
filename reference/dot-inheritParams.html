@@ -74,43 +74,43 @@ parameters, making it easier to retrieve data for users.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>competition_code</dt>
-<dd><p>The code of the competition.<br>
+<dd><p>One or more competition codes.<br>
 Admitted values are <code>E</code> for Euroleague and <code>U</code> for Eurocup.</p></dd>
 
 
 <dt>team_code</dt>
-<dd><p>The code of the team.<br>
+<dd><p>One or more team codes as obtained from <code><a href="getCompetitionTeams.html">getCompetitionTeams()</a></code>.<br>
 Examples are <code>ASV</code>, <code>MAD</code>, ...</p></dd>
 
 
 <dt>game_code</dt>
-<dd><p>The code of the game as obtained from <code><a href="getCompetitionGames.html">getCompetitionGames()</a></code>.</p></dd>
+<dd><p>One or more game codes as obtained from <code><a href="getCompetitionGames.html">getCompetitionGames()</a></code>.</p></dd>
 
 
 <dt>season_code</dt>
-<dd><p>The code of the season as obtained from <code><a href="getCompetitionHistory.html">getCompetitionHistory()</a></code>.<br>
+<dd><p>One or more season codes as obtained from <code><a href="getCompetitionHistory.html">getCompetitionHistory()</a></code>.<br>
 Examples are <code>E2023</code> for Euroleague or <code>U2023</code> for Eurocup 2023.</p></dd>
 
 
 <dt>round</dt>
-<dd><p>The value of the round as obtained from <code><a href="getCompetitionRounds.html">getCompetitionRounds()</a></code>.</p></dd>
+<dd><p>One or more round codes as obtained from <code><a href="getCompetitionRounds.html">getCompetitionRounds()</a></code>.</p></dd>
 
 
 <dt>phase_type</dt>
-<dd><p>The code of competition phase.<br>
+<dd><p>One or more phase type codes as obtained from <code><a href="getCompetitionPhases.html">getCompetitionPhases()</a></code>.<br>
 Admitted values are <code>RS</code> for regular season, <code>PO</code> for playoffs and <code>FF</code> for final four.
 Default is <code>All</code> for all.</p></dd>
 
 
 <dt>subset</dt>
-<dd><p>A particular subset of games.<br>
+<dd><p>One or more game subsets.<br>
 Admitted values are <code>HomeGames</code>, <code>AwayGames</code>, <code>GamesWon</code>, <code>GamesLost</code>,
 <code>ResultsIn5Points</code> (for games resulted in +/-5 points) and <code>All</code>.
 Default is <code>All</code>.</p></dd>
 
 
 <dt>statistic_mode</dt>
-<dd><p>Type of aggregation of statistics.<br>
+<dd><p>One or more aggregation modes of statistics.<br>
 Admitted values are <code>perGame</code>, <code>perMinute</code> and <code>accumulated</code>.</p></dd>
 
 </dl></div>
