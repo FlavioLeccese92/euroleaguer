@@ -212,13 +212,28 @@ options(cli.progress_show_after = 0)
 
 .TextFormatType3 = function(x){
   dplyr::case_when(
-    x == "PLAYER_ID" ~ "IdPlayer",
+    x == "PLAYER_ID" ~ "Player_ID",
     x == "NUMBEROFPLAY" ~ "NumberOfPlay",
     x == "CODETEAM" ~ "CodeTeam",
     x == "PLAYINFO" ~ "PlayInfo",
     x == "PLAYTYPE" ~ "PlayType",
     x == "POINTS_A" ~ "PointsA",
     x == "POINTS_B" ~ "PointsB",
+    TRUE ~ stringr::str_to_title(x)) %>%
+    return()
+}
+
+#' @name .TextFormatType4
+#' @noRd
+
+.TextFormatType4 = function(x){
+  dplyr::case_when(
+    x == "ac" ~ "Player_ID",
+    x == "na" ~ "PlayerName",
+    x == "nu" ~ "Dorsal",
+    x == "p" ~ "Position",
+    x == "c" ~ "TeamCode",
+    x == "im" ~ "PlayerImage",
     TRUE ~ stringr::str_to_title(x)) %>%
     return()
 }
