@@ -34,13 +34,14 @@ reference:
 
 - subtitle: Metadata
   desc: >
-    Retieve values of arguments for specific data collection functions across all package
+    Retrieve values of arguments for specific data collection functions across all package
   contents:
   - has_keyword("competitionMetadata")
 
 - subtitle: Data
   contents:
   - getCompetitionStandings
+  - getCompetitionCalendar
   - getCompetitionAheadBehind
   - getCompetitionMargins
   - getCompetitionStreaks

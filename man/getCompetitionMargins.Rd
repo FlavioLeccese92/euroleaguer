@@ -15,12 +15,15 @@ Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 \value{
 Returns a summary tibble of standing margins for chosen competition and round
 
-Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/standings/?season=2023-24&type=Margins&phase=REGULAR\%20SEASON}{Competition}
+Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/standings/?season=2023-24&type=Margins&phase=REGULAR\%20SEASON}{Margins standings}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+Get competition margins standings
 }
 \examples{
 getCompetitionMargins(season_code = c("E2023", "E2022"), round = 1)
 
 }
+\keyword{`r}
+\keyword{competitionStandings}
+\keyword{lifecycle::badge('experimental')`}

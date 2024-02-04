@@ -13,15 +13,17 @@ Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 \item{round}{One or more round codes as obtained from \code{\link[=getCompetitionRounds]{getCompetitionRounds()}}.}
 }
 \value{
-Returns a summary tibble of ahead-behind for chosen competition and round
+Returns a summary tibble of calendar standings for chosen competitions and rounds
 
-Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/standings/?season=2023-24&type=Calendar&phase=REGULAR\%20SEASON}{Competition}
+Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/standings/?season=2023-24&type=Calendar&phase=REGULAR\%20SEASON}{Calendar standings}
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+Get competition calendar standings
 }
 \examples{
 getCompetitionCalendar(season_code = c("E2023", "E2022"), round = 1)
 
 }
-\keyword{competitionMetadata}
+\keyword{`r}
+\keyword{competitionStandings}
+\keyword{lifecycle::badge('experimental')`}
