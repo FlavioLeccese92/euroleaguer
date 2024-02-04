@@ -17,20 +17,23 @@ Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 Admitted values are \code{perGame}, \code{perMinute} and \code{accumulated}.}
 }
 \value{
-Returns a summary tibble of advanced players statistics for chosen seasons
-\itemize{
-\item \strong{eFG\%} (Effective field goal \%) - Combined two- and three-point shooting effectiveness
-\item \strong{TS\%} (True shooting \%) - Percentage of points vs. points attempted
-\item \strong{OREB\%} (Offensive rebound \%) - Estimated \% of available offensive rebounds obtained while on court
-\item \strong{DREB\%} (Defensive rebound \%) - Estimated \% of available defensive rebounds obtained while on court
-\item \strong{REB\%} (Rebound \%) - Estimated \% of available rebounds obtained while on court
-\item \strong{AST/TO} (Assist to turnover ratio) - Ratio of assists made to turnovers committed
-\item \strong{AST-R} (Assist ratio) - Estimated \% of assists per player's offensive possessions
-\item \strong{TO-R} (Turnover ratio) - Estimated \% of turnovers per player's offensive possessions
-\item \strong{2PTA-R} (Two-point attempts ratio) - Estimated \% of two-point attempts per player's offensive possessions
-\item \strong{3PTA-R} (Three-point attempts ratio) - Estimated \% of three-point attempts per player's offensive possessions
-\item \strong{FT-RT} (Free Throw rate) - Measure of free throw attempts vs. field goal attempts
+Returns a summary tibble of advanced players statistics for chosen seasons.
+
+Glossary of columns:\tabular{lll}{
+   \strong{Column name} \tab \strong{Column extended name} \tab \strong{Column description} \cr
+   eFG\% \tab Effective field goal \% \tab Combined two- and three-point shooting effectiveness \cr
+   TS\% \tab True shooting \% \tab Percentage of points vs. points attempted \cr
+   OREB\% \tab Offensive rebound \% \tab Estimated \% of available offensive rebounds obtained while on court \cr
+   DREB\% \tab Defensive rebound \% \tab Estimated \% of available defensive rebounds obtained while on court \cr
+   REB\% \tab Rebound \% \tab Estimated \% of available rebounds obtained while on court \cr
+   AST/TO \tab Assist to turnover ratio \tab Ratio of assists made to turnovers committed \cr
+   AST-R \tab Assist ratio \tab Estimated \% of assists per player's offensive possessions \cr
+   TO-R \tab Turnover ratio \tab Estimated \% of turnovers per player's offensive possessions \cr
+   2PTA-R \tab Two-point attempts ratio \tab Estimated \% of two-point attempts per player's offensive possessions \cr
+   3PTA-R \tab Three-point attempts ratio \tab Estimated \% of three-point attempts per player's offensive possessions \cr
+   FT-RT \tab Free Throw rate \tab Measure of free throw attempts vs. field goal attempts \cr
 }
+
 
 Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/stats/expanded/?size=1000&viewType=advanced&seasonCode=E2023&statisticMode=perGame&seasonMode=Single&sortDirection=descending&statistic=blocksFavour}{Stats}
 }
@@ -38,6 +41,6 @@ Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/stats/e
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \examples{
-getPlayerStats(season_code = "E2023", statistic_mode = "perGame")
+getPlayerAdvanced(season_code = "E2023", statistic_mode = "perGame")
 
 }

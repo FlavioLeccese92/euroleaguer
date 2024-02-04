@@ -11,20 +11,23 @@ getPlayerPoints(season_code)
 Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 }
 \value{
-Returns a summary tibble of points players statistics for chosen seasons
-\itemize{
-\item \strong{2PTA-S} (Two-point attempts share) - Player's share of team's total two-point attempts
-\item \strong{3PTA-S} (Three-point attempts share) - Player's share of team's total three-point attempts
-\item \strong{FTA-S} (Free throw attempts share) - Player's share of team's total free throw attempts
-\item \strong{2PTM-S} (Two-pointers made share) - Player's share of team's total two-pointers made
-\item \strong{3PTM-S} (Three-pointers made share) - Player's share of team's total three-pointers made
-\item \strong{FTM-S} (Free throws made share) - Player's share of team's total free throws made
-\item \strong{2PT-RT} (Two-Point Rate) - \% of a player's field goal attempts that are two-pointers
-\item \strong{3PT-RT} (Three-Point Rate) - \% of field goal attempts that are three-pointers
-\item \strong{\%2PT} (\% of points from two-pointers) - \% of points from two-point shots made
-\item \strong{\%3PT} (\% of points from three-pointers) - \% of points from three-point shots made
-\item \strong{\%FT} (\% of points from free throws) - \% of points from free throws made
+Returns a summary tibble of points players statistics for chosen seasons.
+
+Glossary of columns:\tabular{lll}{
+   \strong{Column name} \tab \strong{Column extended name} \tab \strong{Column description} \cr
+   2PTA-S \tab Two-point attempts share \tab Player's share of team's total two-point attempts \cr
+   3PTA-S \tab Three-point attempts share \tab Player's share of team's total three-point attempts \cr
+   FTA-S \tab Free throw attempts share \tab Player's share of team's total free throw attempts \cr
+   2PTM-S \tab Two-pointers made share \tab Player's share of team's total two-pointers made \cr
+   3PTM-S \tab Three-pointers made share \tab Player's share of team's total three-pointers made \cr
+   FTM-S \tab Free throws made share \tab Player's share of team's total free throws made \cr
+   2PT-RT \tab Two-Point Rate \tab \% of a player's field goal attempts that are two-pointers \cr
+   3PT-RT \tab Three-Point Rate \tab \% of field goal attempts that are three-pointers \cr
+   \%2PT \tab \% of points from two-pointers \tab \% of points from two-point shots made \cr
+   \%3PT \tab \% of points from three-pointers \tab \% of points from three-point shots made \cr
+   \%FT \tab \% of points from free throws \tab \% of points from free throws made \cr
 }
+
 
 Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/stats/expanded/?size=1000&viewType=scoring&seasonCode=E2023&statisticMode=perGame&seasonMode=Single&sortDirection=descending&statistic=fieldGoals2Percent}{Stats}
 }

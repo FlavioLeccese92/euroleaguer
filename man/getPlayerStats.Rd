@@ -17,30 +17,33 @@ Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 Admitted values are \code{perGame}, \code{perMinute} and \code{accumulated}.}
 }
 \value{
-Returns a summary tibble of players statistics for chosen seasons
-\itemize{
-\item \strong{PTS} (Points scored)
-\item \strong{2PM} (Two-pointers made)
-\item \strong{2PA} (Two-pointers attempted)
-\item \strong{2P\%} (Two-point \%)
-\item \strong{3PM} (Three-pointers made)
-\item \strong{3PA} (Three-pointers attempted)
-\item \strong{3P\%} (Three-point \%)
-\item \strong{FTM} (Free throws made)
-\item \strong{FTA} (Free throws attempted)
-\item \strong{FT\%} (Free-throw \%)
-\item \strong{OR} (Offensive rebounds)
-\item \strong{DR} (Defensive rebounds)
-\item \strong{TR} (Total rebounds)
-\item \strong{AST} (Assists)
-\item \strong{STL} (Steals)
-\item \strong{TO} (Turnovers)
-\item \strong{BLK} (Blocks)
-\item \strong{BLKA} (Blocks against)
-\item \strong{FC} (Personal fouls committed)
-\item \strong{FD} (Personal fouls drawn)
-\item \strong{PIR} (Performance Index Rating)
+Returns a summary tibble of players statistics for chosen seasons.
+
+Glossary of columns:\tabular{ll}{
+   \strong{Column name} \tab \strong{Column extended name} \cr
+   PTS \tab Points scored \cr
+   2PM \tab Two-pointers made \cr
+   2PA \tab Two-pointers attempted \cr
+   2P\% \tab Two-point \% \cr
+   3PM \tab Three-pointers made \cr
+   3PA \tab Three-pointers attempted \cr
+   3P\% \tab Three-point \% \cr
+   FTM \tab Free throws made \cr
+   FTA \tab Free throws attempted \cr
+   FT\% \tab Free-throw \% \cr
+   OREB \tab Offensive rebounds \cr
+   DREB \tab Defensive rebounds \cr
+   TREB \tab Total rebounds \cr
+   AST \tab Assists \cr
+   STL \tab Steals \cr
+   TO \tab Turnovers \cr
+   BLK \tab Blocks \cr
+   BLKA \tab Blocks against \cr
+   FC \tab Personal fouls committed \cr
+   FD \tab Personal fouls drawn \cr
+   PIR \tab Performance Index Rating \cr
 }
+
 
 Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/stats/expanded/?size=1000&viewType=traditional&seasonCode=E2023&statisticMode=perGame&seasonMode=Single&sortDirection=descending&statistic=blocksFavour}{Stats}
 }

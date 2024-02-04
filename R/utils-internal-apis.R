@@ -753,7 +753,11 @@ NULL
       tidyr::unnest(cols = c(.data$players.player), names_sep = ".") %>%
       tidyr::unnest(cols = c(.data$players.player.team), names_sep = ".") %>%
       dplyr::rename_with(function(x) {gsub("players|player", "", x)}) %>%
-      .rename_stat()
+      .rename_stat() %>%
+      dplyr::rename(Player_ID = .data$Code,
+                    PlayerName = .data$Name,
+                    PlayerAge = .data$Age) %>%
+      dplyr::select(-.data$Total, -.data$Ranking)
   } else {out$data = NULL}
   return(out)
 }
@@ -787,7 +791,11 @@ NULL
       tidyr::unnest(cols = c(.data$players.player), names_sep = ".") %>%
       tidyr::unnest(cols = c(.data$players.player.team), names_sep = ".") %>%
       dplyr::rename_with(function(x) {gsub("players|player", "", x)}) %>%
-      .rename_stat()
+      .rename_stat() %>%
+      dplyr::rename(Player_ID = .data$Code,
+                    PlayerName = .data$Name,
+                    PlayerAge = .data$Age) %>%
+      dplyr::select(-.data$Total, -.data$Ranking)
   } else {out$data = NULL}
   return(out)
 }
@@ -820,7 +828,11 @@ NULL
       tidyr::unnest(cols = c(.data$players.player), names_sep = ".") %>%
       tidyr::unnest(cols = c(.data$players.player.team), names_sep = ".") %>%
       dplyr::rename_with(function(x) {gsub("players|player", "", x)}) %>%
-      .rename_stat()
+      .rename_stat() %>%
+      dplyr::rename(Player_ID = .data$Code,
+                    PlayerName = .data$Name,
+                    PlayerAge = .data$Age) %>%
+      dplyr::select(-.data$Total, -.data$Ranking)
   } else {out$data = NULL}
   return(out)
 }
@@ -852,8 +864,12 @@ NULL
       tidyr::unnest(cols = c(.data$players), names_sep = ".") %>%
       tidyr::unnest(cols = c(.data$players.player), names_sep = ".") %>%
       tidyr::unnest(cols = c(.data$players.player.team), names_sep = ".") %>%
-      dplyr::rename_with(function(x) {gsub("players|player", "", x)}) %>%
-      .rename_stat()
+      dplyr::rename_with(function(x) {gsub("players|player", "", x)})%>%
+      .rename_stat() %>%
+      dplyr::rename(Player_ID = .data$Code,
+                    PlayerName = .data$Name,
+                    PlayerAge = .data$Age) %>%
+      dplyr::select(-.data$Total, -.data$Ranking)
   } else {out$data = NULL}
   return(out)
 }

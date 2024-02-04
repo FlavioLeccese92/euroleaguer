@@ -106,7 +106,7 @@ options(cli.progress_show_after = 0)
     col_to = c("PIR", "PM", "PTS", "2FGM", "2FGA", "3FGM", "3FGA",
                "FTM", "FTA", "FGM", "FGA",
                "REB", "OREB", "DREB", "AST", "STL",
-               "BLK", "BLKA", "TO", "FC", "FR", "2FG%", "3FG%", "FT%",
+               "BLK", "BLKA", "TO", "FC", "FD", "2FG%", "3FG%", "FT%",
                "GP", "AM", "AA",
                "PTS", "2FGM", "2FGA", "2FG%", "3FGM", "3FGA", "3FG%",
                "FTM", "FTA", "FT%", "OREB","DREB", "REB",

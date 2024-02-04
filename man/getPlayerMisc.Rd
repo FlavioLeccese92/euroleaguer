@@ -11,11 +11,14 @@ getPlayerMisc(season_code)
 Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 }
 \value{
-Returns a summary tibble of miscellaneous players statistics for chosen seasons
-\itemize{
-\item \strong{DD2} (Double-doubles) - Games with double-digit totals in two of: points, rebounds, assists, steals and blocks
-\item \strong{TD3} (Triple-doubles) - Games with double-digit totals in three of: points, rebounds, assists, steals and blocks
+Returns a summary tibble of miscellaneous players statistics for chosen seasons.
+
+Glossary of columns:\tabular{lll}{
+   \strong{Column name} \tab \strong{Column extended name} \tab \strong{Column description} \cr
+   DD2 \tab Double-doubles \tab Games with double-digit totals in two of: points, rebounds, assists, steals and blocks \cr
+   TD3 \tab Triple-doubles \tab Games with double-digit totals in three of: points, rebounds, assists, steals and blocks \cr
 }
+
 
 Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/stats/expanded/?size=1000&viewType=miscellaneous&seasonCode=E2023&statisticMode=accumulated&seasonMode=Single&sortDirection=descending&statistic=gamesPlayed}{Stats}
 }

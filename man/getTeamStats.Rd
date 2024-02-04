@@ -18,7 +18,7 @@ Admitted values are \code{RS} for regular season, \code{PO} for playoffs and \co
 Default is \code{All} for all.}
 }
 \value{
-Returns a list of elements for the chosen teams and seasons
+Returns a list of elements for the chosen teams and seasons:
 \itemize{
 \item \strong{PlayerAccumulated}. Total sum of statistics by player
 \item \strong{PlayerAveragePerGame}. Average per game of statistics by player
@@ -27,6 +27,32 @@ Returns a list of elements for the chosen teams and seasons
 \item \strong{TeamAveragePerGame}. Average per game of statistics of teams
 }
 
+Glossary of columns:\tabular{ll}{
+   \strong{Column name} \tab \strong{Column extended name} \cr
+   PTS \tab Points scored \cr
+   2PM \tab Two-pointers made \cr
+   2PA \tab Two-pointers attempted \cr
+   2P\% \tab Two-point \% \cr
+   3PM \tab Three-pointers made \cr
+   3PA \tab Three-pointers attempted \cr
+   3P\% \tab Three-point \% \cr
+   FTM \tab Free throws made \cr
+   FTA \tab Free throws attempted \cr
+   FT\% \tab Free-throw \% \cr
+   OREB \tab Offensive rebounds \cr
+   DREB \tab Defensive rebounds \cr
+   TREB \tab Total rebounds \cr
+   AST \tab Assists \cr
+   STL \tab Steals \cr
+   TO \tab Turnovers \cr
+   BLK \tab Blocks \cr
+   BLKA \tab Blocks against \cr
+   FC \tab Personal fouls committed \cr
+   FD \tab Personal fouls drawn \cr
+   PIR \tab Performance Index Rating \cr
+}
+
+
 Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/teams/ldlc-asvel-villeurbanne/statistics/asv/?season=2023-24&phase=All\%20phases}{Team}
 }
 \description{
@@ -34,6 +60,15 @@ Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/teams/l
 }
 \examples{
 TeamStats = getTeamStats(team_code = "ASV", season_code = c("E2023", "E2022"), phase_type = "RS")
-TeamStats$PlayerAveragePerGame
+
+TeamStats$PlayerAccumulated |> head(5)
+
+TeamStats$PlayerAveragePerGame |> head(5)
+
+TeamStats$PlayerAveragePer40 |> head(5)
+
+TeamStats$TeamAccumulated |> head(5)
+
+TeamStats$TeamAveragePerGame |> head(5)
 
 }
