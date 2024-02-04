@@ -115,7 +115,7 @@ options(cli.progress_show_after = 0)
                "2PTA-R", "3PTA-R", "FT-RT",
                "MIN", "W", "L", "GS", "DD2", "TD3",
                "2PTA-S", "3PTA-S", "FTA-S", "2PTM-S", "3PTM-S",
-               "FTM-S", "2PT-RT", "2PT-RT", "%2PT", "%3PT", "%FT",
+               "FTM-S", "2PT-RT", "3PT-RT", "%2PT", "%3PT", "%FT",
                "PTS", "FT%", "2FG%", "3FG%", "FG%"),
     col_from = c("valuation", "plusminus", "points", "fieldgoalsmade2",
                  "fieldgoalsattempted2", "fieldgoalsmade3", "fieldgoalsattempted3",

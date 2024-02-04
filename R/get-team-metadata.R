@@ -6,7 +6,7 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' Retrieve contextual information about teams.>Outputs may be required as
+#' Retrieve contextual information about teams. Outputs may be required as
 #' arguments of other `getTeam*` or `getPlayer*` functions
 #'
 #' @md

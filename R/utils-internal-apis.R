@@ -327,7 +327,8 @@ NULL
   if (out$status == 200) {
     out$data = getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
       tibble::as_tibble() %>%
-      dplyr::rename_with(.TextFormatType1)
+      dplyr::rename_with(.TextFormatType1) %>%
+      dplyr::mutate(dplyr::across(dplyr::ends_with("Date"), ~as.Date(.)))
   } else {out$data = NULL}
   return(out)
 }
@@ -433,7 +434,11 @@ NULL
   if (out$status == 200) {
     out$data  = getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
       tibble::as_tibble() %>%
-      dplyr::rename_with(.TextFormatType1)
+      dplyr::rename_with(.TextFormatType1) %>%
+      dplyr::rename(Player_ID = .data$Ac,
+                    PlayerName = .data$Na,
+                    Dorsal = .data$Nu) %>%
+      dplyr::nutate(Player_ID = trimws(gsub("P", "", .data$Player_ID)))
   } else {out$data = NULL}
   return(out)
 }
