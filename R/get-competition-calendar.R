@@ -12,6 +12,7 @@
 #'
 #' @name getCompetitionCalendar
 #' @rdname getCompetitionCalendar
+#' @keywords competitionMetadata
 #' @export
 
 getCompetitionCalendar = function(season_code, round){

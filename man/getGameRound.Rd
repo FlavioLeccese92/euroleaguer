@@ -22,3 +22,4 @@ Returns the round value for the chosen games and seasons.
 getGameRound(season_code = c("E2023", "U2023"), game_code = 1)
 
 }
+\keyword{gameMetadata}

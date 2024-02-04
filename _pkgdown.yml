@@ -29,37 +29,54 @@ home:
 docsearch:
   search:
 reference:
+
 - title: Competition
+
+- subtitle: Metadata
+  desc: >
+    Retieve values of arguments for specific data collection functions across all package
   contents:
-  - getCompetitionHistory
-  - getCompetitionPhases
-  - getCompetitionRounds
-  - getCompetitionTeams
-  - getCompetitionGames
-  - getCompetitionCalendar
+  - has_keyword("competitionMetadata")
+
+- subtitle: Data
+  contents:
   - getCompetitionStandings
   - getCompetitionAheadBehind
   - getCompetitionMargins
   - getCompetitionStreaks
-- title: Team
+
+- title: Team and player
+
+- subtitle: Metadata
+  desc: >
+    Retrieve contextual information about teams.>Outputs may be required as
+    arguments of other `getTeam*` or `getPlayer*` functions
   contents:
-  - getTeam
-  - getTeamPeople
-  - getTeamGames
+  - has_keyword("teamMetadata")
+
+- subtitle: Team Data
+  contents:
   - getTeamStats
   - getTeamLeadStats
-- title: Game
-  contents:
-  - getGameHeader
-  - getGameBoxScore
-  - getGamePoints
-  - getGameRound
-  - getGamePlayers
-  - getGamePlayByPlay
-  - getGameEvolution
-- title: Player
+
+- subtitle: Player data
   contents:
   - getPlayerStats
   - getPlayerAdvanced
   - getPlayerMisc
   - getPlayerPoints
+
+- title: Game
+- subtitle: Metadata
+  desc: >
+    Retrieve contextual information about games.>Outputs may be required as
+    arguments of other `getGame*` functions
+  contents:
+  - has_keyword("gameMetadata")
+
+- subtitle: Data
+  contents:
+  - getGameBoxScore
+  - getGamePoints
+  - getGamePlayByPlay
+  - getGameEvolution

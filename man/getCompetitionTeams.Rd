@@ -20,3 +20,4 @@ Returns a summary tibble of teams for chosen competitions
 getCompetitionTeams(season_code = c("E2023", "U2023"))
 
 }
+\keyword{competitionMetadata}

@@ -11,6 +11,7 @@
 #'
 #' @name getCompetitionHistory
 #' @rdname getCompetitionHistory
+#' @keywords competitionMetadata
 #' @export
 
 getCompetitionHistory = function(competition_code){

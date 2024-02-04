@@ -24,3 +24,4 @@ Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/standin
 getCompetitionCalendar(season_code = c("E2023", "E2022"), round = 1)
 
 }
+\keyword{competitionMetadata}

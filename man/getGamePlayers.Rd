@@ -26,3 +26,4 @@ and seasons
 getGamePlayers(season_code = c("E2023", "U2023"), team_code = "ASV", game_code = 1)
 
 }
+\keyword{gameMetadata}

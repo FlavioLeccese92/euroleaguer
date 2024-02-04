@@ -11,6 +11,7 @@
 #'
 #' @name getGameRound
 #' @rdname getGameRound
+#' @keywords gameMetadata
 #' @export
 
 getGameRound = function(game_code, season_code){

@@ -10,6 +10,7 @@
 #'
 #' @name getGameHeader
 #' @rdname getGameHeader
+#' @keywords gameMetadata
 #' @export
 
 getGameHeader = function(game_code, season_code){

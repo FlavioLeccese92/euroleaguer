@@ -11,6 +11,7 @@
 #'
 #' @name getCompetitionPhases
 #' @rdname getCompetitionPhases
+#' @keywords competitionMetadata
 #' @export
 
 getCompetitionPhases = function(season_code){

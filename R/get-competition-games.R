@@ -11,6 +11,7 @@
 #'
 #' @name getCompetitionGames
 #' @rdname getCompetitionGames
+#' @keywords competitionMetadata
 #' @export
 
 getCompetitionGames = function(season_code, round, phase_type = "All"){

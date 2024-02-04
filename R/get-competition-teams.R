@@ -11,6 +11,7 @@
 #'
 #' @name getCompetitionTeams
 #' @rdname getCompetitionTeams
+#' @keywords competitionMetadata
 #' @export
 
 getCompetitionTeams = function(season_code){

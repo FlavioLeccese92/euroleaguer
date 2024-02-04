@@ -12,6 +12,7 @@
 #'
 #' @name getTeam
 #' @rdname getTeam
+#' @keywords teamMetadata
 #' @export
 
 getTeam = function(team_code, season_code){

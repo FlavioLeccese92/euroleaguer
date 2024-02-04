@@ -26,3 +26,4 @@ Returns a summary tibble of games for chosen competitions
 getCompetitionGames(season_code = "E2023", round = 1:5)
 
 }
+\keyword{competitionMetadata}

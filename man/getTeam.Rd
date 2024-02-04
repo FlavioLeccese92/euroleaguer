@@ -25,3 +25,4 @@ Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/teams/l
 getTeam(team_code = "ASV", season_code = c("E2023", "E2022"))
 
 }
+\keyword{teamMetadata}

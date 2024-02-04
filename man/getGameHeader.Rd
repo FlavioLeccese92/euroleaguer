@@ -22,3 +22,4 @@ Returns a summary for the chosen games and seasons
 getGameHeader(season_code = c("E2023", "U2023"), game_code = 1)
 
 }
+\keyword{gameMetadata}

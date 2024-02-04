@@ -20,3 +20,4 @@ Returns a summary tibble of history for chosen competitions
 getCompetitionHistory(competition_code = c("E", "U"))
 
 }
+\keyword{competitionMetadata}

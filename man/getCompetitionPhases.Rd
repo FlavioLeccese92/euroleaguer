@@ -20,3 +20,4 @@ Returns a summary tibble of phases for chosen competitions
 getCompetitionPhases(season_code = c("E2023", "U2023"))
 
 }
+\keyword{competitionMetadata}

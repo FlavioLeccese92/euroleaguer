@@ -20,3 +20,4 @@ Returns a summary tibble of rounds for chosen competitions
 getCompetitionRounds(season_code = c("E2023", "E2022"))
 
 }
+\keyword{competitionMetadata}
