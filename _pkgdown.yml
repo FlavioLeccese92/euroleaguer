@@ -50,8 +50,8 @@ reference:
 
 - subtitle: Metadata
   desc: >
-    Retrieve contextual information about teams.>Outputs may be required as
-    arguments of other `getTeam*` or `getPlayer*` functions
+    Retrieve contextual information about teams.
+    Outputs may be required as arguments of other `getTeam*` or `getPlayer*` functions
   contents:
   - has_keyword("teamMetadata")
 
@@ -70,8 +70,8 @@ reference:
 - title: Game
 - subtitle: Metadata
   desc: >
-    Retrieve contextual information about games.>Outputs may be required as
-    arguments of other `getGame*` functions
+    Retrieve contextual information about games.
+    Outputs may be required as arguments of other `getGame*` functions
   contents:
   - has_keyword("gameMetadata")
 

@@ -1,4 +1,23 @@
+.table {
+  width: fit-content;
+  border-radius: 3px;
+  background-color: #e2e7ea;
+  padding: 0.5rem 0.5rem;
+}
 .table>:not(caption)>*>* {
   font-size: small;
+  background-color: transparent;
   padding: 0.25rem 0.25rem;
+}
+.btn {
+  --bs-btn-padding-x: 1em;
+  --bs-btn-padding-y: 0.75em;
+  --bs-btn-font-size: 0.75em;
+}
+pre {
+  background-color: #e2e7ea;
+  border: 0px;
+}
+code {
+  background-color: #e2e7ea;
 }

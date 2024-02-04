@@ -33,6 +33,9 @@ Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/stats/k
 }
 \examples{
 TeamLeadStats = getTeamLeadStats(season_code = c("E2022", "E2023"), phase_type = "RS")
-TeamLeadStats$TeamAveragePerGame
+
+TeamLeadStats$TeamAccumulated |> head(5)
+
+TeamLeadStats$TeamAveragePerGame |> head(5)
 
 }

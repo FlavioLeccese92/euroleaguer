@@ -110,7 +110,7 @@ options(cli.progress_show_after = 0)
                "GP", "AM", "AA",
                "PTS", "2FGM", "2FGA", "2FG%", "3FGM", "3FGA", "3FG%",
                "FTM", "FTA", "FT%", "OREB","DREB", "REB",
-               "AST", "STL", "TO", "BLK", "BLKA", "FC", "FR", "PIR",
+               "AST", "STL", "TO", "BLK", "BLKA", "FC", "FD", "PIR",
                "EFG%", "TS%", "OREB%", "DREB%", "REB%", "AST/TO", "AST-R", "TO-R",
                "2PTA-R", "3PTA-R", "FT-RT",
                "MIN", "W", "L", "GS", "DD2", "TD3",
