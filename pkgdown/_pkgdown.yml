@@ -1,0 +1,82 @@
+url: https://flavioleccese92.github.io/euroleaguer/
+template:
+  bootstrap: 5
+  bslib:
+    base_font: {google: "Lato"}
+    heading_font: {google: "Inconsolata"}
+    bg: '#f2f2f2'
+    fg: '#050505'
+    primary: '#ff8113'
+navbar:
+  structure:
+    left:  [intro, reference, articles, news]
+    right: [search, linkedin, github]
+  components:
+    linkedin:
+      icon: fa-linkedin
+      href: https://www.linkedin.com/in/flavioleccese/
+      aria-label: LinkedIn
+    github:
+      icon: fa-github
+      href: https://github.com/FlavioLeccese92/euroleaguer/
+      aria-label: Github
+home:
+  links:
+  - text: Euroleague basketball website
+    href: https://www.euroleaguebasketball.net/euroleague/
+  - text: Eurocup basketball website
+    href: https://www.euroleaguebasketball.net/eurocup/
+docsearch:
+  search:
+reference:
+
+- title: Competition
+
+- subtitle: Metadata
+  desc: >
+    Retieve values of arguments for specific data collection functions across all package
+  contents:
+  - has_keyword("competitionMetadata")
+
+- subtitle: Data
+  contents:
+  - getCompetitionStandings
+  - getCompetitionAheadBehind
+  - getCompetitionMargins
+  - getCompetitionStreaks
+
+- title: Team and player
+
+- subtitle: Metadata
+  desc: >
+    Retrieve contextual information about teams.>Outputs may be required as
+    arguments of other `getTeam*` or `getPlayer*` functions
+  contents:
+  - has_keyword("teamMetadata")
+
+- subtitle: Team Data
+  contents:
+  - getTeamStats
+  - getTeamLeadStats
+
+- subtitle: Player data
+  contents:
+  - getPlayerStats
+  - getPlayerAdvanced
+  - getPlayerMisc
+  - getPlayerPoints
+
+- title: Game
+- subtitle: Metadata
+  desc: >
+    Retrieve contextual information about games.>Outputs may be required as
+    arguments of other `getGame*` functions
+  contents:
+  - has_keyword("gameMetadata")
+
+- subtitle: Data
+  contents:
+  - getGameBoxScore
+  - getGamePoints
+  - getGamePlayByPlay
+  - getGameEvolution
