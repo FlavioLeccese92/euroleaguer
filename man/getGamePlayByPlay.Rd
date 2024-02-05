@@ -16,8 +16,41 @@ Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 Returns a list of two elements for the chosen games and seasons
 \itemize{
 \item \strong{PlayByPlaySummary}. Overall information about the games, teams involved and status (live or not)
-\item \strong{PlayByPlay}. Detailed information about the games, particularly \strong{NumberOfPlay} and \strong{TypeOfPlay}
+\item \strong{PlayByPlay}. Detailed information about the games, particularly \strong{NumberOfPlay} and \strong{PlayType}
 }
+
+Glossary of \code{PlayType}:\tabular{ll}{
+   \strong{PlayType} \tab \strong{PlayInfo} \cr
+   2PA \tab Missed Two Pointer \cr
+   2PM \tab Two Pointer \cr
+   3PA \tab Missed Three Pointer \cr
+   3PM \tab Three Pointer \cr
+   AG \tab Shot Rejected \cr
+   AS \tab Assist \cr
+   BP \tab Begin Period \cr
+   C \tab Coach Foul \cr
+   CCH \tab Coach Challenge \cr
+   CM \tab Foul \cr
+   CMT \tab Technical Foul \cr
+   CMTI \tab Throw-In Foul \cr
+   CMU \tab Unsportsmanlike Foul \cr
+   D \tab Def Rebound \cr
+   EG \tab End Game \cr
+   EP \tab End Period \cr
+   FTA \tab Missed Free Throw \cr
+   FTM \tab Free Throw In \cr
+   FV \tab Block \cr
+   IN \tab In \cr
+   O \tab Off Rebound \cr
+   OF \tab Offensive Foul \cr
+   OUT \tab Out \cr
+   RV \tab Foul Drawn \cr
+   ST \tab Steal \cr
+   TO \tab Turnover \cr
+   TOUT \tab Time Out \cr
+   TOUT_TV \tab TV Time Out \cr
+}
+
 
 Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/game-center/2023-24/crvena-zvezda-meridianbet-belgrade-ldlc-asvel-villeurbanne/E2023/1/#play-by-play}{PlayByPlay}
 }
@@ -25,6 +58,10 @@ Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/game-ce
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \examples{
-getGamePlayByPlay(season_code = c("E2023", "U2023"), game_code = 1)$PlayByPlay
+PlayByPlay = getGamePlayByPlay(season_code = c("E2023", "U2023"), game_code = 1)
+
+PlayByPlay$PlayByPlaySummary |> head(5)
+
+PlayByPlay$PlayByPlay |> head(5)
 
 }

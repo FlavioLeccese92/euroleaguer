@@ -50,7 +50,7 @@ reference:
 
 - subtitle: Metadata
   desc: >
-    Retrieve contextual information about teams.
+    Retrieve contextual information about teams and players.
     Outputs may be required as arguments of other `getTeam*` or `getPlayer*` functions
   contents:
   - has_keyword("teamMetadata")
