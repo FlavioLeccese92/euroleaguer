@@ -471,7 +471,12 @@ NULL
       tibble::as_tibble() %>%
       dplyr::rename_with(.TextFormatType3) %>%
       dplyr::mutate(dplyr::across(dplyr::where(is.character), trimws),
-                    dplyr::across(dplyr::everything(), ~ifelse(nchar(.) == 0, NA, .)))
+                    dplyr::across(dplyr::everything(), ~ifelse(nchar(.) == 0, NA, .))) %>%
+      dplyr::mutate(Player_ID = trimws(gsub("P", "", .data$Player_ID))) %>%
+      dplyr::rename(TeamCode = .data$CodeTeam,
+                    PlayerName = .data$Player,
+                    TeamName = .data$Team) %>%
+      dplyr::mutate(PlayType = gsub("FG", "P", .data$PlayType))
     } else {out$data = NULL}
   return(out)
 }
