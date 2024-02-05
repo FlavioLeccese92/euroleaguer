@@ -29,13 +29,16 @@ Returns a list of elements for the chosen teams and seasons:
 
 Glossary of columns:\tabular{ll}{
    \strong{Column name} \tab \strong{Column extended name} \cr
+   GP \tab Game player \cr
+   GS \tab Game started \cr
+   MIN \tab Minutes played \cr
    PTS \tab Points scored \cr
    2PM \tab Two-pointers made \cr
    2PA \tab Two-pointers attempted \cr
    2P\% \tab Two-point \% \cr
    3PM \tab Three-pointers made \cr
    3PA \tab Three-pointers attempted \cr
-   3P\% \tab Three-point \% \cr
+   3FG\% \tab Three-point \% \cr
    FTM \tab Free throws made \cr
    FTA \tab Free throws attempted \cr
    FT\% \tab Free-throw \% \cr

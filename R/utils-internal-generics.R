@@ -103,12 +103,12 @@ options(cli.progress_show_after = 0)
   data = data %>% dplyr::rename_with(.TextFormatType1)
 
   exchange_table = tibble::tibble(
-    col_to = c("PIR", "PM", "PTS", "2FGM", "2FGA", "3FGM", "3FGA",
+    col_to = c("PIR", "PM", "PTS", "2PM", "2PA", "3PM", "3PA",
                "FTM", "FTA", "FGM", "FGA",
                "REB", "OREB", "DREB", "AST", "STL",
-               "BLK", "BLKA", "TO", "FC", "FD", "2FG%", "3FG%", "FT%",
+               "BLK", "BLKA", "TO", "FC", "FD", "2P%", "3P%", "FT%",
                "GP", "AM", "AA",
-               "PTS", "2FGM", "2FGA", "2FG%", "3FGM", "3FGA", "3FG%",
+               "PTS", "2PM", "2PA", "2P%", "3PM", "3PA", "3P%",
                "FTM", "FTA", "FT%", "OREB","DREB", "REB",
                "AST", "STL", "TO", "BLK", "BLKA", "FC", "FD", "PIR",
                "EFG%", "TS%", "OREB%", "DREB%", "REB%", "AST/TO", "AST-R", "TO-R",
@@ -116,7 +116,7 @@ options(cli.progress_show_after = 0)
                "MIN", "W", "L", "GS", "DD2", "TD3",
                "2PTA-S", "3PTA-S", "FTA-S", "2PTM-S", "3PTM-S",
                "FTM-S", "2PT-RT", "3PT-RT", "%2PT", "%3PT", "%FT",
-               "PTS", "FT%", "2FG%", "3FG%", "FG%"),
+               "PTS", "FT%", "2P%", "3P%", "FG%"),
     col_from = c("valuation", "plusminus", "points", "fieldgoalsmade2",
                  "fieldgoalsattempted2", "fieldgoalsmade3", "fieldgoalsattempted3",
                  "freethrowsmade", "freethrowsattempted",
@@ -166,7 +166,7 @@ options(cli.progress_show_after = 0)
 #' @noRd
 
 .StatsRange = tibble::tibble(
-  Stat = c("PM", "FG%", "3FG%", "2FG%", "FT%", "PTS", "PIR"),
+  Stat = c("PM", "FG%", "3P%", "2P%", "FT%", "PTS", "PIR"),
   Min = c(-30, 0, 0, 0, 0, 0, 0),
   Max = c(30, 100, 100, 100, 100, 40, 50),
   GMin = c(-15, 0, 0, 0, 0, 0, 0),
@@ -177,8 +177,8 @@ options(cli.progress_show_after = 0)
   MiddleOffset = c(15, 0, 0, 0, 0, 0, 0),
   BottomOffset = c(0, 10, 10, 10, 10, 10, 10),
   Unit = c("", "%", "%", "%", "%", "", ""),
-  Name = c("Plus-minus (PM)", "Total field goal % (FG%)", "3-points field goal % (3FG%)",
-           "2-points field goal % (2FG%)", "Free-throw % (FT%)", "Total points made (PTS)",
+  Name = c("Plus-minus (PM)", "Total field goal % (FG%)", "3-points field goal % (3P%)",
+           "2-points field goal % (2P%)", "Free-throw % (FT%)", "Total points made (PTS)",
            "Valuation (PIR)")
 )
 

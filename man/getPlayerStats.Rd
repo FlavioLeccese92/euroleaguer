@@ -21,6 +21,9 @@ Returns a summary tibble of players statistics for chosen seasons.
 
 Glossary of columns:\tabular{ll}{
    \strong{Column name} \tab \strong{Column extended name} \cr
+   GP \tab Game player \cr
+   GS \tab Game started \cr
+   MIN \tab Minutes played \cr
    PTS \tab Points scored \cr
    2PM \tab Two-pointers made \cr
    2PA \tab Two-pointers attempted \cr

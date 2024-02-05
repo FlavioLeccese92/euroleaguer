@@ -360,9 +360,9 @@ NULL
              Seconds = lubridate::period_to_seconds(lubridate::ms(.data$Minutes)), .after = "Minutes",
              Player_ID = trimws(gsub("P", "", .data$Player_ID)),
              .keep = "unused") %>%
-      dplyr::mutate(`FG%` = 100*((.data$`2FGM` + .data$`3FGM`)/(.data$`2FGA` + .data$`3FGA`)) %>% round(4),
-             `2FG%` = 100*(.data$`2FGM`/.data$`2FGA`) %>% round(4),
-             `3FG%` = 100*(.data$`3FGM`/.data$`3FGA`) %>% round(4),
+      dplyr::mutate(`FG%` = 100*((.data$`2PM` + .data$`3PM`)/(.data$`2PA` + .data$`3PA`)) %>% round(4),
+             `2P%` = 100*(.data$`2PM`/.data$`2PA`) %>% round(4),
+             `3P%` = 100*(.data$`3PM`/.data$`3PA`) %>% round(4),
              `FT%` = 100*(.data$`FTM`/.data$`FTA`) %>% round(4)) %>%
       dplyr::mutate(dplyr::across(dplyr::everything(), ~ifelse(is.nan(.), NA, .)))
 
@@ -371,9 +371,9 @@ NULL
       dplyr::bind_cols(GameCode = game_code, .) %>% .rename_stat() %>%
       dplyr::mutate(Seconds = lubridate::period_to_seconds(lubridate::ms(.data$Minutes)), .after = "Minutes",
                     .keep = "unused") %>%
-      dplyr::mutate(`FG%` = 100*((.data$`2FGM` + .data$`3FGM`)/(.data$`2FGA` + .data$`3FGA`)) %>% round(4),
-                    `2FG%` = 100*(.data$`2FGM`/.data$`2FGA`) %>% round(4),
-                    `3FG%` = 100*(.data$`3FGM`/.data$`3FGA`) %>% round(4),
+      dplyr::mutate(`FG%` = 100*((.data$`2PM` + .data$`3PM`)/(.data$`2PA` + .data$`3PA`)) %>% round(4),
+                    `2P%` = 100*(.data$`2PM`/.data$`2PA`) %>% round(4),
+                    `3P%` = 100*(.data$`3PM`/.data$`3PA`) %>% round(4),
                     `FT%` = 100*(.data$`FTM`/.data$`FTA`) %>% round(4)) %>%
       dplyr::mutate(dplyr::across(dplyr::everything(), ~ifelse(is.nan(.), NA, .)))
     } else {out$data = NULL}
