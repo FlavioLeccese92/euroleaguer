@@ -18,13 +18,6 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [EuroLeague](https://www.euroleaguebasketball.net/euroleague/) and
 [EuroCup](https://www.euroleaguebasketball.net/eurocup/) API with R.
 
-<div style="display: flex; justify-content: center; align-items: center;">
-
-<img src="man/figures/euroleague-logo.png" align="middle" height="50px" style="padding:10px"/>
-<img src="man/figures/eurocup-logo.png" align="middle " height="50px" style="padding:10px"/>
-
-</div>
-
 This is an un-official API wrapper and we recommend to follow usual
 rules of conduct when dealing with open API calls.
 
