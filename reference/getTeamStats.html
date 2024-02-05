@@ -112,8 +112,7 @@ Default is <code>All</code> for all.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `3PM` &lt;dbl&gt;, `3PA` &lt;dbl&gt;, FTM &lt;dbl&gt;, FTA &lt;dbl&gt;, FGM &lt;dbl&gt;, FGA &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   AM &lt;dbl&gt;, AA &lt;dbl&gt;, REB &lt;dbl&gt;, DREB &lt;dbl&gt;, OREB &lt;dbl&gt;, AST &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   STL &lt;dbl&gt;, TO &lt;dbl&gt;, BLK &lt;dbl&gt;, BLKA &lt;dbl&gt;, FC &lt;dbl&gt;, FD &lt;dbl&gt;, PM &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   GP &lt;int&gt;, GS &lt;dbl&gt;, TotalGamesStarted &lt;int&gt;, `3P%` &lt;dbl&gt;, `2P%` &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `FT%` &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   GP &lt;int&gt;, GS &lt;dbl&gt;, TGS &lt;int&gt;, `3P%` &lt;dbl&gt;, `2P%` &lt;dbl&gt;, `FT%` &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">TeamStats</span><span class="op">$</span><span class="va">PlayerAveragePerGame</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 36</span></span>
@@ -128,8 +127,7 @@ Default is <code>All</code> for all.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `3PM` &lt;dbl&gt;, `3PA` &lt;dbl&gt;, FTM &lt;dbl&gt;, FTA &lt;dbl&gt;, FGM &lt;dbl&gt;, FGA &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   AM &lt;dbl&gt;, AA &lt;dbl&gt;, REB &lt;dbl&gt;, DREB &lt;dbl&gt;, OREB &lt;dbl&gt;, AST &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   STL &lt;dbl&gt;, TO &lt;dbl&gt;, BLK &lt;dbl&gt;, BLKA &lt;dbl&gt;, FC &lt;dbl&gt;, FD &lt;dbl&gt;, PM &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   GP &lt;int&gt;, GS &lt;dbl&gt;, TotalGamesStarted &lt;int&gt;, `3P%` &lt;dbl&gt;, `2P%` &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `FT%` &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   GP &lt;int&gt;, GS &lt;dbl&gt;, TGS &lt;int&gt;, `3P%` &lt;dbl&gt;, `2P%` &lt;dbl&gt;, `FT%` &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">TeamStats</span><span class="op">$</span><span class="va">PlayerAveragePer40</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 36</span></span>
@@ -144,8 +142,7 @@ Default is <code>All</code> for all.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `3PM` &lt;dbl&gt;, `3PA` &lt;dbl&gt;, FTM &lt;dbl&gt;, FTA &lt;dbl&gt;, FGM &lt;dbl&gt;, FGA &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   AM &lt;dbl&gt;, AA &lt;dbl&gt;, REB &lt;dbl&gt;, DREB &lt;dbl&gt;, OREB &lt;dbl&gt;, AST &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   STL &lt;dbl&gt;, TO &lt;dbl&gt;, BLK &lt;dbl&gt;, BLKA &lt;dbl&gt;, FC &lt;dbl&gt;, FD &lt;dbl&gt;, PM &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   GP &lt;dbl&gt;, GS &lt;dbl&gt;, TotalGamesStarted &lt;dbl&gt;, `3P%` &lt;dbl&gt;, `2P%` &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   `FT%` &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   GP &lt;dbl&gt;, GS &lt;dbl&gt;, TGS &lt;dbl&gt;, `3P%` &lt;dbl&gt;, `2P%` &lt;dbl&gt;, `FT%` &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">TeamStats</span><span class="op">$</span><span class="va">TeamAccumulated</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 33</span></span>
@@ -156,7 +153,7 @@ Default is <code>All</code> for all.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 23 more variables: FTM &lt;dbl&gt;, FTA &lt;dbl&gt;, FGM &lt;dbl&gt;, FGA &lt;dbl&gt;, AM &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   AA &lt;dbl&gt;, REB &lt;dbl&gt;, DREB &lt;dbl&gt;, OREB &lt;dbl&gt;, AST &lt;dbl&gt;, STL &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   TO &lt;dbl&gt;, BLK &lt;dbl&gt;, BLKA &lt;dbl&gt;, FC &lt;dbl&gt;, FD &lt;dbl&gt;, PM &lt;dbl&gt;, GP &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   GS &lt;dbl&gt;, TotalGamesStarted &lt;int&gt;, `3P%` &lt;dbl&gt;, `2P%` &lt;dbl&gt;, `FT%` &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   GS &lt;dbl&gt;, TGS &lt;int&gt;, `3P%` &lt;dbl&gt;, `2P%` &lt;dbl&gt;, `FT%` &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">TeamStats</span><span class="op">$</span><span class="va">TeamAveragePerGame</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 33</span></span>
@@ -167,7 +164,7 @@ Default is <code>All</code> for all.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 23 more variables: FTM &lt;dbl&gt;, FTA &lt;dbl&gt;, FGM &lt;dbl&gt;, FGA &lt;dbl&gt;, AM &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   AA &lt;dbl&gt;, REB &lt;dbl&gt;, DREB &lt;dbl&gt;, OREB &lt;dbl&gt;, AST &lt;dbl&gt;, STL &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   TO &lt;dbl&gt;, BLK &lt;dbl&gt;, BLKA &lt;dbl&gt;, FC &lt;dbl&gt;, FD &lt;dbl&gt;, PM &lt;dbl&gt;, GP &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   GS &lt;dbl&gt;, TotalGamesStarted &lt;int&gt;, `3P%` &lt;dbl&gt;, `2P%` &lt;dbl&gt;, `FT%` &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   GS &lt;dbl&gt;, TGS &lt;int&gt;, `3P%` &lt;dbl&gt;, `2P%` &lt;dbl&gt;, `FT%` &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
