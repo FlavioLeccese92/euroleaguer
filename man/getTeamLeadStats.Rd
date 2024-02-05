@@ -26,6 +26,35 @@ Returns a list of elements for the chosen seasons, phase_type and subset.
 \item \strong{TeamAveragePerGame}. Average per game of statistics of all teams
 }
 
+Glossary of columns:\tabular{ll}{
+   \strong{Column name} \tab \strong{Column extended name} \cr
+   GP \tab Game player \cr
+   GS \tab Game started \cr
+   MIN \tab Minutes played \cr
+   PTS \tab Points scored \cr
+   2PM \tab Two-pointers made \cr
+   2PA \tab Two-pointers attempted \cr
+   2P\% \tab Two-point \% \cr
+   3PM \tab Three-pointers made \cr
+   3PA \tab Three-pointers attempted \cr
+   3P\% \tab Three-point \% \cr
+   FTM \tab Free throws made \cr
+   FTA \tab Free throws attempted \cr
+   FT\% \tab Free-throw \% \cr
+   OREB \tab Offensive rebounds \cr
+   DREB \tab Defensive rebounds \cr
+   TREB \tab Total rebounds \cr
+   AST \tab Assists \cr
+   STL \tab Steals \cr
+   TO \tab Turnovers \cr
+   BLK \tab Blocks \cr
+   BLKA \tab Blocks against \cr
+   FC \tab Personal fouls committed \cr
+   FD \tab Personal fouls drawn \cr
+   PIR \tab Performance Index Rating \cr
+}
+
+
 Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/stats/key-stats-teams/?size=200&misc=HomeGames&seasonCode=E2023&category=FreeThrowsAttempted&seasonMode=Single&sortDirection=descending&aggregate=accumulated}{TeamLead}
 }
 \description{

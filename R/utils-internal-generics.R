@@ -112,11 +112,11 @@ options(cli.progress_show_after = 0)
                "FTM", "FTA", "FT%", "OREB","DREB", "REB",
                "AST", "STL", "TO", "BLK", "BLKA", "FC", "FD", "PIR",
                "EFG%", "TS%", "OREB%", "DREB%", "REB%", "AST/TO", "AST-R", "TO-R",
-               "2PTA-R", "3PTA-R", "FT-RT",
+               "2PA-R", "3PA-R", "FT-RT",
                "MIN", "W", "L", "GS", "DD2", "TD3",
-               "2PTA-S", "3PTA-S", "FTA-S", "2PTM-S", "3PTM-S",
-               "FTM-S", "2PT-RT", "3PT-RT", "%2PT", "%3PT", "%FT",
-               "PTS", "FT%", "2P%", "3P%", "FG%"),
+               "2PA-S", "3PA-S", "FTA-S", "2PM-S", "3PM-S",
+               "FTM-S", "2P-RT", "3P-RT", "%2P", "%3P", "%FT",
+               "PTS", "FT%", "2P%", "3P%", "FG%", "TGS"),
     col_from = c("valuation", "plusminus", "points", "fieldgoalsmade2",
                  "fieldgoalsattempted2", "fieldgoalsmade3", "fieldgoalsattempted3",
                  "freethrowsmade", "freethrowsattempted",
@@ -150,7 +150,8 @@ options(cli.progress_show_after = 0)
                  "pointsfromthreepointerspercentage",
                  "pointsfromfreethrowspercentage",
                  "score", "freethrowspercent", "fieldgoals2percent",
-                 "fieldgoals3percent", "fieldgoalspercent")
+                 "fieldgoals3percent", "fieldgoalspercent",
+                 "totalgamesstarted")
     ) %>% unique()
 
   names(data) = tibble::tibble(col_data = names(data)) %>%

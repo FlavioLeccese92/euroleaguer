@@ -15,16 +15,16 @@ Returns a summary tibble of points players statistics for chosen seasons.
 
 Glossary of columns:\tabular{lll}{
    \strong{Column name} \tab \strong{Column extended name} \tab \strong{Column description} \cr
-   2PTA-S \tab Two-point attempts share \tab Player's share of team's total two-point attempts \cr
-   3PTA-S \tab Three-point attempts share \tab Player's share of team's total three-point attempts \cr
+   2PA-S \tab Two-point attempts share \tab Player's share of team's total two-point attempts \cr
+   3PA-S \tab Three-point attempts share \tab Player's share of team's total three-point attempts \cr
    FTA-S \tab Free throw attempts share \tab Player's share of team's total free throw attempts \cr
-   2PTM-S \tab Two-pointers made share \tab Player's share of team's total two-pointers made \cr
-   3PTM-S \tab Three-pointers made share \tab Player's share of team's total three-pointers made \cr
+   2PM-S \tab Two-pointers made share \tab Player's share of team's total two-pointers made \cr
+   3PM-S \tab Three-pointers made share \tab Player's share of team's total three-pointers made \cr
    FTM-S \tab Free throws made share \tab Player's share of team's total free throws made \cr
-   2PT-RT \tab Two-Point Rate \tab \% of a player's field goal attempts that are two-pointers \cr
-   3PT-RT \tab Three-Point Rate \tab \% of field goal attempts that are three-pointers \cr
-   \%2PT \tab \% of points from two-pointers \tab \% of points from two-point shots made \cr
-   \%3PT \tab \% of points from three-pointers \tab \% of points from three-point shots made \cr
+   2P-RT \tab Two-Point Rate \tab \% of a player's field goal attempts that are two-pointers \cr
+   3P-RT \tab Three-Point Rate \tab \% of field goal attempts that are three-pointers \cr
+   \%2P \tab \% of points from two-pointers \tab \% of points from two-point shots made \cr
+   \%3P \tab \% of points from three-pointers \tab \% of points from three-point shots made \cr
    \%FT \tab \% of points from free throws \tab \% of points from free throws made \cr
 }
 
