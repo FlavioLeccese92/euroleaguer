@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# euroleaguer <img src="man/figures/logo.png" align="right" width="100px">
+# euroleaguer <img src="man/figures/logo.png" align="right" width="100px"/>
 
 <!-- badges: start -->
 
@@ -11,6 +11,7 @@ status](https://www.r-pkg.org/badges/version/euroleaguer)](https://CRAN.R-projec
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 ![Status](https://progress-bar.dev/75/?title=progress)
+
 <!-- badges: end -->
 
 **euroleaguer** provides an easy way to retrieve data from
@@ -19,8 +20,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 <div style="display: flex; justify-content: center; align-items: center;">
 
-<img src="man/figures/euroleague-logo.png" align="middle" height="50px" style="padding:10px">
-<img src="man/figures/eurocup-logo.png" align="middle " height="50px" style="padding:10px">
+<img src="man/figures/euroleague-logo.png" align="middle" height="50px" style="padding:10px"/>
+<img src="man/figures/eurocup-logo.png" align="middle " height="50px" style="padding:10px"/>
 
 </div>
 
