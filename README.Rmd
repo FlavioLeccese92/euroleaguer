@@ -24,14 +24,10 @@ knitr::opts_chunk$set(
 
 **euroleaguer** provides an easy way to retrieve data from [EuroLeague](https://www.euroleaguebasketball.net/euroleague/) and [EuroCup](https://www.euroleaguebasketball.net/eurocup/) API with R.
 
-```{r echo = FALSE}
-# htmltools::HTML('
-# <div style="display: flex; justify-content: center; align-items: center;">
-#   <img src="man/figures/euroleague-logo.png" height="50px" style="padding:10px"/>
-#   <img src="man/figures/eurocup-logo.png" height="50px" style="padding:10px"/>
-# </div>'
-# )
-```
+::: {style="display: flex; justify-content: center; align-items: center;"}
+![](man/figures/euroleague-logo.png){style="height:50px; padding:10px"} 
+![](man/figures/eurocup-logo.png){style="height:50px; padding:10px"}
+:::
 
 This is an un-official API wrapper and we recommend to follow usual rules of conduct when dealing with open API calls.
 
