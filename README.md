@@ -49,4 +49,4 @@ get-requests and output.
 With `euroleaguer` it is possible to input multiple arguments at once
 (handling for loops internally), values are returned as tibbles and
 columns are consistent throughout all the functions, avoiding ambiguity
-of stats naming such as `2FG%` (2 field-goald %) for `2P%` (2 points %).
+of stats naming such as `2FG%` (2 field-goals %) for `2P%` (2 points %).
