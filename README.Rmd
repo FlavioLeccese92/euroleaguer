@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 **euroleaguer** provides an easy way to retrieve data from [EuroLeague](https://www.euroleaguebasketball.net/euroleague/) and [EuroCup](https://www.euroleaguebasketball.net/eurocup/) API with R.
 
-::: {style="display: flex; justify-content: center; align-items: center;"}
+::: {style="display: flex; justify-content: center; align-items: center; text-align: center;"}
 ![](man/figures/euroleague-logo.png){style="height:50px; padding:10px"} 
 ![](man/figures/eurocup-logo.png){style="height:50px; padding:10px"}
 :::

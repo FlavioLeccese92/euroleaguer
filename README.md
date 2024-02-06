@@ -18,7 +18,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [EuroLeague](https://www.euroleaguebasketball.net/euroleague/) and
 [EuroCup](https://www.euroleaguebasketball.net/eurocup/) API with R.
 
-<div style="display: flex; justify-content: center; align-items: center;">
+<div style="display: flex; justify-content: center; align-items: center; text-align: center;">
 
 <img src="man/figures/euroleague-logo.png"
 style="height:50px; padding:10px" />
