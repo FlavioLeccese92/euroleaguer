@@ -39,3 +39,14 @@ To get the current development version from
 # install.packages("devtools")
 devtools::install_github("FlavioLeccese92/euroleaguer")
 ```
+
+## Why an R package?
+
+Despite Euroleague official APIs are very well designed and immediate, a
+more intense analytical use demands a few adjustments in terms of
+get-requests and output.
+
+With `euroleaguer` it is possible to input multiple arguments at once
+(handling for loops internally), values are returned as tibbles and
+columns are consistent throughout all the functions, avoiding ambiguity
+such as `2FG%` for `2P%`.
