@@ -14,6 +14,13 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r include = FALSE}
+library(dplyr)
+library(euroleaguer)
+library(htmltools)
+library(glue)
+```
+
 # euroleaguer <img src="man/figures/logo.png" align="right" width="100px"/>
 
 <!-- badges: start -->
@@ -24,10 +31,22 @@ knitr::opts_chunk$set(
 
 **euroleaguer** provides an easy way to retrieve data from [EuroLeague](https://www.euroleaguebasketball.net/euroleague/) and [EuroCup](https://www.euroleaguebasketball.net/eurocup/) API with R.
 
-::: {style="display: flex; justify-content: center; align-items: center; text-align: center;"}
-![](man/figures/euroleague-logo.png){style="height:50px; padding:10px"} 
-![](man/figures/eurocup-logo.png){style="height:50px; padding:10px"}
-:::
+```{r echo = FALSE}
+HTML("
+<div style = 'display:flex; text-align:center; justify-content:center;
+     max-width:100%; margin-bottom: 10px; flex-wrap: wrap; 
+     background-color: #f2f2f2;'>
+<img src='man/figures/euroleague-logo.png'
+     style = 'padding: 10px; height: 60px!important; background-color:
+     transparent!important;'>
+<img src='man/figures/eurocup-logo.png'
+     style = 'padding: 10px; height: 60px!important; background-color:
+     transparent!important;'>
+</div>
+")
+```
+
+
 
 This is an un-official API wrapper and we recommend to follow usual rules of conduct when dealing with open API calls.
 
@@ -53,34 +72,27 @@ throughout all the functions, avoiding ambiguity of stats naming such as `2FG%` 
 
 --- under construction ---
 
-```{r include=FALSE}
-library(dplyr)
-library(euroleaguer)
-library(htmltools)
-library(glue)
-```
-
 Get team logos
 
 ```{r}
 getCompetitionTeams("E2023") %>% 
-  mutate(ImageTag = glue("<img src='{ImagesCrest}' style = 'height:30px!important;'>")) %>% 
+  mutate(ImageTag = glue("<img src='{ImagesCrest}' style = 'width:40px!important;'>")) %>% 
   pull(ImageTag) %>% 
   paste0(., collapse = " ") %>% 
-  paste0("<div style='display:flex; text-align:center; justify-content:center;  height:30px'>", ., "</div>") %>%
-  HTML(.)
+  paste0("<div style='display:flex;text-align:center;justify-content:center;max-width:100%;flex-wrap: wrap;'>", ., "</div>") %>%
+   HTML(.)
 ```
 
 Get player images
 
 ```{r}
 getPlayerStats("E2023") %>% 
-  mutate(ImageUrl = glue("<img src='{ImageUrl}' style = 'height:30px!important;'>")) %>% 
-  slice_max(PIR, n = 20) %>% 
-  pull(ImageUrl) %>% 
-  paste0(., collapse = " ") %>% 
-  paste0("<div style='display:flex; text-align:center; justify-content:center;  height:30px'>", ., "</div>") %>%
-  HTML(.)
+ mutate(ImageUrl = glue("<img src='{ImageUrl}' style = 'width:40px!important;'>")) %>% 
+ slice_max(PIR, n = 18) %>% 
+ pull(ImageUrl) %>% 
+ paste0(., collapse = " ") %>% 
+ paste0("<div style='display:flex;text-align:center;justify-content:center;max-width:100%;flex-wrap: wrap;'>", ., "</div>") %>%
+ HTML(.)
 ```
 
 
