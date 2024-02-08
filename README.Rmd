@@ -31,20 +31,8 @@ library(glue)
 
 **euroleaguer** provides an easy way to retrieve data from [EuroLeague](https://www.euroleaguebasketball.net/euroleague/) and [EuroCup](https://www.euroleaguebasketball.net/eurocup/) API with R.
 
-```{r echo = FALSE}
-HTML("
-<div style = 'display:flex; text-align:center; justify-content:center;
-     max-width:100%; margin-bottom: 10px; flex-wrap: wrap; 
-     background-color: #f2f2f2;'>
-<img src='man/figures/euroleague-logo.png'
-     style = 'padding: 10px; height: 60px!important; background-color:
-     transparent!important;'>
-<img src='man/figures/eurocup-logo.png'
-     style = 'padding: 10px; height: 60px!important; background-color:
-     transparent!important;'>
-</div>
-")
-```
+
+![](man/figures/double-logo.png)
 
 
 
@@ -79,7 +67,7 @@ getCompetitionTeams("E2023") %>%
   mutate(ImageTag = glue("<img src='{ImagesCrest}' style = 'width:40px!important;'>")) %>% 
   pull(ImageTag) %>% 
   paste0(., collapse = " ") %>% 
-  paste0("<div style='display:flex;text-align:center;justify-content:center;max-width:100%;flex-wrap: wrap;'>", ., "</div>") %>%
+  paste0("<div style='text-align:center;display:flex;text-align:center;justify-content:center;max-width:100%;flex-wrap: wrap;'>", ., "</div>") %>%
    HTML(.)
 ```
 
