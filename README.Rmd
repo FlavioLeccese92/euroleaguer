@@ -64,7 +64,7 @@ Get team logos
 
 ```{r}
 getCompetitionTeams("E2023") %>% 
-  mutate(ImageTag = glue("<img src='{ImagesCrest}'>")) %>% 
+  mutate(ImageTag = glue("<img src='{ImagesCrest}' height:30px!important;>")) %>% 
   pull(ImageTag) %>% 
   paste0(., collapse = " ") %>% 
   paste0("<div style='display:flex; text-align:center; justify-content:center;  height:30px'>", ., "</div>") %>%
@@ -75,7 +75,7 @@ Get player images
 
 ```{r}
 getPlayerStats("E2023") %>% 
-  mutate(ImageUrl = glue("<img src='{ImageUrl}'>")) %>% 
+  mutate(ImageUrl = glue("<img src='{ImageUrl}' height:30px!important;>")) %>% 
   slice_max(PIR, n = 20) %>% 
   pull(ImageUrl) %>% 
   paste0(., collapse = " ") %>% 
