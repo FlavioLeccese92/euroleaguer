@@ -49,3 +49,40 @@ With `euroleaguer` it is possible to input multiple arguments at once (handling
 for loops internally), values are returned as tibbles and columns are consistent 
 throughout all the functions, avoiding ambiguity of stats naming such as `2FG%` (2 field-goal %) for `2P%` (2 points %). In short, saving time on collection and cleaning and leaving more for pure analysis.
 
+## What can be done
+
+--- under construction ---
+
+```{r include=FALSE}
+library(dplyr)
+library(euroleaguer)
+library(htmltools)
+library(glue)
+```
+
+Get team logos
+
+```{r}
+getCompetitionTeams("E2023") %>% 
+  mutate(ImageTag = glue("<img src='{ImagesCrest}'>")) %>% 
+  pull(ImageTag) %>% 
+  paste0(., collapse = " ") %>% 
+  paste0("<div style='display:flex; text-align:center; justify-content:center;  height:30px'>", ., "</div>") %>%
+  HTML(.)
+```
+
+Get player images
+
+```{r}
+getPlayerStats("E2023") %>% 
+  mutate(ImageUrl = glue("<img src='{ImageUrl}'>")) %>% 
+  slice_max(PIR, n = 20) %>% 
+  pull(ImageUrl) %>% 
+  paste0(., collapse = " ") %>% 
+  paste0("<div style='display:flex; text-align:center; justify-content:center;  height:30px'>", ., "</div>") %>%
+  HTML(.)
+```
+
+
+--- under construction ---
+
