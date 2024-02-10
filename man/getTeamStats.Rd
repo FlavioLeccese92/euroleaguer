@@ -4,14 +4,14 @@
 \alias{getTeamStats}
 \title{Get team statistics}
 \usage{
-getTeamStats(team_code, season_code, phase_type = "All")
+getTeamStats(season_code, team_code, phase_type = "All")
 }
 \arguments{
-\item{team_code}{One or more team codes as obtained from \code{\link[=getCompetitionTeams]{getCompetitionTeams()}}.\cr
-Examples are \code{ASV}, \code{MAD}, ...}
-
 \item{season_code}{One or more season codes as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
 Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
+
+\item{team_code}{One or more team codes as obtained from \code{\link[=getCompetitionTeams]{getCompetitionTeams()}}.\cr
+Examples are \code{ASV}, \code{MAD}, ...}
 
 \item{phase_type}{One or more phase type codes as obtained from \code{\link[=getCompetitionPhases]{getCompetitionPhases()}}.\cr
 Admitted values are \code{RS} for regular season, \code{PO} for playoffs and \code{FF} for final four.

@@ -6,18 +6,18 @@
 \alias{getTeamGames}
 \title{Team metadata}
 \usage{
-getTeam(team_code, season_code)
+getTeam(season_code, team_code)
 
-getTeamPeople(team_code, season_code)
+getTeamPeople(season_code, team_code)
 
-getTeamGames(team_code, season_code)
+getTeamGames(season_code, team_code)
 }
 \arguments{
-\item{team_code}{One or more team codes as obtained from \code{\link[=getCompetitionTeams]{getCompetitionTeams()}}.\cr
-Examples are \code{ASV}, \code{MAD}, ...}
-
 \item{season_code}{One or more season codes as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
 Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
+
+\item{team_code}{One or more team codes as obtained from \code{\link[=getCompetitionTeams]{getCompetitionTeams()}}.\cr
+Examples are \code{ASV}, \code{MAD}, ...}
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}

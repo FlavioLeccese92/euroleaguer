@@ -8,7 +8,7 @@
 \usage{
 getGameHeader(season_code, game_code)
 
-getGamePlayers(game_code, team_code, season_code)
+getGamePlayers(season_code, game_code, team_code)
 
 getGameRound(season_code, game_code)
 }

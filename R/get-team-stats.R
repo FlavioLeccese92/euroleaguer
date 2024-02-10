@@ -59,6 +59,6 @@
 #' @rdname getTeamStats
 #' @export
 
-getTeamStats = function(team_code, season_code, phase_type = "All"){
-  .iterate(.getTeamStats, team_code, season_code, phase_type)
+getTeamStats = function(season_code, team_code, phase_type = "All"){
+  .iterate(.getTeamStats, season_code, team_code, phase_type)
 }

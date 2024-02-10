@@ -514,7 +514,7 @@ NULL
 #' @noRd
 #' @keywords internal
 
-.getTeam = function(team_code, season_code){
+.getTeam = function(season_code, team_code){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
     competition_code = substr(season_code, 1, 1)
   } else {
@@ -542,7 +542,7 @@ NULL
 #' @noRd
 #' @keywords internal
 
-.getTeamPeople = function(team_code, season_code){
+.getTeamPeople = function(season_code, team_code){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
     competition_code = substr(season_code, 1, 1)
   } else {
@@ -572,7 +572,7 @@ NULL
 #' @noRd
 #' @keywords internal
 
-.getTeamGames = function(team_code, season_code){
+.getTeamGames = function(season_code, team_code){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
     competition_code = substr(season_code, 1, 1)
   } else {
@@ -611,7 +611,7 @@ NULL
 #' @noRd
 #' @keywords internal
 
-.getTeamStats = function(team_code, season_code, phase_type){
+.getTeamStats = function(season_code, team_code, phase_type){
   if (substr(season_code, 1, 1) %in% c("E", "U")) {
     competition_code = substr(season_code, 1, 1)
   } else {

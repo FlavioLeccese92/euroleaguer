@@ -23,18 +23,18 @@
 
 #' @rdname getTeamMetadata
 #' @export
-getTeam = function(team_code, season_code){
-  .iterate(.getTeam, team_code, season_code)
+getTeam = function(season_code, team_code){
+  .iterate(.getTeam, season_code, team_code)
 }
 
 #' @rdname getTeamMetadata
 #' @export
-getTeamPeople = function(team_code, season_code){
-  .iterate(.getTeamPeople, team_code, season_code)
+getTeamPeople = function(season_code, team_code){
+  .iterate(.getTeamPeople, season_code, team_code)
 }
 
 #' @rdname getTeamMetadata
 #' @export
-getTeamGames = function(team_code, season_code){
-  .iterate(.getTeamGames, team_code, season_code)
+getTeamGames = function(season_code, team_code){
+  .iterate(.getTeamGames, season_code, team_code)
 }
