@@ -124,11 +124,12 @@ Default is <code>All</code> for all.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: DatesFormmated &lt;chr&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">getCompetitionPhases</span><span class="op">(</span>season_code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"E2023"</span>, <span class="st">"U2023"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 15</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 15</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   SeasonCode SeasonName         SeasonAlias SeasonCompetitionCode SeasonYear</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> E2023      EuroLeague 2023-24 2023-24     E                           <span style="text-decoration: underline;">2</span>023</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> U2023      EuroCup 2023-24    2023-24     U                           <span style="text-decoration: underline;">2</span>023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> U2023      EuroCup 2023-24    2023-24     U                           <span style="text-decoration: underline;">2</span>023</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 10 more variables: SeasonStartDate &lt;date&gt;, PhaseType &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   PhaseTypeAlias &lt;chr&gt;, PhaseTypeName &lt;chr&gt;, PhaseTypeIsGroupPhase &lt;lgl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   StartDate &lt;date&gt;, EndDate &lt;date&gt;, Order &lt;int&gt;, HasPlayedGames &lt;lgl&gt;,</span></span>
@@ -151,21 +152,21 @@ Default is <code>All</code> for all.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   PrimaryColor &lt;chr&gt;, SecondaryColor &lt;chr&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">getCompetitionGames</span><span class="op">(</span>season_code <span class="op">=</span> <span class="st">"E2023"</span>, round <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 79</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   SeasonCode Round PhaseType Id           Code SeasonName SeasonAlias SeasonYear</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 78</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   SeasonCode Round PhaseType Id       GameCode SeasonName SeasonAlias SeasonYear</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> E2023          1 All       0f3e0553-4…     5 EuroLeagu… 2023-24           <span style="text-decoration: underline;">2</span>023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> E2023          1 All       57eeec3d-2…     2 EuroLeagu… 2023-24           <span style="text-decoration: underline;">2</span>023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> E2023          1 All       68ea1f2d-2…     3 EuroLeagu… 2023-24           <span style="text-decoration: underline;">2</span>023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> E2023          1 All       7f6a4bb1-2…     9 EuroLeagu… 2023-24           <span style="text-decoration: underline;">2</span>023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> E2023          1 All       9a5a317e-4…     8 EuroLeagu… 2023-24           <span style="text-decoration: underline;">2</span>023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 71 more variables: CompetitionCode &lt;chr&gt;, CompetitionName &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> E2023          1 All       0f3e055…        5 EuroLeagu… 2023-24           <span style="text-decoration: underline;">2</span>023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> E2023          1 All       57eeec3…        2 EuroLeagu… 2023-24           <span style="text-decoration: underline;">2</span>023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> E2023          1 All       68ea1f2…        3 EuroLeagu… 2023-24           <span style="text-decoration: underline;">2</span>023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> E2023          1 All       7f6a4bb…        9 EuroLeagu… 2023-24           <span style="text-decoration: underline;">2</span>023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> E2023          1 All       9a5a317…        8 EuroLeagu… 2023-24           <span style="text-decoration: underline;">2</span>023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 70 more variables: CompetitionCode &lt;chr&gt;, CompetitionName &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   GroupId &lt;chr&gt;, GroupName &lt;chr&gt;, GroupOrder &lt;int&gt;, PhaseTypeCode &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   PhaseTypeName &lt;chr&gt;, PhaseTypeAlias &lt;chr&gt;, PhaseTypeIsGroupPhase &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   RoundRound &lt;int&gt;, RoundName &lt;chr&gt;, RoundAlias &lt;chr&gt;, Date &lt;date&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Status &lt;chr&gt;, Minute &lt;chr&gt;, RemainingTime &lt;chr&gt;, Quarter &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   QuarterMinute &lt;lgl&gt;, HomeCode &lt;chr&gt;, HomeName &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   HomeAbbreviatedName &lt;chr&gt;, HomeTla &lt;chr&gt;, HomeScore &lt;int&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   RoundName &lt;chr&gt;, RoundAlias &lt;chr&gt;, Date &lt;date&gt;, Status &lt;chr&gt;, Minute &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   RemainingTime &lt;chr&gt;, Quarter &lt;lgl&gt;, QuarterMinute &lt;lgl&gt;, HomeCode &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   HomeName &lt;chr&gt;, HomeAbbreviatedName &lt;chr&gt;, HomeTla &lt;chr&gt;, HomeScore &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   HomeStandingsScore &lt;int&gt;, HomeQuartersQ1 &lt;int&gt;, HomeQuartersQ2 &lt;int&gt;, …</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

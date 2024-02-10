@@ -60,18 +60,18 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getGamePlayByPlay</span><span class="op">(</span><span class="va">game_code</span>, <span class="va">season_code</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">getGamePlayByPlay</span><span class="op">(</span><span class="va">season_code</span>, <span class="va">game_code</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>game_code</dt>
-<dd><p>One or more game codes as obtained from <code><a href="getCompetitionMetadata.html">getCompetitionGames()</a></code>.</p></dd>
-
-
-<dt>season_code</dt>
+    <dl><dt>season_code</dt>
 <dd><p>One or more season codes as obtained from <code><a href="getCompetitionMetadata.html">getCompetitionHistory()</a></code>.<br>
 Examples are <code>E2023</code> for Euroleague or <code>U2023</code> for Eurocup 2023.</p></dd>
+
+
+<dt>game_code</dt>
+<dd><p>One or more game codes as obtained from <code><a href="getCompetitionMetadata.html">getCompetitionGames()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -91,20 +91,20 @@ Examples are <code>E2023</code> for Euroleague or <code>U2023</code> for Eurocup
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">PlayByPlay</span><span class="op">$</span><span class="va">PlayByPlaySummary</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   GameCode SeasonCode Live  TeamA        TeamB CodeTeamA CodeTeamB ActualQuarter</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 E2023      FALSE Crvena Zvez… LDLC… RED       ASV       4            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        1 U2023      FALSE Prometey Sl… Veol… PMT       HAM       4            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   SeasonCode GameCode Live  TeamA        TeamB CodeTeamA CodeTeamB ActualQuarter</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> E2023             1 FALSE Crvena Zvez… LDLC… RED       ASV       4            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> U2023             1 FALSE Prometey Sl… Veol… PMT       HAM       4            </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">PlayByPlay</span><span class="op">$</span><span class="va">PlayByPlay</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 17</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   GameCode SeasonCode Quarter  Type NumberOfPlay TeamCode Player_ID PlayType</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>        1 E2023            1     0            2 <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>        BP      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>        1 E2023            1     0            3 ASV      <span style="color: #BB0000;">NA</span>        JB      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>        1 E2023            1     0            4 ASV      004194    3PA     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>        1 E2023            1     0            5 ASV      012730    O       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>        1 E2023            1     0            6 ASV      004194    2PM     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   SeasonCode GameCode Quarter  Type NumberOfPlay TeamCode Player_ID PlayType</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> E2023             1       1     0            2 <span style="color: #BB0000;">NA</span>       <span style="color: #BB0000;">NA</span>        BP      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> E2023             1       1     0            3 ASV      <span style="color: #BB0000;">NA</span>        JB      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> E2023             1       1     0            4 ASV      004194    3PA     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> E2023             1       1     0            5 ASV      012730    O       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> E2023             1       1     0            6 ASV      004194    2PM     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 9 more variables: PlayerName &lt;chr&gt;, TeamName &lt;chr&gt;, Dorsal &lt;chr&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Minute &lt;int&gt;, Markertime &lt;chr&gt;, PointsA &lt;int&gt;, PointsB &lt;int&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   Comment &lt;lgl&gt;, PlayInfo &lt;chr&gt;</span></span>
