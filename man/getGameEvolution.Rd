@@ -4,13 +4,13 @@
 \alias{getGameEvolution}
 \title{Get game evolution}
 \usage{
-getGameEvolution(game_code, season_code)
+getGameEvolution(season_code, game_code)
 }
 \arguments{
-\item{game_code}{One or more game codes as obtained from \code{\link[=getCompetitionGames]{getCompetitionGames()}}.}
-
 \item{season_code}{One or more season codes as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
 Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
+
+\item{game_code}{One or more game codes as obtained from \code{\link[=getCompetitionGames]{getCompetitionGames()}}.}
 }
 \value{
 Returns a list of two elements for the chosen games and seasons

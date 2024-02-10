@@ -170,9 +170,11 @@ NULL
       tidyr::unnest(c(.data$referees),  names_sep = ".") %>%
       tidyr::unnest(c(.data$referees.country),  names_sep = ".") %>%
       dplyr::rename_with(.TextFormatType1) %>%
+      dplyr::rename(GameCode = .data$Code) %>%
       dplyr::mutate(dplyr::across(c(dplyr::ends_with("Date"), -.data$ConfirmedDate), ~as.Date(.))) %>%
       dplyr::group_by(dplyr::across(!dplyr::starts_with("Referees"))) %>%
-      dplyr::reframe(dplyr::across(dplyr::starts_with("Referees"), ~list(.)))
+      dplyr::reframe(dplyr::across(dplyr::starts_with("Referees"), ~list(.))) %>%
+      dplyr::select(-.data$RoundRound)
   } else {out$data = NULL}
   return(out)
 }
@@ -318,7 +320,7 @@ NULL
 #' @name .getGameHeader
 #' @noRd
 
-.getGameHeader = function(game_code, season_code){
+.getGameHeader = function(season_code, game_code){
   getin = httr::GET("https://live.euroleague.net/api/Header?",
             query = list(gamecode = game_code,
                          seasoncode = season_code))
@@ -337,7 +339,7 @@ NULL
 #' @noRd
 #' @keywords internal
 
-.getGameBoxScore = function(game_code, season_code){
+.getGameBoxScore = function(season_code, game_code){
   getin = httr::GET("https://live.euroleague.net/api/BoxScore",
                     query = list(gamecode = game_code,
                                  seasoncode = season_code))
@@ -384,7 +386,7 @@ NULL
 #' @noRd
 #' @keywords internal
 
-.getGamePoints = function(game_code, season_code){
+.getGamePoints = function(season_code, game_code){
   getin = httr::GET("https://live.euroleague.net/api/Points",
                     query = list(gamecode = game_code,
                                  seasoncode = season_code))
@@ -407,7 +409,7 @@ NULL
 #' @noRd
 #' @keywords internal
 
-.getGameRound = function(game_code, season_code){
+.getGameRound = function(season_code, game_code){
   getin = httr::GET("https://live.euroleague.net/api/Round",
                     query = list(gamecode = game_code,
                                  seasoncode = season_code))
@@ -447,7 +449,7 @@ NULL
 #' @noRd
 #' @keywords internal
 
-.getGamePlayByPlay = function(game_code, season_code){
+.getGamePlayByPlay = function(season_code, game_code){
   getin = httr::GET("https://live.euroleague.net/api/PlayByPlay",
                     query = list(gamecode = game_code,
                                  seasoncode = season_code))
@@ -485,7 +487,7 @@ NULL
 #' @noRd
 #' @keywords internal
 
-.getGameEvolution = function(game_code, season_code){
+.getGameEvolution = function(season_code, game_code){
   getin = httr::GET("https://live.euroleague.net/api/Evolution",
                     query = list(gamecode = game_code,
                                  seasoncode = season_code))

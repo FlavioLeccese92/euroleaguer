@@ -49,6 +49,6 @@
 #' @rdname getGameBoxScore
 #' @export
 
-getGameBoxScore = function(game_code, season_code){
-  .iterate(.getGameBoxScore, game_code, season_code)
+getGameBoxScore = function(season_code, game_code){
+  .iterate(.getGameBoxScore, season_code, game_code)
 }

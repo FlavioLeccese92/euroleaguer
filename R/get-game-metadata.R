@@ -23,8 +23,8 @@
 
 #' @rdname getGameMetadata
 #' @export
-getGameHeader = function(game_code, season_code){
-  .iterate(.getGameHeader, game_code, season_code)
+getGameHeader = function(season_code, game_code){
+  .iterate(.getGameHeader, season_code, game_code)
 }
 
 #' @rdname getGameMetadata
@@ -35,6 +35,6 @@ getGamePlayers = function(game_code, team_code, season_code){
 
 #' @rdname getGameMetadata
 #' @export
-getGameRound = function(game_code, season_code){
-  .iterate(.getGameRound, game_code, season_code)
+getGameRound = function(season_code, game_code){
+  .iterate(.getGameRound, season_code, game_code)
 }

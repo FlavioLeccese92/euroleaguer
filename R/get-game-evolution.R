@@ -17,6 +17,6 @@
 #' @rdname getGameEvolution
 #' @export
 
-getGameEvolution = function(game_code, season_code){
-  .iterate(.getGameEvolution, game_code, season_code)
+getGameEvolution = function(season_code, game_code){
+  .iterate(.getGameEvolution, season_code, game_code)
 }

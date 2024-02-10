@@ -58,9 +58,9 @@ throughout all the functions, avoiding ambiguity of stats naming such as `2FG%` 
 
 ## What can be done
 
---- under construction ---
 
-Get team logos
+
+- Get team logos
 
 ```{r}
 getCompetitionTeams("E2023") %>% 
@@ -71,7 +71,7 @@ getCompetitionTeams("E2023") %>%
    HTML(.)
 ```
 
-Get player images
+- Get player images
 
 ```{r}
 getPlayerStats("E2023") %>% 

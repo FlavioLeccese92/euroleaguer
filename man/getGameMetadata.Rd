@@ -6,17 +6,17 @@
 \alias{getGameRound}
 \title{Game metadata}
 \usage{
-getGameHeader(game_code, season_code)
+getGameHeader(season_code, game_code)
 
 getGamePlayers(game_code, team_code, season_code)
 
-getGameRound(game_code, season_code)
+getGameRound(season_code, game_code)
 }
 \arguments{
-\item{game_code}{One or more game codes as obtained from \code{\link[=getCompetitionGames]{getCompetitionGames()}}.}
-
 \item{season_code}{One or more season codes as obtained from \code{\link[=getCompetitionHistory]{getCompetitionHistory()}}.\cr
 Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
+
+\item{game_code}{One or more game codes as obtained from \code{\link[=getCompetitionGames]{getCompetitionGames()}}.}
 
 \item{team_code}{One or more team codes as obtained from \code{\link[=getCompetitionTeams]{getCompetitionTeams()}}.\cr
 Examples are \code{ASV}, \code{MAD}, ...}
