@@ -2,7 +2,7 @@
   width: fit-content;
   border-radius: 3px;
   background-color: #e2e7ea;
-  padding-top: 0rem;
+  padding-top: 0;
   padding-right: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 0.5rem;
@@ -31,9 +31,9 @@ tr:first-child > td {
   color: #f2f2f2;
 }
 pre {
-  background-color: #e2e7ea;
-  border: 0px;
+  background-color: #DEDEDE;
+  border: 0;
 }
 code {
-  background-color: #e2e7ea;
+  background-color: #DEDEDE;
 }

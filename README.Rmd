@@ -58,31 +58,8 @@ throughout all the functions, avoiding ambiguity of stats naming such as `2FG%` 
 
 ## What can be done
 
+<center>--- Work in progress ---</center>
 
+![](man/figures/team-stats-radarchart.png)
 
-- Get team logos
-
-```{r}
-getCompetitionTeams("E2023") %>% 
-  mutate(ImageTag = glue("<img src='{ImagesCrest}' style = 'width:40px!important;'>")) %>% 
-  pull(ImageTag) %>% 
-  paste0(., collapse = " ") %>% 
-  paste0("<div style='text-align:center;display:flex;text-align:center;justify-content:center;max-width:100%;flex-wrap: wrap;'>", ., "</div>") %>%
-   HTML(.)
-```
-
-- Get player images
-
-```{r}
-getPlayerStats("E2023") %>% 
- mutate(ImageUrl = glue("<img src='{ImageUrl}' style = 'width:40px!important;'>")) %>% 
- slice_max(PIR, n = 18) %>% 
- pull(ImageUrl) %>% 
- paste0(., collapse = " ") %>% 
- paste0("<div style='display:flex;text-align:center;justify-content:center;max-width:100%;flex-wrap: wrap;'>", ., "</div>") %>%
- HTML(.)
-```
-
-
---- under construction ---
-
+<center>--- Work in progress ---</center>
