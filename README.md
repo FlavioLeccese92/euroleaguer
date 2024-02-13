@@ -54,6 +54,8 @@ pure analysis.
 
 ![](man/figures/team-stats-radarchart.png)
 
+![](man/figures/team-stats-court.png)
+
 <center>
 — Work in progress —
 </center>

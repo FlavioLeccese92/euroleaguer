@@ -62,4 +62,6 @@ throughout all the functions, avoiding ambiguity of stats naming such as `2FG%` 
 
 ![](man/figures/team-stats-radarchart.png)
 
+![](man/figures/team-stats-court.png)
+
 <center>--- Work in progress ---</center>
