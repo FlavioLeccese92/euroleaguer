@@ -45,7 +45,7 @@ CompetitionStandings %>%
   geom_smooth(aes(colour = PrimaryColor, group = TeamName), linewidth = 1.5, se = FALSE, span = 0.25) +
   geom_point(data = . %>% filter(Round < max(.$Round)), aes(colour = PrimaryColor), size = 4) +
   geom_point(data = . %>% filter(Round < max(.$Round)), colour =  "white", size = 2) +
-  geom_point(data = . %>% filter(Round == max(.$Round)), aes(colour = PrimaryColor), size = 10)+
+  geom_point(data = . %>% filter(Round == max(.$Round)), aes(colour = PrimaryColor), size = 10) +
   geom_point(data = . %>% filter(Round == max(.$Round)), colour =  "white", size = 8) +
   geom_image(data = TeamImage, aes(y = y, image = TeamImagesCrest), size = 0.03,
              image_fun = function(img) { magick::image_crop(img) }) +

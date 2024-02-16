@@ -28,6 +28,14 @@ home:
     href: https://www.euroleaguebasketball.net/eurocup/
 docsearch:
   search:
+
+articles:
+- title: Plots
+  navbar: ~
+  contents:
+  - team-stats-court
+  - team-stats-radar
+
 reference:
 
 - title: Competition
