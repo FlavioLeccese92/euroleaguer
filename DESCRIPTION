@@ -26,5 +26,6 @@ Roxygen: list(markdown = TRUE)
 Suggests: 
     knitr,
     rmarkdown
-Config/Needs/website: euroleaguer, tidyr, dplyr, ggplot2, ggtext, showtext, ggimage, 
-geomtextpath, hexbin, elementalist
+Config/Needs/website:
+    euroleaguer, tidyr, dplyr, ggplot2, ggtext, showtext, ggimage, geomtextpath, 
+    hexbin, elementalist
