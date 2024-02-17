@@ -31,10 +31,10 @@ docsearch:
 
 articles:
 - title: Plots
-  navbar: ~
+  navbar: Plots
   contents:
-  - team-stats-court
-  - team-stats-radar
+  - articles/team-stats-court
+  - articles/team-stats-radar
 
 reference:
 
