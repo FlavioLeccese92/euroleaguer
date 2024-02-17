@@ -18,6 +18,22 @@ install_github("teunbrand/elementalist")
 install_github("flavioleccese92/euroleaguer")
 ```
 
+## Goal
+
+We want to create a chart for each team showing the field-goals percentage and
+overall attempts on the court.
+
+Colours are ranging from
+<span style="font-family:'Source Code Pro';background-color:#C70D3A;color:white;">#C70D3A</span> 
+(lower percentages) to 
+<span style="font-family:'Source Code Pro';background-color:#2EB086;color:white;">#2EB086</span>)
+(high percentages)
+and size of hexagons <span style="color:#F47321; font-size:20px;">&#x2B22;</span> 
+are corresponding to the number of attempts.
+
+Data can be obtained through `getGamePoints` function.
+
+## Setup
 
 ```{r setup}
 library(euroleaguer)
@@ -43,6 +59,7 @@ showtext_opts(dpi = 200)
 showtext_auto()
 ```
 
+## Data
 
 ```{r data}
 CompetitionRounds = getCompetitionRounds("E2023") %>%
@@ -57,6 +74,7 @@ CompetitionGames = getCompetitionGames("E2023", CompetitionRounds$Round)
 GamePoints = getGamePoints("E2023", CompetitionGames$GameCode)
 ```
 
+## Court
 
 ```{r court}
 source("scripts/construct-court.R")
@@ -71,6 +89,7 @@ ny = ceiling((CourtMaxY - CourtMinY)/DistY)
 Origin = c(CourtMinX, CourtMinY)
 ```
 
+## Hexgrid
 
 ```{r hexgrid}
 HexGrid = tibble(
@@ -147,6 +166,7 @@ for (i in 1:nrow(GamePoints)) {
 }
 ```
 
+## Data for plot
 
 ```{r data for plot}
 GamePoints = GamePoints %>%
@@ -159,6 +179,7 @@ GamePoints = GamePoints %>%
   mutate(TeamName = factor(TeamName, levels = unique(.$TeamName)))
 ```
 
+## Image for plot
 
 ```{r images for plot}
 TeamImage = GamePoints %>%
@@ -167,6 +188,7 @@ TeamImage = GamePoints %>%
   mutate(x = (CourtMinX + CourtMaxX)/2, y = CourtMaxY - 2)
 ```
 
+## Title, subtitle and caption
 
 ```{r title, subtitle and caption}
 PlotTitle = glue(
@@ -190,15 +212,26 @@ PlotCaption = glue(
   <span>flavioleccese</span>")
 ```
 
+## Plot
 
 ```{r plot}
+# Initialize
 e = GamePoints %>%
-  ggplot(aes(x = Hex_x, y = Hex_y))  +
+  ggplot(aes(x = Hex_x, y = Hex_y))
+
+# Add court polygon
+e = e +
   geom_path(
     data = Court, aes(x = x, y = y, group = type),
-    linewidth = 0.1, colour = "#404040", alpha = 1) +
+    linewidth = 0.1, colour = "#404040", alpha = 1)
+
+# Add hexagons
+e = e +
   geom_polygon(
-    aes(group = Hex_ID, fill = FillValue), color = "#eeede9", alpha = 0.8) +
+    aes(group = Hex_ID, fill = FillValue), color = "#eeede9", alpha = 0.8)
+
+# Facet by team + general theme setting
+e = e +
   scale_fill_manual(
     name = "Ranking",
     values = c("Low" = "#C70D3A", "Mid - Low" = "#FF7F00", "Medium" = "#FFD301",
@@ -255,5 +288,7 @@ ggsave("team-stats-court.png", plot = e, path = "figures/",
        height = 2000, width = 3000, units = "px", dpi = 200)
 
 ```
+
+## Result
 
 ![](figures/team-stats-court.png)

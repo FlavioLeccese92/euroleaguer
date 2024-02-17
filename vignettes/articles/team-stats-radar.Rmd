@@ -18,6 +18,22 @@ install_github("teunbrand/elementalist")
 install_github("flavioleccese92/euroleaguer")
 ```
 
+## Goal
+
+We want to create a chart for each team showing the normalized ranking for 
+points (`PTS`), valuation (`PIR`), 2-points made (`2PM`), 2-points % (`2P%`), 
+3-points made (`3PM`), 3-points % (`3P%`), free-throws % (`FT%`), assists (`AST`), 
+offensive rebounds (`OREB`), defensive rebounds (`DREB`), steals (`STL`), blocks (`BLK`),
+and turnover (`TO`).
+
+Colours are ranging from
+<span style="font-family:'Source Code Pro';background-color:#C70D3A;color:white;">#C70D3A</span> 
+to 
+<span style="font-family:'Source Code Pro';background-color:#2EB086;color:white;">#2EB086</span>.
+
+Data can be obtained through `getTeamStats` function.
+
+## Setup
 
 ```{r setup}
 library(euroleaguer)
@@ -43,6 +59,8 @@ showtext_opts(dpi = 200)
 showtext_auto()
 ```
 
+## Data
+
 ```{r data}
 CompetitionRounds = getCompetitionRounds("E2023") %>%
   filter(MinGameStartDate <= Sys.Date()) %>%
@@ -55,6 +73,8 @@ MaxGameDate = format(as.Date(max(CompetitionRounds$MaxGameStartDate)),
 CompetitionStandings = getCompetitionStandings("E2023", CompetitionRounds$Round)
 TeamStats = getTeamStats("E2023", CompetitionStandings$TeamCode)
 ```
+
+## Data for plot
 
 ```{r data for plot}
 # Pick stats
@@ -91,6 +111,8 @@ TeamStatsForPlot = TeamStats$TeamAveragePerGame %>%
 
 ```
 
+## Image for plot
+
 ```{r images for plot}
 TeamImage = TeamStatsForPlot %>%
   filter(!is.na(TeamImagesCrest)) %>%
@@ -98,6 +120,7 @@ TeamImage = TeamStatsForPlot %>%
   mutate(Stat = 4, y = 0)
 ```
 
+## Title, subtitle and caption
 
 ```{r title, subtitle and caption}
 PlotTitle = glue(
@@ -121,9 +144,9 @@ PlotCaption = glue(
   <span>flavioleccese</span>")
 ```
 
+## Plot
 
 ```{r plot}
-
 # Initialize
 e = ggplot(TeamStatsForPlot, aes(x = Stat))
 
@@ -140,7 +163,7 @@ e = e +
                alpha = AlphaValue, linewidth = SizeValue),
            position = "fill", stat = "identity", colour = "#f2f2f2")
 
-# Facet by Team + general theme setting
+# Facet by team + general theme setting
 e = e +
   facet_wrap(~ Team, ncol = 6) +
   scale_x_discrete() +
@@ -202,5 +225,7 @@ ggsave("team-stats-radarchart.png", plot = e, path = "figures/",
        height = 2000, width = 3000, units = "px", dpi = 200)
 
 ```
+
+## Result
 
 ![](figures/team-stats-radarchart.png)
