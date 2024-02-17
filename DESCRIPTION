@@ -27,5 +27,4 @@ Suggests:
     knitr,
     rmarkdown
 Config/Needs/website:
-    euroleaguer, tidyr, dplyr, ggplot2, ggtext, showtext, ggimage, geomtextpath, 
-    hexbin, elementalist
+    tidyr, dplyr, ggplot2, ggtext, showtext, ggimage, geomtextpath, hexbin, devtools
