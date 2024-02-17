@@ -34,7 +34,7 @@ font_add_google("Inconsolata", "Inconsolata")
 
 # Add Font Awesome for logos
 font_add(family = "Font Awesome 6 Brands", 
-         regular = "../../man/figures/fa-brands-400.ttf")
+         regular = "figures/fa-brands-400.ttf")
 showtext_opts(dpi = 200)
 showtext_auto()
 ```
@@ -102,7 +102,7 @@ PlotTitle = glue(
   {MaxGameDate}</span>")
 
 PlotSubtitle = glue(
-  "<span><img src = '../../man/figures/euroleague-logo-vertical.png'
+  "<span><img src = 'figures/euroleague-logo-vertical.png'
   height='50'></span>")
 
 PlotCaption = glue(
@@ -194,9 +194,9 @@ e = e +
 
 ```{r save, include=FALSE}
 # Save plot (standard width 4100)
-ggsave("team-stats-radarchart.png", plot = e, path = "../../man/figures/",
+ggsave("team-stats-radarchart.png", plot = e, path = "figures/",
        height = 2000, width = 3000, units = "px", dpi = 200)
 
 ```
 
-![](../../man/figures/team-stats-radarchart.png)
+![](figures/team-stats-radarchart.png)

@@ -5,6 +5,5 @@
 ^pkgdown$
 ^\.github$
 ^README\.Rmd$
-^vignettes/scripts
 ^vignettes/articles$
 ^cran-comments\.md$
