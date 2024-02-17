@@ -98,6 +98,24 @@ Leccese</h4>
 
     
     
+<div class="section level2">
+<h2 id="goal">Goal<a class="anchor" aria-label="anchor" href="#goal"></a>
+</h2>
+<p>We want to create a chart for each team showing the normalized
+ranking for points (<code>PTS</code>), valuation (<code>PIR</code>),
+2-points made (<code>2PM</code>), 2-points % (<code>2P%</code>),
+3-points made (<code>3PM</code>), 3-points % (<code>3P%</code>),
+free-throws % (<code>FT%</code>), assists (<code>AST</code>), offensive
+rebounds (<code>OREB</code>), defensive rebounds (<code>DREB</code>),
+steals (<code>STL</code>), blocks (<code>BLK</code>), and turnover
+(<code>TO</code>).</p>
+<p>Colours are ranging from <span style="font-family:'Source Code Pro';background-color:#C70D3A;color:white;">#C70D3A</span>
+to <span style="font-family:'Source Code Pro';background-color:#2EB086;color:white;">#2EB086</span>.</p>
+<p>Data can be obtained through <code>getTeamStats</code> function.</p>
+</div>
+<div class="section level2">
+<h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/FlavioLeccese92/euroleaguer/" class="external-link">euroleaguer</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
@@ -120,6 +138,10 @@ Leccese</h4>
 <span>         regular <span class="op">=</span> <span class="st">"figures/fa-brands-400.ttf"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html" class="external-link">showtext_opts</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html" class="external-link">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a>
+</h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">CompetitionRounds</span> <span class="op">=</span> <span class="fu"><a href="../reference/getCompetitionMetadata.html">getCompetitionRounds</a></span><span class="op">(</span><span class="st">"E2023"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">MinGameStartDate</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -131,6 +153,10 @@ Leccese</h4>
 <span></span>
 <span><span class="va">CompetitionStandings</span> <span class="op">=</span> <span class="fu"><a href="../reference/getCompetitionStandings.html">getCompetitionStandings</a></span><span class="op">(</span><span class="st">"E2023"</span>, <span class="va">CompetitionRounds</span><span class="op">$</span><span class="va">Round</span><span class="op">)</span></span>
 <span><span class="va">TeamStats</span> <span class="op">=</span> <span class="fu"><a href="../reference/getTeamStats.html">getTeamStats</a></span><span class="op">(</span><span class="st">"E2023"</span>, <span class="va">CompetitionStandings</span><span class="op">$</span><span class="va">TeamCode</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="data-for-plot">Data for plot<a class="anchor" aria-label="anchor" href="#data-for-plot"></a>
+</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Pick stats</span></span>
 <span><span class="va">stats</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PTS"</span>, <span class="st">"PIR"</span>, <span class="st">"2PM"</span>, <span class="st">"2P%"</span>, <span class="st">"3PM"</span>, <span class="st">"3P%"</span>, <span class="st">"FT%"</span>, <span class="st">"AST"</span>, </span>
@@ -163,11 +189,19 @@ Leccese</h4>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>Team <span class="op">=</span> <span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></span><span class="op">(</span><span class="st">"{TeamName} #{Position}"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>Team <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Team</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">.</span><span class="op">$</span><span class="va">Team</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>         Stat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">Stat</span>, levels <span class="op">=</span> <span class="va">stats</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="image-for-plot">Image for plot<a class="anchor" aria-label="anchor" href="#image-for-plot"></a>
+</h2>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">TeamImage</span> <span class="op">=</span> <span class="va">TeamStatsForPlot</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">TeamImagesCrest</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">Team</span>, <span class="va">TeamImagesCrest</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>Stat <span class="op">=</span> <span class="fl">4</span>, y <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="title-subtitle-and-caption">Title, subtitle and caption<a class="anchor" aria-label="anchor" href="#title-subtitle-and-caption"></a>
+</h2>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">PlotTitle</span> <span class="op">=</span> <span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></span><span class="op">(</span></span>
 <span>  <span class="st">"&lt;span style = 'font-size: 32px'&gt;Team ranking by statistic&lt;/span&gt;&lt;br&gt;</span></span>
@@ -188,6 +222,10 @@ Leccese</h4>
 <span><span class="st">  &lt;span&gt;flavioleccese92&lt;/span&gt;</span></span>
 <span><span class="st">  &lt;span style = 'font-family:\"Font Awesome 6 Brands\";'&gt;&amp;#xf08c;&lt;/span&gt;</span></span>
 <span><span class="st">  &lt;span&gt;flavioleccese&lt;/span&gt;"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="plot">Plot<a class="anchor" aria-label="anchor" href="#plot"></a>
+</h2>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Initialize</span></span>
 <span><span class="va">e</span> <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">TeamStatsForPlot</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Stat</span><span class="op">)</span><span class="op">)</span></span>
@@ -205,7 +243,7 @@ Leccese</h4>
 <span>               alpha <span class="op">=</span> <span class="va">AlphaValue</span>, linewidth <span class="op">=</span> <span class="va">SizeValue</span><span class="op">)</span>,</span>
 <span>           position <span class="op">=</span> <span class="st">"fill"</span>, stat <span class="op">=</span> <span class="st">"identity"</span>, colour <span class="op">=</span> <span class="st">"#f2f2f2"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Facet by Team + general theme setting</span></span>
+<span><span class="co"># Facet by team + general theme setting</span></span>
 <span><span class="va">e</span> <span class="op">=</span> <span class="va">e</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">Team</span>, ncol <span class="op">=</span> <span class="fl">6</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html" class="external-link">scale_x_discrete</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -258,7 +296,12 @@ Leccese</h4>
 <span>  <span class="op">)</span>  <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="va">PlotTitle</span>, subtitle <span class="op">=</span> <span class="va">PlotSubtitle</span>, caption <span class="op">=</span> <span class="va">PlotCaption</span>,</span>
 <span>       x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="result">Result<a class="anchor" aria-label="anchor" href="#result"></a>
+</h2>
 <p><img src="figures/team-stats-radarchart.png"></p>
+</div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
 </div>
