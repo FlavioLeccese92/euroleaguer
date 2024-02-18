@@ -200,7 +200,7 @@ e <- e +
 ```{r save, include=FALSE}
 # Save plot (standard width 4100)
 ggsave("team-standings-race.png", plot = e, path = "../../man/figures/",
-       height = 2000, width = 4100, units = "px", dpi = 200)
+       height = 2000, width = 3000, units = "px", dpi = 200)
 
 ```
 
