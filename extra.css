@@ -8,19 +8,24 @@
   padding-left: 0.5rem;
   max-height: 350px;
 }
-.table>:not(caption)>*>* {
-  font-size: small;
-  background-color: transparent;
-  padding: 0.25rem 0.25rem;
-}
-tr:first-child {
+tr:first-child:not(.odd) {
   position: sticky;
   top: 0;
   background-color: #e2e7ea;
 }
-tr:first-child > td {
-   padding-bottom: 10px;
-   padding-top: 10px;
+tr:first-child:not(.odd) > td {
+   padding-bottom: 10px!important;
+   padding-top: 10px!important;
+   border-bottom: 1px solid var(--bs-table-color);
+}
+th {
+   padding-bottom: 10px!important;
+   padding-top: 10px!important;
+}
+.table>:not(caption)>*>* {
+  font-size: small;
+  background-color: transparent;
+  padding: 0.25rem 0.25rem;
 }
 .btn {
   --bs-btn-padding-x: 1em;
