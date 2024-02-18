@@ -54,6 +54,7 @@
     <h6 class="dropdown-header" data-toc-skip>Plots</h6>
     <a class="dropdown-item" href="../articles/team-stats-court.html">Court team stats</a>
     <a class="dropdown-item" href="../articles/team-stats-radar.html">Radar team stats</a>
+    <a class="dropdown-item" href="../articles/team-standings-race.html">Standings team race</a>
   </div>
 </li>
       </ul>
@@ -90,7 +91,7 @@
                         <h4 data-toc-skip class="author">Flavio
 Leccese</h4>
             
-            <h4 data-toc-skip class="date">2024-02-17</h4>
+            <h4 data-toc-skip class="date">2024-02-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/FlavioLeccese92/euroleaguer/blob/HEAD/vignettes/articles/team-stats-court.Rmd" class="external-link"><code>vignettes/articles/team-stats-court.Rmd</code></a></small>
       <div class="d-none name"><code>team-stats-court.Rmd</code></div>
@@ -108,6 +109,7 @@ percentage and overall attempts on the court.</p>
 (high percentages) and size of hexagons <span style="color:#F47321; font-size:20px;">⬢</span> are corresponding to the
 number of attempts.</p>
 <p>Data can be obtained through <code>getGamePoints</code> function.</p>
+<p>Resulted plot can be found at the bottom of this page.</p>
 </div>
 <div class="section level2">
 <h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
@@ -269,7 +271,7 @@ number of attempts.</p>
 </h2>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">PlotTitle</span> <span class="op">=</span> <span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></span><span class="op">(</span></span>
-<span>  <span class="st">"&lt;span style = 'font-size: 32px'&gt;Team Court goals and accuracy&lt;/span&gt;&lt;br&gt;</span></span>
+<span>  <span class="st">"&lt;span style = 'font-size: 32px'&gt;Team court goals and accuracy&lt;/span&gt;&lt;br&gt;</span></span>
 <span><span class="st">  &lt;span style = 'font-size: 20px'&gt;All teams | Up to round {MaxRound} |</span></span>
 <span><span class="st">  {MaxGameDate}&lt;/span&gt;"</span><span class="op">)</span></span>
 <span></span>
@@ -360,7 +362,7 @@ number of attempts.</p>
 <div class="section level2">
 <h2 id="result">Result<a class="anchor" aria-label="anchor" href="#result"></a>
 </h2>
-<p><img src="figures/team-stats-court.png"></p>
+<p><img src="../../reference/figures/team-stats-court.png"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

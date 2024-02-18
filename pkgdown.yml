@@ -2,9 +2,10 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
+  team-standings-race: team-standings-race.html
   team-stats-court: team-stats-court.html
   team-stats-radar: team-stats-radar.html
-last_built: 2024-02-17T20:21Z
+last_built: 2024-02-18T16:19Z
 urls:
   reference: https://flavioleccese92.github.io/euroleaguer/reference
   article: https://flavioleccese92.github.io/euroleaguer/articles
