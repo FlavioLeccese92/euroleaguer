@@ -70,6 +70,7 @@ CompetitionRounds = getCompetitionRounds("E2023") %>%
 CompetitionStandings = getCompetitionStandings("E2023", CompetitionRounds$Round)
 
 MaxRound = max(CompetitionRounds$Round)
+MaxGameDate = max(CompetitionRounds$MaxGameStartDate)
 NRounds = 12
 
 Teams = getTeam("E2023", unique(CompetitionStandings$TeamCode))
