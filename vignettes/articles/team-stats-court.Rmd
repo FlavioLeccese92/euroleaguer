@@ -33,6 +33,8 @@ are corresponding to the number of attempts.
 
 Data can be obtained through `getGamePoints` function.
 
+Resulted plot can be found at the bottom of this page.
+
 ## Setup
 
 ```{r setup}
@@ -192,7 +194,7 @@ TeamImage = GamePoints %>%
 
 ```{r title, subtitle and caption}
 PlotTitle = glue(
-  "<span style = 'font-size: 32px'>Team Court goals and accuracy</span><br>
+  "<span style = 'font-size: 32px'>Team court goals and accuracy</span><br>
   <span style = 'font-size: 20px'>All teams | Up to round {MaxRound} |
   {MaxGameDate}</span>")
 
@@ -284,11 +286,11 @@ e = e +
 
 ```{r save, include=FALSE}
 # Save plot (standard width 4100)
-ggsave("team-stats-court.png", plot = e, path = "figures/",
+ggsave("team-stats-court.png", plot = e, path = "../../man/figures/",
        height = 2000, width = 3000, units = "px", dpi = 200)
 
 ```
 
 ## Result
 
-![](figures/team-stats-court.png)
+![](../../man/figures/team-stats-court.png)

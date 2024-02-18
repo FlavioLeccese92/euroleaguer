@@ -22,6 +22,7 @@ font_add_google("Inconsolata", "Inconsolata")
 font_add(family = "Font Awesome 6 Brands", regular = "man/figures/fa-brands-400.ttf")
 showtext_opts(dpi = 200)
 showtext_auto()
+
 CompetitionRounds = getCompetitionRounds("E2023") %>%
   filter(MinGameStartDate <= Sys.Date())
 
@@ -29,29 +30,41 @@ CompetitionStandings = getCompetitionStandings("E2023", CompetitionRounds$Round)
 
 Teams = getTeam("E2023", unique(CompetitionStandings$TeamCode))
 
+CompetitionStandings = CompetitionStandings %>%
+  left_join(Teams %>% select(TeamCode, PrimaryColor, SecondaryColor),
+            by = "TeamCode") %>%
+  left_join(CompetitionStandings %>% filter(Round == MaxRound) %>%
+              arrange(desc(Position)) %>%
+              mutate(y = factor(glue("#{Position} {TeamName}"),
+                                levels = glue("#{Position} {TeamName}"))) %>%
+              select(TeamCode, y, Position),
+            by = "Position") %>%
+  filter(Round %in% (MaxRound - 10):MaxRound) %>%
+  mutate(x = ifelse(Round == MaxRound, Round + 0*(Position %% 2)/5, Round))
+
+LastRound = CompetitionStandings %>% filter(Round == MaxRound)
+PreviousRounds = CompetitionStandings %>% filter(Round < MaxRound)
+
 # Create dataset for images
 TeamImage = CompetitionStandings %>%
   slice_max(order_by = Round) %>%
   filter(!is.na(TeamImagesCrest)) %>%
-  distinct(Round, TeamName, TeamImagesCrest, Position) %>%
-  mutate(y = Position)
+  distinct(x, y, TeamName, TeamImagesCrest)
 
-CompetitionStandings = CompetitionStandings %>%
-  left_join(Teams %>% select(TeamCode, PrimaryColor), by = "TeamCode") %>%
-  filter(Round %in% (max(Round) - 10):max(Round))
-
-CompetitionStandings %>%
-  ggplot(aes(x = Round, y = Position)) +
-  geom_smooth(aes(colour = PrimaryColor, group = TeamName), linewidth = 1.5, se = FALSE, span = 0.25) +
-  geom_point(data = . %>% filter(Round < max(.$Round)), aes(colour = PrimaryColor), size = 4) +
-  geom_point(data = . %>% filter(Round < max(.$Round)), colour =  "white", size = 2) +
-  geom_point(data = . %>% filter(Round == max(.$Round)), aes(colour = PrimaryColor), size = 10) +
-  geom_point(data = . %>% filter(Round == max(.$Round)), colour =  "white", size = 8) +
+# e =
+ CompetitionStandings %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_smooth(aes(colour = SecondaryColor, group = TeamName), linewidth = 1.25, se = FALSE, span = 0.25) +
+  geom_smooth(aes(colour = PrimaryColor, group = TeamName), linetype = "longdash", linewidth = 1.25, se = FALSE, span = 0.25) +
+  geom_point(data = PreviousRounds, aes(colour = PrimaryColor), size = 3) +
+  geom_point(data = PreviousRounds, colour =  "#f2f2f2", size = 1) +
+  geom_point(data = LastRound, aes(colour = PrimaryColor), size = 12) +
+  geom_point(data = LastRound, colour =  "#f2f2f2", size = 10) +
   geom_image(data = TeamImage, aes(y = y, image = TeamImagesCrest), size = 0.03,
              image_fun = function(img) { magick::image_crop(img) }) +
   scale_colour_identity() +
-  scale_y_reverse(n.breaks = length(unique(CompetitionStandings$Position)), position = "right") +
-  scale_x_continuous(n.breaks = length(unique(CompetitionStandings$Round)),
+  scale_y_discrete(position = "right") +
+  scale_x_continuous(breaks = 1:MaxRound, labels = 1:MaxRound,
                      expand = c(0.01, 0.1)) +
   theme(
     # General
@@ -63,10 +76,7 @@ CompetitionStandings %>%
     text = element_text(color = "#404040", family = "Lato"),
     # Axis labels
     axis.ticks = element_blank(),
-    # axis.title.y = element_text(margin = margin(l = 5, r = 10)),
     axis.title.y = element_blank(),
-    # axis.text.y = element_blank(),
-    # axis.title.x = element_text(margin = margin(t = 10, b = 5)),
     axis.title.x = element_blank(),
     axis.text.x = element_text(vjust = 0.5),
     # Legend
@@ -86,6 +96,9 @@ CompetitionStandings %>%
     # Facet
     strip.background = element_rect(fill = "#F47321"),
     strip.text = element_text(colour = "black", hjust = 0)
-  ) # +
-    # labs(title = PlotTitle, subtitle = PlotSubtitle, caption = PlotCaption,
-  #     x = "", y = "")
+  ) +
+  labs(title = PlotTitle, subtitle = PlotSubtitle, caption = PlotCaption,
+       x = "", y = "")
+
+ggsave("team-standings-race.png", plot = e, path = "figures/",
+       height = 2000, width = 4100, units = "px", dpi = 200)
