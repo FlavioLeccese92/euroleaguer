@@ -56,7 +56,7 @@ font_add_google("Inconsolata", "Inconsolata")
 
 # Add Font Awesome for logos
 font_add(family = "Font Awesome 6 Brands", 
-         regular = "figures/fa-brands-400.ttf")
+         regular = "../../man/figures/fa-brands-400.ttf")
 showtext_opts(dpi = 200)
 showtext_auto()
 ```
@@ -199,7 +199,7 @@ PlotTitle <- glue(
   {MaxGameDate}</span>")
 
 PlotSubtitle <- glue(
-  "<span><img src = 'figures/euroleague-logo-vertical.png'
+  "<span><img src = '../../man/figures/euroleague-logo-vertical.png'
   height='50'></span>")
 
 PlotCaption <- glue(
@@ -267,10 +267,10 @@ e <- e +
     legend.margin = margin(10, 0, 3, 0),
     legend.box.spacing = unit(0, "pt"),
     # Title, subtitle, caption
-    plot.title <- element_markdown(
+    plot.title = element_markdown(
       lineheight = 1, size = 24, hjust = 0, vjust = 1, 
       margin = margin(0, 0, -20, 0)),
-    plot.subtitle <- element_markdown(
+    plot.subtitle = element_markdown(
       hjust = 1, size = 16, margin = margin(-30, 3, -50, 0)),
     plot.caption = element_markdown(
       size = 12, margin = margin(-25, 0, 0, 3)),
