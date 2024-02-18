@@ -48,16 +48,18 @@ pure analysis.
 
 ## What can be done
 
-<center>
-— Work in progress —
-</center>
+This package allows to retrieve a wide variety of **real-time** and
+historical data by different types of aggregation, particularly by
+player, team or game.
+
+Standard statistics are available as well as some advanced such as
+`AST/TO` (ratio of assists made to turnovers committed) or `AST-R`
+(estimated % of assists per player’s offensive possessions) and many
+more. Complete list can be found
+[here](https://flavioleccese92.github.io/euroleaguer/articles/glossary.html).
 
 ![](man/figures/team-standings-race.png)
 
 ![](man/figures/team-stats-radarchart.png)
 
 ![](man/figures/team-stats-court.png)
-
-<center>
-— Work in progress —
-</center>

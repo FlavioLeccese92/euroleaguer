@@ -1,0 +1,156 @@
+---
+title: "Glossary"
+author: "Flavio Leccese"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+invisible(Sys.setlocale(locale = "en_EN.UTF-8"))
+```
+
+This document containes the complete list of statistics that are covered by this
+package with corresponding functions.
+
+# Players
+
+## `getPlayerStats`
+
+| **Column name** | **Column extended name**  |
+| --------------- | ------------------------- |
+| GP              | Game player               |
+| GS              | Game started              |
+| MIN             | Minutes played            |
+| PTS             | Points scored             |
+| 2PM             | Two-pointers made         |
+| 2PA             | Two-pointers attempted    |
+| 2P%             | Two-point %               |
+| 3PM             | Three-pointers made       |
+| 3PA             | Three-pointers attempted  |
+| 3P%             | Three-point %             |
+| FTM             | Free throws made          |
+| FTA             | Free throws attempted     |
+| FT%             | Free-throw %              |
+| OREB            | Offensive rebounds        |
+| DREB            | Defensive rebounds        |
+| TREB            | Total rebounds            |
+| AST             | Assists                   |
+| STL             | Steals                    |
+| TO              | Turnovers                 |
+| BLK             | Blocks                    |
+| BLKA            | Blocks against            |
+| FC              | Personal fouls committed  |
+| FD              | Personal fouls drawn      |
+| PIR             | Performance Index Rating  |
+
+## `getPlayerPoints`
+
+| **Column name** | **Column extended name**        | **Column description**                                    |
+| --------------- | ------------------------------- | --------------------------------------------------------- |
+| 2PA-S           | Two-point attempts share        | Player's share of team's total two-point attempts         |
+| 3PA-S           | Three-point attempts share      | Player's share of team's total three-point attempts       |
+| FTA-S           | Free throw attempts share       | Player's share of team's total free throw attempts        |
+| 2PM-S           | Two-pointers made share         | Player's share of team's total two-pointers made          |
+| 3PM-S           | Three-pointers made share       | Player's share of team's total three-pointers made        |
+| FTM-S           | Free throws made share          | Player's share of team's total free throws made           |
+| 2P-RT           | Two-Point Rate                  | % of a player's field goal attempts that are two-pointers |
+| 3P-RT           | Three-Point Rate                | % of field goal attempts that are three-pointers          |
+| %2P             | % of points from two-pointers   | % of points from two-point shots made                     |
+| %3P             | % of points from three-pointers | % of points from three-point shots made                   |
+| %FT             | % of points from free throws    | % of points from free throws made                         |
+
+## `getPlayergetPlayerAdvanced`
+
+| **Column name** | **Column extended name**  | **Column description**                                                |
+| --------------- | ------------------------- | --------------------------------------------------------------------- |
+| eFG%            | Effective field goal %    | Combined two- and three-point shooting effectiveness                  |
+| TS%             | True shooting %           | Percentage of points vs. points attempted                             |
+| OREB%           | Offensive rebound %       | Estimated % of available offensive rebounds obtained while on court   |
+| DREB%           | Defensive rebound %       | Estimated % of available defensive rebounds obtained while on court   |
+| REB%            | Rebound %                 | Estimated % of available rebounds obtained while on court             |
+| AST/TO          | Assist to turnover ratio  | Ratio of assists made to turnovers committed                          |
+| AST-R           | Assist ratio              | Estimated % of assists per player's offensive possessions             |
+| TO-R            | Turnover ratio            | Estimated % of turnovers per player's offensive possessions           |
+| 2PTA-R          | Two-point attempts ratio  | Estimated % of two-point attempts per player's offensive possessions  |
+| 3PTA-R          | Three-point attempts ratio| Estimated % of three-point attempts per player's offensive possessions|
+| FT-RT           | Free Throw rate           | Measure of free throw attempts vs. field goal attempts                |
+
+## `getPlayerMisc`
+
+| **Column name** | **Column extended name** | **Column description**                                                                  |
+| --------------- | ------------------------ | --------------------------------------------------------------------------------------- |
+| DD2             | Double-doubles           | Games with double-digit totals in two of: points, rebounds, assists, steals and blocks  |
+| TD3             | Triple-doubles           | Games with double-digit totals in three of: points, rebounds, assists, steals and blocks|
+
+# Team
+
+## `getPlayerStats` and `getPlayerLeadStats`
+
+| **Column name** | **Column extended name**  |
+| --------------- | ------------------------- |
+| GP              | Game player               |
+| GS              | Game started              |
+| MIN             | Minutes played            |
+| PTS             | Points scored             |
+| 2PM             | Two-pointers made         |
+| 2PA             | Two-pointers attempted    |
+| 2P%             | Two-point %               |
+| 3PM             | Three-pointers made       |
+| 3PA             | Three-pointers attempted  |
+| 3FG%            | Three-point %             |
+| FTM             | Free throws made          |
+| FTA             | Free throws attempted     |
+| FT%             | Free-throw %              |
+| OREB            | Offensive rebounds        |
+| DREB            | Defensive rebounds        |
+| TREB            | Total rebounds            |
+| AST             | Assists                   |
+| STL             | Steals                    |
+| TO              | Turnovers                 |
+| BLK             | Blocks                    |
+| BLKA            | Blocks against            |
+| FC              | Personal fouls committed  |
+| FD              | Personal fouls drawn      |
+| PIR             | Performance Index Rating  |
+
+# Game
+
+## `getGamePlayByPlay`
+
+| **PlayType** | **PlayInfo**              |
+| ------------ | ------------------------- |
+| 2PA          | Missed Two Pointer        |
+| 2PM          | Two Pointer               |
+| 3PA          | Missed Three Pointer      |
+| 3PM          | Three Pointer             |
+| AG           | Shot Rejected             |
+| AS           | Assist                    |
+| BP           | Begin Period              |
+| C            | Coach Foul                |
+| CCH          | Coach Challenge           |
+| CM           | Foul                      |
+| CMT          | Technical Foul            |
+| CMTI         | Throw-In Foul             |
+| CMU          | Unsportsmanlike Foul      |
+| D            | Def Rebound               |
+| EG           | End Game                  |
+| EP           | End Period                |
+| FTA          | Missed Free Throw         |
+| FTM          | Free Throw In             |
+| FV           | Block                     |
+| IN           | In                        |
+| O            | Off Rebound               |
+| OF           | Offensive Foul            |
+| OUT          | Out                       |
+| RV           | Foul Drawn                |
+| ST           | Steal                     |
+| TO           | Turnover                  |
+| TOUT         | Time Out                  |
+| TOUT_TV      | TV Time Out               |
+
+

@@ -30,6 +30,10 @@ docsearch:
   search:
 
 articles:
+- title: Glossary
+  navbar: ~
+  contents:
+  - articles/glossary
 - title: Plots
   navbar: Plots
   contents:

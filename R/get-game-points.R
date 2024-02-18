@@ -4,9 +4,11 @@
 #'
 #' @inheritParams .inheritParams
 #'
-#' @return Returns scoring information of each player for the chosen games and seasons (subset of play-by-play data).
+#' @return Returns scoring information of each player for the chosen games and
+#' seasons (subset of play-by-play data).
 #' In particular:
-#' - **NumberOfPlay**. Reference id of the action (useful for join with results of `getPlayByPlay`)
+#' - **NumberOfPlay**. Reference id of the action (useful for join with results
+#' of `getPlayByPlay`)
 #' - **CoordX** and **CoordY**. Spatial coordinates of the shot
 #' - **Zone**. Area of the court of the shot
 #'

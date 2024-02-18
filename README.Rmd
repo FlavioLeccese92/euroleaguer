@@ -36,7 +36,8 @@ library(glue)
 
 
 
-This is an unofficial API wrapper and we recommend to follow usual rules of conduct when dealing with open API calls.
+This is an unofficial API wrapper and we recommend to follow usual rules of 
+conduct when dealing with open API calls.
 
 ## Installation
 
@@ -50,19 +51,29 @@ devtools::install_github("FlavioLeccese92/euroleaguer")
 ## Why an R package?
 
 Despite Euroleague official APIs are very well designed and immediate, a more 
-intense analytical use demands a few adjustments in terms of get-requests and output.
+intense analytical use demands a few adjustments in terms of get-requests and 
+output.
 
 With `euroleaguer` it is possible to input multiple arguments at once (handling 
 for loops internally), values are returned as tibbles and columns are consistent 
-throughout all the functions, avoiding ambiguity of stats naming such as `2FG%` (2 field-goal %) for `2P%` (2 points %). In short, saving time on collection and cleaning and leaving more for pure analysis.
+throughout all the functions, avoiding ambiguity of stats naming such as `2FG%` 
+(2 field-goal %) for `2P%` (2 points %). In short, saving time on collection and 
+cleaning and leaving more for pure analysis.
 
 ## What can be done
 
-<center>--- Work in progress ---</center>
+This package allows to retrieve a wide variety of **real-time** and historical 
+data by different types of aggregation, particularly by player, team or game.
+
+Standard statistics are available as well as some advanced such as `AST/TO` (ratio
+of assists made to turnovers committed) or `AST-R` (estimated % of assists per 
+player's offensive possessions) and many more. Complete list can be found 
+[here](https://flavioleccese92.github.io/euroleaguer/articles/glossary.html).
+
+
 ![](man/figures/team-standings-race.png)
 
 ![](man/figures/team-stats-radarchart.png)
 
 ![](man/figures/team-stats-court.png)
 
-<center>--- Work in progress ---</center>
