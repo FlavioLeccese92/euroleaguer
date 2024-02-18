@@ -10,7 +10,7 @@ status](https://www.r-pkg.org/badges/version/euroleaguer)](https://CRAN.R-projec
 [![R-CMD-check](https://github.com/FlavioLeccese92/euroleaguer/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/FlavioLeccese92/euroleaguer/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-![Status](https://progress-bar.dev/75/?title=progress)
+![Status](https://progress-bar.dev/90/?title=progress)
 
 <!-- badges: end -->
 
@@ -57,6 +57,12 @@ Standard statistics are available as well as some advanced such as
 (estimated % of assists per player’s offensive possessions) and many
 more. Complete list can be found
 [here](https://flavioleccese92.github.io/euroleaguer/articles/glossary.html).
+
+An additional and insightful information is the coordinates of shots in
+games which can be retrieved by `getGamePoints`.
+
+If you are interested in data visualization, some useful resources can
+be found in *articles*, which produces the following plots:
 
 ![](man/figures/team-standings-race.png)
 
