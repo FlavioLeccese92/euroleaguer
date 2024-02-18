@@ -62,7 +62,7 @@ An additional and insightful information is the coordinates of shots in
 games which can be retrieved by `getGamePoints`.
 
 If you are interested in data visualization, some useful resources can
-be found in *articles*, which produces the following plots:
+be found in *articles*, which create the following plots:
 
 ![](man/figures/team-standings-race.png)
 
