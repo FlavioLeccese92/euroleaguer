@@ -16,6 +16,6 @@
 #' @rdname getCompetitionStreaks
 #' @export
 
-getCompetitionStreaks = function(season_code, round){
+getCompetitionStreaks <- function(season_code, round){
   .iterate(.getCompetitionStreaks, season_code, round)
 }

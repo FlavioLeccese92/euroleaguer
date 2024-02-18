@@ -49,6 +49,6 @@
 #' @rdname getTeamLeadStats
 #' @export
 
-getTeamLeadStats = function(season_code, phase_type = "All", subset = "All"){
+getTeamLeadStats <- function(season_code, phase_type = "All", subset = "All"){
   .iterate(.getTeamLeadStats, season_code, phase_type, subset)
 }

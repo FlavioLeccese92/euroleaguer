@@ -30,7 +30,7 @@
 #' @rdname getPlayerAdvanced
 #' @export
 
-getPlayerAdvanced = function(season_code,
+getPlayerAdvanced <- function(season_code,
                           statistic_mode = c("perGame", "perMinute", "accumulated")){
   .iterate(.getPlayerAdvanced, season_code, statistic_mode)
 }

@@ -64,27 +64,27 @@ showtext_auto()
 ## Data
 
 ```{r data}
-CompetitionRounds = getCompetitionRounds("E2023") %>%
+CompetitionRounds <- getCompetitionRounds("E2023") %>%
   filter(MinGameStartDate <= Sys.Date()) %>%
   slice_head(n = 1)
 
-MaxRound = max(CompetitionRounds$Round)
-MaxGameDate = format(as.Date(max(CompetitionRounds$MaxGameStartDate)), 
+MaxRound <- max(CompetitionRounds$Round)
+MaxGameDate <- format(as.Date(max(CompetitionRounds$MaxGameStartDate)), 
                      '%d %b %Y')
 
-CompetitionStandings = getCompetitionStandings("E2023", CompetitionRounds$Round)
-TeamStats = getTeamStats("E2023", CompetitionStandings$TeamCode)
+CompetitionStandings <- getCompetitionStandings("E2023", CompetitionRounds$Round)
+TeamStats <- getTeamStats("E2023", CompetitionStandings$TeamCode)
 ```
 
 ## Data for plot
 
 ```{r data for plot}
 # Pick stats
-stats = c("PTS", "PIR", "2PM", "2P%", "3PM", "3P%", "FT%", "AST", 
+stats <- c("PTS", "PIR", "2PM", "2P%", "3PM", "3P%", "FT%", "AST", 
           "OREB", "DREB", "STL", "BLK", "TO")
 
 # Create dataset for stats
-TeamStatsForPlot = TeamStats$TeamAveragePerGame %>%
+TeamStatsForPlot <- TeamStats$TeamAveragePerGame %>%
   select(TeamCode, all_of(stats)) %>%
   mutate(., across(all_of(stats), ~ ntile(., 5))) %>%
   pivot_longer(cols = all_of(stats), names_to = "Stat", values_to = "Value") %>%
@@ -116,7 +116,7 @@ TeamStatsForPlot = TeamStats$TeamAveragePerGame %>%
 ## Image for plot
 
 ```{r images for plot}
-TeamImage = TeamStatsForPlot %>%
+TeamImage <- TeamStatsForPlot %>%
   filter(!is.na(TeamImagesCrest)) %>%
   distinct(Team, TeamImagesCrest) %>%
   mutate(Stat = 4, y = 0)
@@ -125,16 +125,16 @@ TeamImage = TeamStatsForPlot %>%
 ## Title, subtitle and caption
 
 ```{r title, subtitle and caption}
-PlotTitle = glue(
+PlotTitle <- glue(
   "<span style = 'font-size: 32px'>Team ranking by statistic</span><br>
   <span style = 'font-size: 20px'>All teams | Up to round {MaxRound} |
   {MaxGameDate}</span>")
 
-PlotSubtitle = glue(
+PlotSubtitle <- glue(
   "<span><img src = 'figures/euroleague-logo-vertical.png'
   height='50'></span>")
 
-PlotCaption = glue(
+PlotCaption <- glue(
   "<span>Visualization with </span>
   <span style = 'font-family:\"Inconsolata\";'>R</span>
   <span>and</span>
@@ -150,23 +150,23 @@ PlotCaption = glue(
 
 ```{r plot}
 # Initialize
-e = ggplot(TeamStatsForPlot, aes(x = Stat))
+e <- ggplot(TeamStatsForPlot, aes(x = Stat))
 
 # Draw background rectangles and Team image
-e = e +
+e <- e +
   geom_rect(xmin = -Inf, xmax = +Inf, ymin = 0, ymax = 0.4, fill = "#f2f2f2") +
   geom_image(data = TeamImage, aes(y = y, image = TeamImagesCrest), size = 0.25,
              image_fun = function(img) { magick::image_crop(img) }) +
   geom_rect(xmin = -Inf, xmax = +Inf, ymin = 0.4, ymax = 1, fill = "#e2e7ea")
 
 # Draw bars of stats
-e = e +
+e <- e +
   geom_bar(aes(y = 1, fill = FillValue, group = GroupValue,
                alpha = AlphaValue, linewidth = SizeValue),
            position = "fill", stat = "identity", colour = "#f2f2f2")
 
 # Facet by team + general theme setting
-e = e +
+e <- e +
   facet_wrap(~ Team, ncol = 6) +
   scale_x_discrete() +
   coord_curvedpolar(
@@ -204,10 +204,10 @@ e = e +
     legend.margin = margin(10, 0, 3, 0),
     legend.box.spacing = unit(0, "pt"),
     # Title, subtitle, caption
-    plot.title = element_markdown(
+    plot.title <- element_markdown(
       lineheight = 1, size = 24, hjust = 0, vjust = 1, 
       margin = margin(0, 0, -20, 0)),
-    plot.subtitle = element_markdown(
+    plot.subtitle <- element_markdown(
       hjust = 1, size = 16, margin = margin(-30, 3, -50, 0)),
     plot.caption = element_markdown(
       size = 12, margin = margin(-25, 0, 0, 3)),

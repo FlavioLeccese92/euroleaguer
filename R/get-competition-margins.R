@@ -16,6 +16,6 @@
 #' @rdname getCompetitionMargins
 #' @export
 
-getCompetitionMargins = function(season_code, round){
+getCompetitionMargins <- function(season_code, round){
   .iterate(.getCompetitionMargins, season_code, round)
 }

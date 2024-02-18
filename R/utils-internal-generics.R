@@ -9,21 +9,21 @@
 
 options(cli.progress_show_after = 0)
 
-.iterate = function(FUN, ...) {
-  fun_args = formals(FUN)
-  args_names = names(fun_args)
+.iterate <- function(FUN, ...) {
+  fun_args <- formals(FUN)
+  args_names <- names(fun_args)
 
-  this_args = list(...)
-  names(this_args) = args_names
+  this_args <- list(...)
+  names(this_args) <- args_names
 
-  args_null = names(which(sapply(this_args, is.null)))
-  len_null = length(args_null)
+  args_null <- names(which(sapply(this_args, is.null)))
+  len_null <- length(args_null)
   if (len_null > 0) {
     cli::cli_abort(c("x" = "{args_null} argument{?s} cannot be NULL"))
   }
-  iter_args = expand.grid(this_args, stringsAsFactors = FALSE) %>% tibble::as_tibble()
+  iter_args <- expand.grid(this_args, stringsAsFactors = FALSE) %>% tibble::as_tibble()
 
-  args_names_frmt = iter_args %>% dplyr::rename_with(.TextFormatType2) %>% names()
+  args_names_frmt <- iter_args %>% dplyr::rename_with(.TextFormatType2) %>% names()
 
   cli::cli_progress_bar(
     format = paste0(
@@ -39,22 +39,22 @@ options(cli.progress_show_after = 0)
     total = nrow(iter_args)
   )
 
-  out = NULL
-  out_warnings = c()
-  out_errors = c()
+  out <- NULL
+  out_warnings <- c()
+  out_errors <- c()
   for (iter in seq_len(nrow(iter_args))) {
 
     cli::cli_progress_update()
-    iter_get = do.call(FUN, iter_args[iter, ])
+    iter_get <- do.call(FUN, iter_args[iter, ])
 
     if (iter_get$status != "200") {
-      out_warnings = c(out_warnings, iter_get$status)
+      out_warnings <- c(out_warnings, iter_get$status)
     }
 
-    iter_data = iter_get$data
+    iter_data <- iter_get$data
     if (!is.null(iter_data)) {
       if (inherits(iter_data, "tbl")) {
-        out = dplyr::bind_rows(
+        out <- dplyr::bind_rows(
           out,
           iter_data %>%
             dplyr::bind_cols(iter_args[iter, ], .) %>% tibble::as_tibble() %>%
@@ -64,7 +64,7 @@ options(cli.progress_show_after = 0)
       }
       else if (inherits(iter_data, "list")) {
         for (jter in names(iter_data)) {
-          out[[jter]] = dplyr::bind_rows(
+          out[[jter]] <- dplyr::bind_rows(
             out[[jter]],
             iter_data[[jter]] %>%
               dplyr::bind_cols(iter_args[iter, ], .) %>% tibble::as_tibble() %>%
@@ -74,7 +74,7 @@ options(cli.progress_show_after = 0)
         }
       }
       else if (inherits(iter_data, "character")) {
-        out = dplyr::bind_rows(
+        out <- dplyr::bind_rows(
           out,
           tibble::tibble(Value = iter_data) %>%
             dplyr::bind_cols(iter_args[iter, ], .) %>% tibble::as_tibble() %>%
@@ -82,7 +82,7 @@ options(cli.progress_show_after = 0)
             dplyr::rename_with(~args_names_frmt, dplyr::all_of(args_names))
         )
       }
-      else {out = out}
+      else {out <- out}
     }
   }
   if (length(out_warnings) > 0) {
@@ -98,11 +98,11 @@ options(cli.progress_show_after = 0)
 #' @name .rename_stat
 #' @noRd
 
-.rename_stat = function(data) {
+.rename_stat <- function(data) {
 
-  data = data %>% dplyr::rename_with(.TextFormatType1)
+  data <- data %>% dplyr::rename_with(.TextFormatType1)
 
-  exchange_table = tibble::tibble(
+  exchange_table <- tibble::tibble(
     col_to = c("PIR", "PM", "PTS", "2PM", "2PA", "3PM", "3PA",
                "FTM", "FTA", "FGM", "FGA",
                "REB", "OREB", "DREB", "AST", "STL",
@@ -154,7 +154,7 @@ options(cli.progress_show_after = 0)
                  "totalgamesstarted")
     ) %>% unique()
 
-  names(data) = tibble::tibble(col_data = names(data)) %>%
+  names(data) <- tibble::tibble(col_data = names(data)) %>%
     dplyr::mutate(col_data_lower = .data$col_data %>% tolower()) %>%
     dplyr::left_join(exchange_table, by = c("col_data_lower" = "col_from")) %>%
     dplyr::mutate(col_to = .data$col_to %>% ifelse(is.na(.), .data$col_data, .)) %>%
@@ -166,7 +166,7 @@ options(cli.progress_show_after = 0)
 #' @name .StatsRange
 #' @noRd
 
-.StatsRange = tibble::tibble(
+.StatsRange <- tibble::tibble(
   Stat = c("PM", "FG%", "3P%", "2P%", "FT%", "PTS", "PIR"),
   Min = c(-30, 0, 0, 0, 0, 0, 0),
   Max = c(30, 100, 100, 100, 100, 40, 50),
@@ -186,7 +186,7 @@ options(cli.progress_show_after = 0)
 #' @name .TextFormatType1
 #' @noRd
 
-.TextFormatType1 = function(x){
+.TextFormatType1 <- function(x){
   x %>%
     gsub("([A-Z])", " \\1", .) %>%
     gsub("\\.", " ", .) %>%
@@ -198,7 +198,7 @@ options(cli.progress_show_after = 0)
 #' @name .TextFormatType2
 #' @noRd
 
-.TextFormatType2 = function(x){
+.TextFormatType2 <- function(x){
   x %>%
     gsub("_", " ", .) %>%
     stringr::str_to_title() %>%
@@ -211,7 +211,7 @@ options(cli.progress_show_after = 0)
 #' @name .TextFormatType3
 #' @noRd
 
-.TextFormatType3 = function(x){
+.TextFormatType3 <- function(x){
   dplyr::case_when(
     x == "PLAYER_ID" ~ "Player_ID",
     x == "NUMBEROFPLAY" ~ "NumberOfPlay",
@@ -227,7 +227,7 @@ options(cli.progress_show_after = 0)
 #' @name .TextFormatType4
 #' @noRd
 
-.TextFormatType4 = function(x){
+.TextFormatType4 <- function(x){
   dplyr::case_when(
     x == "ac" ~ "Player_ID",
     x == "na" ~ "PlayerName",

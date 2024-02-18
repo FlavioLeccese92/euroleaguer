@@ -21,6 +21,6 @@
 #' @rdname getPlayerMisc
 #' @export
 
-getPlayerMisc = function(season_code){
+getPlayerMisc <- function(season_code){
   .iterate(.getPlayerMisc, season_code)
 }

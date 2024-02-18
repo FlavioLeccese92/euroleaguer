@@ -64,37 +64,37 @@ showtext_auto()
 ## Data
 
 ```{r data}
-CompetitionRounds = getCompetitionRounds("E2023") %>%
+CompetitionRounds <- getCompetitionRounds("E2023") %>%
   filter(MinGameStartDate <= Sys.Date())
 
-MaxRound = max(CompetitionRounds$Round)
-MaxGameDate = format(as.Date(max(CompetitionRounds$MaxGameStartDate)), 
+MaxRound <- max(CompetitionRounds$Round)
+MaxGameDate <- format(as.Date(max(CompetitionRounds$MaxGameStartDate)), 
                      '%d %b %Y')
 
-CompetitionStandings = getCompetitionStandings("E2023", MaxRound)
-CompetitionGames = getCompetitionGames("E2023", CompetitionRounds$Round)
-GamePoints = getGamePoints("E2023", CompetitionGames$GameCode)
+CompetitionStandings <- getCompetitionStandings("E2023", MaxRound)
+CompetitionGames <- getCompetitionGames("E2023", CompetitionRounds$Round)
+GamePoints <- getGamePoints("E2023", CompetitionGames$GameCode)
 ```
 
 ## Court
 
 ```{r court}
 source("scripts/construct-court.R")
-Court = ConstructCourt()
+Court <- ConstructCourt()
 
 # Define parameters for fitting coords into Court
-DistX = 1.5; DistY = DistX*sqrt(3)/2
-CourtMinX = min(Court$x); CourtMaxX = max(Court$x)
-CourtMinY = min(Court$y); CourtMaxY = max(Court$y)
-nx = ceiling((CourtMaxX - CourtMinX)/DistX)
-ny = ceiling((CourtMaxY - CourtMinY)/DistY)
-Origin = c(CourtMinX, CourtMinY)
+DistX <- 1.5; DistY <- DistX*sqrt(3)/2
+CourtMinX <- min(Court$x); CourtMaxX <- max(Court$x)
+CourtMinY <- min(Court$y); CourtMaxY <- max(Court$y)
+nx <- ceiling((CourtMaxX - CourtMinX)/DistX)
+ny <- ceiling((CourtMaxY - CourtMinY)/DistY)
+Origin <- c(CourtMinX, CourtMinY)
 ```
 
 ## Hexgrid
 
 ```{r hexgrid}
-HexGrid = tibble(
+HexGrid <- tibble(
   Hex_ID = 1:(nx*ny),
   x = sort(c(rep(seq(from = 0, by = DistX, length.out = nx),
                  each = ceiling(ny/2)),
@@ -105,12 +105,12 @@ HexGrid = tibble(
                 length.out = floor(ny/2))) + Origin[2], times = nx)) %>%
   filter(x >= CourtMinX, x <= CourtMaxX)
 
-x_grid = sort(unique(HexGrid$x))
-y_grid = sort(unique(HexGrid$y))
+x_grid <- sort(unique(HexGrid$x))
+y_grid <- sort(unique(HexGrid$y))
 
 
 # Create dataset for stats
-GamePoints = GamePoints %>%
+GamePoints <- GamePoints %>%
   filter(Action_ID != "FTM") %>%
   mutate(x = CoordX/100, y = CoordY/100 + 1.5,
          x_court = case_when(x > max(Court$x) ~ max(Court$x), 
@@ -146,18 +146,18 @@ GamePoints = GamePoints %>%
   ungroup() %>%
   mutate(Hex_Area = FGA/Hex_ID_Max_Area)
 
-HexGridValues = NULL
+HexGridValues <- NULL
 for (i in 1:nrow(GamePoints)) {
-  TeamCode = GamePoints[i,]$TeamCode
-  Hex_ID = GamePoints[i,]$Hex_ID
-  Area = as.numeric(GamePoints[i,]$Hex_Area)*((DistY*2/3)^2*3*sqrt(3)/2)
-  CenX = as.numeric(GamePoints[i,]$x)
-  CenY = as.numeric(GamePoints[i,]$y)
+  TeamCode <- GamePoints[i,]$TeamCode
+  Hex_ID <- GamePoints[i,]$Hex_ID
+  Area <- as.numeric(GamePoints[i,]$Hex_Area)*((DistY*2/3)^2*3*sqrt(3)/2)
+  CenX <- as.numeric(GamePoints[i,]$x)
+  CenY <- as.numeric(GamePoints[i,]$y)
 
-  DelY = sqrt(2*Area/sqrt(3)/3)
-  DelX = DelY*sqrt(3)/2
+  DelY <- sqrt(2*Area/sqrt(3)/3)
+  DelX <- DelY*sqrt(3)/2
 
-  HexGridValues =
+  HexGridValues <-
     tibble(
       Hex_x = c(CenX + 0, CenX + DelX, CenX + DelX,
                 CenX + 0, CenX - DelX, CenX - DelX),
@@ -171,7 +171,7 @@ for (i in 1:nrow(GamePoints)) {
 ## Data for plot
 
 ```{r data for plot}
-GamePoints = GamePoints %>%
+GamePoints <- GamePoints %>%
   left_join(HexGridValues, by = c("TeamCode", "Hex_ID")) %>%
   left_join(CompetitionStandings %>%
               select(TeamCode, TeamName, TeamImagesCrest, Position),
@@ -184,7 +184,7 @@ GamePoints = GamePoints %>%
 ## Image for plot
 
 ```{r images for plot}
-TeamImage = GamePoints %>%
+TeamImage <- GamePoints %>%
   filter(!is.na(TeamImagesCrest)) %>%
   distinct(TeamName, TeamImagesCrest) %>%
   mutate(x = (CourtMinX + CourtMaxX)/2, y = CourtMaxY - 2)
@@ -193,16 +193,16 @@ TeamImage = GamePoints %>%
 ## Title, subtitle and caption
 
 ```{r title, subtitle and caption}
-PlotTitle = glue(
+PlotTitle <- glue(
   "<span style = 'font-size: 32px'>Team court goals and accuracy</span><br>
   <span style = 'font-size: 20px'>All teams | Up to round {MaxRound} |
   {MaxGameDate}</span>")
 
-PlotSubtitle = glue(
+PlotSubtitle <- glue(
   "<span><img src = 'figures/euroleague-logo-vertical.png'
   height='50'></span>")
 
-PlotCaption = glue(
+PlotCaption <- glue(
   "<span>Visualization with </span>
   <span style = 'font-family:\"Inconsolata\";'>R</span>
   <span>and</span>
@@ -218,22 +218,22 @@ PlotCaption = glue(
 
 ```{r plot}
 # Initialize
-e = GamePoints %>%
+e <- GamePoints %>%
   ggplot(aes(x = Hex_x, y = Hex_y))
 
 # Add court polygon
-e = e +
+e <- e +
   geom_path(
     data = Court, aes(x = x, y = y, group = type),
     linewidth = 0.1, colour = "#404040", alpha = 1)
 
 # Add hexagons
-e = e +
+e <- e +
   geom_polygon(
     aes(group = Hex_ID, fill = FillValue), color = "#eeede9", alpha = 0.8)
 
 # Facet by team + general theme setting
-e = e +
+e <- e +
   scale_fill_manual(
     name = "Ranking",
     values = c("Low" = "#C70D3A", "Mid - Low" = "#FF7F00", "Medium" = "#FFD301",
@@ -267,10 +267,10 @@ e = e +
     legend.margin = margin(10, 0, 3, 0),
     legend.box.spacing = unit(0, "pt"),
     # Title, subtitle, caption
-    plot.title = element_markdown(
+    plot.title <- element_markdown(
       lineheight = 1, size = 24, hjust = 0, vjust = 1, 
       margin = margin(0, 0, -20, 0)),
-    plot.subtitle = element_markdown(
+    plot.subtitle <- element_markdown(
       hjust = 1, size = 16, margin = margin(-30, 3, -50, 0)),
     plot.caption = element_markdown(
       size = 12, margin = margin(-25, 0, 0, 3)),

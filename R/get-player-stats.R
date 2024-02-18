@@ -43,7 +43,7 @@
 #' @rdname getPlayerStats
 #' @export
 
-getPlayerStats = function(season_code,
+getPlayerStats <- function(season_code,
                           statistic_mode = c("perGame", "perMinute", "accumulated")){
   .iterate(.getPlayerStats, season_code, statistic_mode)
 }

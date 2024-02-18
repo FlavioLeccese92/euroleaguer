@@ -15,13 +15,13 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 <!-- badges: end -->
 
 **euroleaguer** provides an easy way to retrieve data from
-[EuroLeague](https://www.euroleaguebasketball.net/euroleague/) and
-[EuroCup](https://www.euroleaguebasketball.net/eurocup/) API with R.
+[Euroleague](https://www.euroleaguebasketball.net/euroleague/) and
+[Eurocup](https://www.euroleaguebasketball.net/eurocup/) API with R.
 
 ![](man/figures/double-logo.png)
 
-This is an un-official API wrapper and we recommend to follow usual
-rules of conduct when dealing with open API calls.
+This is an unofficial API wrapper and we recommend to follow usual rules
+of conduct when dealing with open API calls.
 
 ## Installation
 
@@ -51,6 +51,8 @@ pure analysis.
 <center>
 — Work in progress —
 </center>
+
+![](man/figures/team-standings-race.png)
 
 ![](man/figures/team-stats-radarchart.png)
 

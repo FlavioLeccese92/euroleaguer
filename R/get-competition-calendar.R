@@ -6,7 +6,8 @@
 #'
 #' @inheritParams .inheritParams
 #'
-#' @return Returns a summary tibble of calendar standings for chosen competitions and rounds
+#' @return Returns a summary tibble of calendar standings for chosen competitions
+#' and rounds
 #'
 #' Reference webpage: [Calendar standings](<https://www.euroleaguebasketball.net/euroleague/standings/?season=2023-24&type=Calendar&phase=REGULAR%20SEASON>)
 #' @examples
@@ -16,6 +17,6 @@
 #' @rdname getCompetitionCalendar
 #' @export
 
-getCompetitionCalendar = function(season_code, round){
+getCompetitionCalendar <- function(season_code, round){
   .iterate(.getCompetitionCalendar, season_code, round)
 }

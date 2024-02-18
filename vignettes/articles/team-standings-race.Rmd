@@ -64,22 +64,22 @@ showtext_auto()
 ## Data
 
 ```{r data}
-CompetitionRounds = getCompetitionRounds("E2023") %>%
+CompetitionRounds <- getCompetitionRounds("E2023") %>%
   filter(MinGameStartDate <= Sys.Date())
 
-CompetitionStandings = getCompetitionStandings("E2023", CompetitionRounds$Round)
+CompetitionStandings <- getCompetitionStandings("E2023", CompetitionRounds$Round)
 
-MaxRound = max(CompetitionRounds$Round)
-MaxGameDate = max(CompetitionRounds$MaxGameStartDate)
-NRounds = 12
+MaxRound <- max(CompetitionRounds$Round)
+MaxGameDate <- max(CompetitionRounds$MaxGameStartDate)
+NRounds <- 12
 
-Teams = getTeam("E2023", unique(CompetitionStandings$TeamCode))
+Teams <- getTeam("E2023", unique(CompetitionStandings$TeamCode))
 ```
 
 ## Data for plot
 
 ```{r data for plot}
-CompetitionStandings = 
+CompetitionStandings <- 
   CompetitionStandings %>%
   left_join(Teams %>% select(TeamCode, PrimaryColor, SecondaryColor),
             by = "TeamCode") %>%
@@ -92,14 +92,14 @@ CompetitionStandings =
   filter(Round %in% (MaxRound - NRounds):MaxRound) %>% 
   mutate(x = Round)
 
-LastRound = CompetitionStandings %>% filter(Round == MaxRound)
-PreviousRounds = CompetitionStandings %>% filter(Round < MaxRound)
+LastRound <- CompetitionStandings %>% filter(Round == MaxRound)
+PreviousRounds <- CompetitionStandings %>% filter(Round < MaxRound)
 ```
 
 ## Image for plot
 
 ```{r images for plot}
-TeamImage = CompetitionStandings %>%
+TeamImage <- CompetitionStandings %>%
   slice_max(order_by = Round) %>%
   filter(!is.na(TeamImagesCrest)) %>%
   distinct(x, y, TeamName, TeamImagesCrest)
@@ -108,16 +108,16 @@ TeamImage = CompetitionStandings %>%
 ## Title, subtitle and caption
 
 ```{r title, subtitle and caption}
-PlotTitle = glue(
+PlotTitle <- glue(
   "<span style = 'font-size: 32px'>Team standings by round</span><br>
   <span style = 'font-size: 20px'>All teams | From round {MaxRound - NRounds} to round {MaxRound} |
   {MaxGameDate}</span>")
 
-PlotSubtitle = glue(
+PlotSubtitle <- glue(
   "<span><img src = 'figures/euroleague-logo-vertical.png'
   height='50'></span>")
 
-PlotCaption = glue(
+PlotCaption <- glue(
   "<span>Visualization with </span>
   <span style = 'font-family:\"Inconsolata\";'>R</span>
   <span>and</span>
@@ -133,15 +133,15 @@ PlotCaption = glue(
 
 ```{r plot}
 # Initialize
-e = CompetitionStandings %>%
+e <- CompetitionStandings %>%
   ggplot(aes(x = x, y = y))
 
 # Add vertical lines
-e = e +
+e <- e +
   geom_vline(data = PreviousRounds, aes(xintercept = x), colour =  "#f2f2f2")
 
 # Add standing lines by team
-e = e +
+e <- e +
   geom_line(stat = "smooth", method = "loess", formula = 'y ~ x',
             aes(colour = SecondaryColor, group = TeamName), 
             alpha = 0.50, linewidth = 1.25, se = FALSE, span = 0.25) +
@@ -150,7 +150,7 @@ e = e +
             alpha = 0.50, linewidth = 1.25, se = FALSE, span = 0.25)
 
 # Add points by round and team
-e = e +
+e <- e +
   geom_point(data = PreviousRounds, aes(colour = SecondaryColor), alpha = 0.50, size = 3) +
   geom_point(data = PreviousRounds, aes(colour = PrimaryColor), alpha = 0.50, size = 3) +
   geom_point(data = PreviousRounds, colour = "#f2f2f2", size = 1) +
@@ -159,7 +159,7 @@ e = e +
   geom_point(data = LastRound, colour = "#f2f2f2", size = 10)
 
 # Add images + general theme setting
-e = e +
+e <- e +
   geom_image(data = TeamImage, aes(y = y, image = TeamImagesCrest), size = 0.03,
              image_fun = function(img) { magick::image_crop(img) }) +
   scale_colour_identity() +
@@ -191,7 +191,7 @@ e = e +
     legend.box.spacing = unit(0, "pt"),
     # Title, subtitle, caption
     plot.title = element_markdown(lineheight = 1, size = 24, hjust = 0, 
-                                  vjust = 1, margin = margin(0, 0, -20, 0)),
+                                   vjust = 1, margin = margin(0, 0, -20, 0)),
     plot.title.position = "plot",
     plot.subtitle = element_markdown(hjust = 1, margin = margin(-30, 3, 0, 0)),
     plot.caption = element_markdown(size = 12, margin = margin(40, 0, 0, 3)),

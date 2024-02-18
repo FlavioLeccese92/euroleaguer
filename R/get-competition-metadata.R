@@ -25,31 +25,31 @@
 
 #' @rdname getCompetitionMetadata
 #' @export
-getCompetitionHistory = function(competition_code){
+getCompetitionHistory <- function(competition_code){
   .iterate(.getCompetitionHistory, competition_code)
 }
 
 #' @rdname getCompetitionMetadata
 #' @export
-getCompetitionRounds = function(season_code){
+getCompetitionRounds <- function(season_code){
   .iterate(.getCompetitionRounds, season_code)
 }
 
 #' @rdname getCompetitionMetadata
 #' @export
-getCompetitionPhases = function(season_code){
+getCompetitionPhases <- function(season_code){
   .iterate(.getCompetitionPhases, season_code)
 }
 
 #' @rdname getCompetitionMetadata
 #' @export
-getCompetitionTeams = function(season_code){
+getCompetitionTeams <- function(season_code){
   .iterate(.getCompetitionTeams, season_code)
 }
 
 #' @rdname getCompetitionMetadata
 #' @export
-getCompetitionGames = function(season_code, round, phase_type = "All"){
+getCompetitionGames <- function(season_code, round, phase_type = "All"){
   .iterate(.getCompetitionGames, season_code, round, phase_type)
 }
 

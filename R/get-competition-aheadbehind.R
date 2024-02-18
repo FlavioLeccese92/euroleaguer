@@ -16,6 +16,6 @@
 #' @rdname getCompetitionAheadBehind
 #' @export
 
-getCompetitionAheadBehind = function(season_code, round){
+getCompetitionAheadBehind <- function(season_code, round){
   .iterate(.getCompetitionAheadBehind, season_code, round)
 }

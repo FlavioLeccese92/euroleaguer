@@ -53,6 +53,6 @@
 #' @rdname getGamePlayByPlay
 #' @export
 
-getGamePlayByPlay = function(season_code, game_code){
+getGamePlayByPlay <- function(season_code, game_code){
   .iterate(.getGamePlayByPlay, season_code, game_code)
 }

@@ -18,6 +18,6 @@
 #' @rdname getGamePoints
 #' @export
 
-getGamePoints = function(season_code, game_code){
+getGamePoints <- function(season_code, game_code){
   .iterate(.getGamePoints, season_code, game_code)
 }

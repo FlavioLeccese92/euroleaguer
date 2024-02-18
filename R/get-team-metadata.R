@@ -23,18 +23,18 @@
 
 #' @rdname getTeamMetadata
 #' @export
-getTeam = function(season_code, team_code){
+getTeam <- function(season_code, team_code){
   .iterate(.getTeam, season_code, team_code)
 }
 
 #' @rdname getTeamMetadata
 #' @export
-getTeamPeople = function(season_code, team_code){
+getTeamPeople <- function(season_code, team_code){
   .iterate(.getTeamPeople, season_code, team_code)
 }
 
 #' @rdname getTeamMetadata
 #' @export
-getTeamGames = function(season_code, team_code){
+getTeamGames <- function(season_code, team_code){
   .iterate(.getTeamGames, season_code, team_code)
 }
