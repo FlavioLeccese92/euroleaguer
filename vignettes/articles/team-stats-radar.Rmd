@@ -230,4 +230,4 @@ ggsave("team-stats-radarchart.png", plot = e, path = "../../man/figures/",
 
 ## Result
 
-![](../../man/figures/team-stats-radarchart.png)
+![](man/figures/team-stats-radarchart.png)
