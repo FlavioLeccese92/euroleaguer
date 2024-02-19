@@ -19,7 +19,7 @@ package with corresponding functions.
 
 # Players
 
-## <code><a href="../reference/getPlayerStats.html">getPlayerStats</a></code>
+## `getPlayerStats`
 
 | **Column name** | **Column extended name**  |
 | --------------- | ------------------------- |
@@ -48,7 +48,7 @@ package with corresponding functions.
 | FD              | Personal fouls drawn      |
 | PIR             | Performance Index Rating  |
 
-## <code><a href="../reference/getPlayerPoints.html">getPlayerPoints</a></code>
+## `getPlayerPoints`
 
 | **Column name** | **Column extended name**        | **Column description**                                    |
 | --------------- | ------------------------------- | --------------------------------------------------------- |
@@ -64,7 +64,7 @@ package with corresponding functions.
 | %3P             | % of points from three-pointers | % of points from three-point shots made                   |
 | %FT             | % of points from free throws    | % of points from free throws made                         |
 
-## <code><a href="../reference/getPlayergetPlayerAdvanced.html">getPlayergetPlayerAdvanced</a></code>
+## `getPlayerAdvanced`
 
 | **Column name** | **Column extended name**  | **Column description**                                                |
 | --------------- | ------------------------- | --------------------------------------------------------------------- |
@@ -80,7 +80,7 @@ package with corresponding functions.
 | 3PTA-R          | Three-point attempts ratio| Estimated % of three-point attempts per player's offensive possessions|
 | FT-RT           | Free Throw rate           | Measure of free throw attempts vs. field goal attempts                |
 
-## <code><a href="../reference/getPlayerMisc.html">getPlayerMisc</a></code>
+## getPlayerMisc
 
 | **Column name** | **Column extended name** | **Column description**                                                                  |
 | --------------- | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -89,7 +89,7 @@ package with corresponding functions.
 
 # Team
 
-## <code><a href="../reference/getPlayerStats.html">getPlayerStats</a></code> and <code><a href="../reference/getPlayerLeadStats.html">getPlayerLeadStats</a></code>
+## `getPlayerStats` and `getPlayerLeadStats`
 
 | **Column name** | **Column extended name**  |
 | --------------- | ------------------------- |
@@ -120,7 +120,7 @@ package with corresponding functions.
 
 # Game
 
-## <code><a href="../reference/getGamePlayByPlay.html">getGamePlayByPlay</a></code>
+## `getGamePlayByPlay`
 
 | **PlayType** | **PlayInfo**              |
 | ------------ | ------------------------- |
@@ -152,5 +152,3 @@ package with corresponding functions.
 | TO           | Turnover                  |
 | TOUT         | Time Out                  |
 | TOUT_TV      | TV Time Out               |
-
-
