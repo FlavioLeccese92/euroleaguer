@@ -7,3 +7,4 @@
 ^README\.Rmd$
 ^vignettes/articles$
 ^cran-comments\.md$
+^CRAN-SUBMISSION$
