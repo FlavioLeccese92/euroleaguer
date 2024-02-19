@@ -8,3 +8,4 @@
 ^vignettes/articles$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
+^LICENSE\.md$
