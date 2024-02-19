@@ -16,6 +16,7 @@ invisible(Sys.setlocale(locale = "en_EN.UTF-8"))
 library(devtools)
 install_github("teunbrand/elementalist")
 install_github("flavioleccese92/euroleaguer")
+library(elementalist)
 ```
 
 ## Goal
@@ -48,7 +49,6 @@ library(ggimage)
 library(glue)
 library(geomtextpath)
 library(hexbin)
-library(elementalist)
 
 # Add Lato font (Euroleague official font)
 font_add_google("Lato", "Lato")
