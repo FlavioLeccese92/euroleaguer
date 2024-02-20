@@ -39,12 +39,13 @@
 #'
 #' Reference webpage: [TeamLead](<https://www.euroleaguebasketball.net/euroleague/stats/key-stats-teams/?size=200&misc=HomeGames&seasonCode=E2023&category=FreeThrowsAttempted&seasonMode=Single&sortDirection=descending&aggregate=accumulated>)
 #' @examples
-#' TeamLeadStats = getTeamLeadStats(season_code = c("E2022", "E2023"), phase_type = "RS")
+#' if (FALSE) {
+#'   TeamLeadStats = getTeamLeadStats(season_code = c("E2022", "E2023"), phase_type = "RS")
 #'
-#' TeamLeadStats$TeamAccumulated |> head(5)
+#'   TeamLeadStats$TeamAccumulated |> head(5)
 #'
-#' TeamLeadStats$TeamAveragePerGame |> head(5)
-#'
+#'   TeamLeadStats$TeamAveragePerGame |> head(5)
+#' }
 #' @name getTeamLeadStats
 #' @rdname getTeamLeadStats
 #' @export

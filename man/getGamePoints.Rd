@@ -13,10 +13,12 @@ Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 \item{game_code}{One or more game codes as obtained from \code{\link[=getCompetitionGames]{getCompetitionGames()}}.}
 }
 \value{
-Returns scoring information of each player for the chosen games and seasons (subset of play-by-play data).
+Returns scoring information of each player for the chosen games and
+seasons (subset of play-by-play data).
 In particular:
 \itemize{
-\item \strong{NumberOfPlay}. Reference id of the action (useful for join with results of \code{getPlayByPlay})
+\item \strong{NumberOfPlay}. Reference id of the action (useful for join with results
+of \code{getPlayByPlay})
 \item \strong{CoordX} and \strong{CoordY}. Spatial coordinates of the shot
 \item \strong{Zone}. Area of the court of the shot
 }

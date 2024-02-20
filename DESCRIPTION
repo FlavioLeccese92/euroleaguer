@@ -22,8 +22,6 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown
-VignetteBuilder: 
-    knitr
 Config/Needs/website: tidyr, dplyr, ggplot2, ggtext, showtext, ggimage,
     geomtextpath, hexbin, devtools
 Encoding: UTF-8
