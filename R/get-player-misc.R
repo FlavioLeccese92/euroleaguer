@@ -14,8 +14,14 @@
 #' | TD3             | Triple-doubles           | Games with double-digit totals in three of: points, rebounds, assists, steals and blocks|
 #'
 #' Reference webpage: [Stats](<https://www.euroleaguebasketball.net/euroleague/stats/expanded/?size=1000&viewType=miscellaneous&seasonCode=E2023&statisticMode=accumulated&seasonMode=Single&sortDirection=descending&statistic=gamesPlayed>)
+#'
 #' @examples
+#'
+#' \dontrun{
+#'
 #' getPlayerMisc(season_code = "E2023")
+#'
+#' }
 #'
 #' @name getPlayerMisc
 #' @rdname getPlayerMisc

@@ -13,8 +13,14 @@
 #' - **Zone**. Area of the court of the shot
 #'
 #' Reference webpage: [PlayByPlay](<https://www.euroleaguebasketball.net/euroleague/game-center/2023-24/crvena-zvezda-meridianbet-belgrade-ldlc-asvel-villeurbanne/E2023/1/#play-by-play>)
+#'
 #' @examples
+#'
+#' \dontrun{
+#'
 #' getGamePoints(season_code = c("E2023", "U2023"), game_code = 1)
+#'
+#' }
 #'
 #' @name getGamePoints
 #' @rdname getGamePoints

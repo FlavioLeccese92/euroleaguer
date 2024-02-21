@@ -62,16 +62,21 @@ Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/teams/l
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \examples{
-TeamStats = getTeamStats(team_code = "ASV", season_code = c("E2023", "E2022"), phase_type = "RS")
 
-TeamStats$PlayerAccumulated |> head(5)
+\dontrun{
 
-TeamStats$PlayerAveragePerGame |> head(5)
+  TeamStats = getTeamStats(team_code = "ASV", season_code = c("E2023", "E2022"), phase_type = "RS")
 
-TeamStats$PlayerAveragePer40 |> head(5)
+  TeamStats$PlayerAccumulated |> head(5)
 
-TeamStats$TeamAccumulated |> head(5)
+  TeamStats$PlayerAveragePerGame |> head(5)
 
-TeamStats$TeamAveragePerGame |> head(5)
+  TeamStats$PlayerAveragePer40 |> head(5)
+
+  TeamStats$TeamAccumulated |> head(5)
+
+  TeamStats$TeamAveragePerGame |> head(5)
+
+}
 
 }

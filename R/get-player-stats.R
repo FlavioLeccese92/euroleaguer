@@ -36,8 +36,14 @@
 #' | PIR             | Performance Index Rating  |
 #'
 #' Reference webpage: [Stats](<https://www.euroleaguebasketball.net/euroleague/stats/expanded/?size=1000&viewType=traditional&seasonCode=E2023&statisticMode=perGame&seasonMode=Single&sortDirection=descending&statistic=blocksFavour>)
+#'
 #' @examples
+#'
+#' \dontrun{
+#'
 #' getPlayerStats(season_code = "E2023", statistic_mode = "perGame")
+#'
+#' }
 #'
 #' @name getPlayerStats
 #' @rdname getPlayerStats

@@ -37,6 +37,9 @@ Default is \code{All} for all.}
 Retrieve values of arguments for specific data collection functions across all package.
 }
 \examples{
+
+\dontrun{
+
 getCompetitionHistory(competition_code = c("E", "U")) |> head(5)
 
 getCompetitionRounds(season_code = c("E2023", "E2022")) |> head(5)
@@ -46,5 +49,7 @@ getCompetitionPhases(season_code = c("E2023", "U2023")) |> head(5)
 getCompetitionTeams(season_code = c("E2023", "U2023")) |> head(5)
 
 getCompetitionGames(season_code = "E2023", round = 1:5) |> head(5)
+
+}
 }
 \keyword{competitionMetadata}

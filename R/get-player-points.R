@@ -23,8 +23,14 @@
 #' | %FT             | % of points from free throws    | % of points from free throws made                         |
 #'
 #' Reference webpage: [Stats](<https://www.euroleaguebasketball.net/euroleague/stats/expanded/?size=1000&viewType=scoring&seasonCode=E2023&statisticMode=perGame&seasonMode=Single&sortDirection=descending&statistic=fieldGoals2Percent>)
+#'
 #' @examples
+#'
+#' \dontrun{
+#'
 #' getPlayerPoints(season_code = "E2023")
+#'
+#' }
 #'
 #' @name getPlayerPoints
 #' @rdname getPlayerPoints

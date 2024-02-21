@@ -14,11 +14,16 @@
 #' @inheritParams .inheritParams
 #'
 #' @examples
+#'
+#' \dontrun{
+#'
 #' getGameHeader(season_code = c("E2023", "U2023"), game_code = 1)
 #'
 #' getGamePlayers(season_code = c("E2023", "U2023"), team_code = "ASV", game_code = 1)
 #'
 #' getGameRound(season_code = c("E2023", "U2023"), game_code = 1)
+#'
+#' }
 
 
 #' @rdname getGameMetadata

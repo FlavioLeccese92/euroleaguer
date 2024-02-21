@@ -23,8 +23,14 @@
 #' | FT-RT           | Free Throw rate           | Measure of free throw attempts vs. field goal attempts                |
 #'
 #' Reference webpage: [Stats](<https://www.euroleaguebasketball.net/euroleague/stats/expanded/?size=1000&viewType=advanced&seasonCode=E2023&statisticMode=perGame&seasonMode=Single&sortDirection=descending&statistic=blocksFavour>)
+#'
 #' @examples
+#'
+#' \dontrun{
+#'
 #' getPlayerAdvanced(season_code = "E2023", statistic_mode = "perGame")
+#'
+#' }
 #'
 #' @name getPlayerAdvanced
 #' @rdname getPlayerAdvanced

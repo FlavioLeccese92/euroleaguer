@@ -61,11 +61,15 @@ Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/stats/k
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \examples{
-if (FALSE) {
+
+\dontrun{
+
   TeamLeadStats = getTeamLeadStats(season_code = c("E2022", "E2023"), phase_type = "RS")
 
   TeamLeadStats$TeamAccumulated |> head(5)
 
   TeamLeadStats$TeamAveragePerGame |> head(5)
+
 }
+
 }

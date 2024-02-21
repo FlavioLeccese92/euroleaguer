@@ -21,7 +21,12 @@ Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/standin
 Get competition ahead-behind standings
 }
 \examples{
+
+\dontrun{
+
 getCompetitionAheadBehind(season_code = c("E2023", "E2022"), round = 1)
+
+}
 
 }
 \keyword{`r}

@@ -28,10 +28,15 @@ Retrieve contextual information about teams. Outputs may be required as
 arguments of other \verb{getGame*} functions
 }
 \examples{
+
+\dontrun{
+
 getGameHeader(season_code = c("E2023", "U2023"), game_code = 1)
 
 getGamePlayers(season_code = c("E2023", "U2023"), team_code = "ASV", game_code = 1)
 
 getGameRound(season_code = c("E2023", "U2023"), game_code = 1)
+
+}
 }
 \keyword{gameMetadata}

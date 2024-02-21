@@ -42,12 +42,18 @@
 #' | TOUT_TV      | TV Time Out               |
 #'
 #' Reference webpage: [PlayByPlay](<https://www.euroleaguebasketball.net/euroleague/game-center/2023-24/crvena-zvezda-meridianbet-belgrade-ldlc-asvel-villeurbanne/E2023/1/#play-by-play>)
+#'
 #' @examples
+#'
+#' \dontrun{
+#'
 #' PlayByPlay = getGamePlayByPlay(season_code = c("E2023", "U2023"), game_code = 1)
 #'
 #' PlayByPlay$PlayByPlaySummary |> head(5)
 #'
 #' PlayByPlay$PlayByPlay |> head(5)
+#'
+#' }
 #'
 #' @name getGamePlayByPlay
 #' @rdname getGamePlayByPlay

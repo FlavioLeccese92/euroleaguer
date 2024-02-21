@@ -13,6 +13,9 @@
 #' @inheritParams .inheritParams
 #'
 #' @examples
+#'
+#' \dontrun{
+#'
 #' getCompetitionHistory(competition_code = c("E", "U")) |> head(5)
 #'
 #' getCompetitionRounds(season_code = c("E2023", "E2022")) |> head(5)
@@ -22,6 +25,8 @@
 #' getCompetitionTeams(season_code = c("E2023", "U2023")) |> head(5)
 #'
 #' getCompetitionGames(season_code = "E2023", round = 1:5) |> head(5)
+#'
+#' }
 
 #' @rdname getCompetitionMetadata
 #' @export

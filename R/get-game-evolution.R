@@ -10,8 +10,14 @@
 #' - **Evolution**. Minute by minute points of each team
 #'
 #' Reference webpage: [GraphicStats](<https://www.euroleaguebasketball.net/euroleague/game-center/2023-24/crvena-zvezda-meridianbet-belgrade-ldlc-asvel-villeurbanne/E2023/1/#graphic-stats>)
+#'
 #' @examples
+#'
+#' \dontrun{
+#'
 #' getGameEvolution(season_code = c("E2023", "U2023"), game_code = 1)
+#'
+#' }
 #'
 #' @name getGameEvolution
 #' @rdname getGameEvolution

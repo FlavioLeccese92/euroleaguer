@@ -41,6 +41,11 @@ Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/stats/e
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \examples{
+
+\dontrun{
+
 getPlayerAdvanced(season_code = "E2023", statistic_mode = "perGame")
+
+}
 
 }

@@ -42,8 +42,14 @@
 #' | PIR             | Performance Index Rating  |
 #'
 #' Reference webpage: [BoxScore](<https://www.euroleaguebasketball.net/euroleague/game-center/2023-24/crvena-zvezda-meridianbet-belgrade-ldlc-asvel-villeurbanne/E2023/1/#boxscore>)
+#'
 #' @examples
+#'
+#' \dontrun{
+#'
 #' getGameBoxScore(season_code = c("E2023", "U2023"), game_code = 1)
+#'
+#' }
 #'
 #' @name getGameBoxScore
 #' @rdname getGameBoxScore

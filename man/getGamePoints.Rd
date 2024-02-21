@@ -29,6 +29,11 @@ Reference webpage: \href{https://www.euroleaguebasketball.net/euroleague/game-ce
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
 \examples{
+
+\dontrun{
+
 getGamePoints(season_code = c("E2023", "U2023"), game_code = 1)
+
+}
 
 }

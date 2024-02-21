@@ -10,8 +10,14 @@
 #' and rounds
 #'
 #' Reference webpage: [Calendar standings](<https://www.euroleaguebasketball.net/euroleague/standings/?season=2023-24&type=Calendar&phase=REGULAR%20SEASON>)
+#'
 #' @examples
+#'
+#' if(interactive()) {
+#'
 #' getCompetitionCalendar(season_code = c("E2023", "E2022"), round = 1)
+#'
+#' }
 #'
 #' @name getCompetitionCalendar
 #' @rdname getCompetitionCalendar

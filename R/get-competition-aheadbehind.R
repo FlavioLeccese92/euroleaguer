@@ -10,7 +10,12 @@
 #'
 #' Reference webpage: [Ahead-behind standings](<https://www.euroleaguebasketball.net/euroleague/standings/?season=2023-24&type=Ahead%20behind&phase=REGULAR%20SEASON>)
 #' @examples
+#'
+#' \dontrun{
+#'
 #' getCompetitionAheadBehind(season_code = c("E2023", "E2022"), round = 1)
+#'
+#' }
 #'
 #' @name getCompetitionAheadBehind
 #' @rdname getCompetitionAheadBehind
