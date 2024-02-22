@@ -5,7 +5,7 @@ Version: 0.2.0
 Authors@R: 
     person("Flavio", "Leccese", , "flavioleccese92@gmail.com", role = c("aut", "cre"))
 Maintainer: Flavio Leccese <flavioleccese92@gmail.com>
-Description: Unofficial API wrapper for 'Euroleague' and 'Eurocup' basketball API (<https://www.euroleaguebasketball.net/en/euroleague/>), it allows to retrieve real-time and historical standard and advanced statistics about competition, teams, player and games.
+Description: Unofficial API wrapper for 'Euroleague' and 'Eurocup' basketball API (<https://www.euroleaguebasketball.net/en/euroleague/>), it allows to retrieve real-time and historical standard and advanced statistics about competitions, teams, players and games.
 License: MIT + file LICENSE
 URL: https://github.com/FlavioLeccese92/euroleaguer/
 Imports:
