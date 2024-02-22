@@ -12,6 +12,9 @@
 #'
 #' @inheritParams .inheritParams
 #'
+#' @return For each function, returns a tibble with information about history,
+#' rounds, phases, teams or games of chosen season and competition code.
+#'
 #' @examples
 #'
 #' \dontrun{

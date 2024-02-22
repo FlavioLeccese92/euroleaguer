@@ -6,12 +6,15 @@
 #'
 #' `r lifecycle::badge('experimental')`
 #'
-#' Retrieve contextual information about teams. Outputs may be required as
-#' arguments of other `getTeam*` or `getPlayer*` functions
+#' Retrieve contextual information about teams.
+#' Outputs may be required as arguments of other `getTeam*` or `getPlayer*` functions.
 #'
 #' @md
 #'
 #' @inheritParams .inheritParams
+#'
+#' @return For each function, returns a tibble with information about team,
+#' people or games of chosen season and team code.
 #'
 #' @examples
 #'
