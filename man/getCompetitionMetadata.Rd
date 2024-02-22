@@ -31,6 +31,10 @@ Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 Admitted values are \code{RS} for regular season, \code{PO} for playoffs and \code{FF} for final four.
 Default is \code{All} for all.}
 }
+\value{
+For each function, returns a tibble with information about history,
+rounds, phases, teams or games of chosen season and competition code.
+}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 

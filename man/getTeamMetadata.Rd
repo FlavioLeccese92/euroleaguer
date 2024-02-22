@@ -19,11 +19,15 @@ Examples are \code{E2023} for Euroleague or \code{U2023} for Eurocup 2023.}
 \item{team_code}{One or more team codes as obtained from \code{\link[=getCompetitionTeams]{getCompetitionTeams()}}.\cr
 Examples are \code{ASV}, \code{MAD}, ...}
 }
+\value{
+For each function, returns a tibble with information about team,
+people or games of chosen season and team code.
+}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-Retrieve contextual information about teams. Outputs may be required as
-arguments of other \verb{getTeam*} or \verb{getPlayer*} functions
+Retrieve contextual information about teams.
+Outputs may be required as arguments of other \verb{getTeam*} or \verb{getPlayer*} functions.
 }
 \examples{
 

@@ -10,4 +10,4 @@
   This folder contains 3 plot images that are used in README.Rmd
   Reducing size compromises reading quality
 
-* fixed after cran feedback: description and function missing \value
+* fixed after cran feedback: title, description and function missing \value
