@@ -1,6 +1,6 @@
 ## R CMD check results
 
-0 errors ✔ | 0 warnings ✔ | 1 note ✖
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
 
 * checking installed package size:
   installed size is  5.0Mb
@@ -9,3 +9,5 @@
 
   This folder contains 3 plot images that are used in README.Rmd
   Reducing size compromises reading quality
+
+* fixed after cran feedback: description and function missing \value
