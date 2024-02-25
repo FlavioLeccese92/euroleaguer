@@ -11,3 +11,6 @@
   Reducing size compromises reading quality
 
 * fixed after cran feedback: title, description and function missing \value
+
+* To be fixed next update, omit the quotes around your package title in the 
+  DESCRIPTION-file.

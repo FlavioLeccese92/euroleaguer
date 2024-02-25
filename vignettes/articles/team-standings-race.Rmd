@@ -15,7 +15,6 @@ invisible(Sys.setlocale(locale = "en_EN.UTF-8"))
 
 library(devtools)
 install_github("teunbrand/elementalist")
-install_github("flavioleccese92/euroleaguer")
 library(elementalist)
 ```
 
@@ -48,7 +47,7 @@ font_add_google("Inconsolata", "Inconsolata")
 
 # Add Font Awesome for logos
 font_add(family = "Font Awesome 6 Brands",
-         regular = "../../man/figures/fa-brands-400.ttf")
+         regular = "figures/fa-brands-400.ttf")
 showtext_opts(dpi = 200)
 showtext_auto()
 ```
@@ -61,8 +60,9 @@ CompetitionRounds <- getCompetitionRounds("E2023") %>%
 
 CompetitionStandings <- getCompetitionStandings("E2023", CompetitionRounds$Round)
 
-MaxRound <- max(CompetitionRounds$Round)
-MaxGameDate <- max(CompetitionRounds$MaxGameStartDate)
+MaxRound <- max(CompetitionStandings$Round)
+MaxGameDate <- CompetitionRounds %>% filter(Round == MaxRound) %>% pull(MaxGameStartDate) %>% 
+  format(., '%d %b %Y')
 NRounds <- 12
 
 Teams <- getTeam("E2023", unique(CompetitionStandings$TeamCode))
@@ -102,11 +102,10 @@ TeamImage <- CompetitionStandings %>%
 ```{r title, subtitle and caption}
 PlotTitle <- glue(
   "<span style = 'font-size: 32px'>Team standings by round</span><br>
-  <span style = 'font-size: 20px'>All teams | From round {MaxRound - NRounds} to round {MaxRound} |
-  {MaxGameDate}</span>")
+  <span style = 'font-size: 20px'>All teams | From round {MaxRound - NRounds} to round {MaxRound} | {MaxGameDate}</span>")
 
 PlotSubtitle <- glue(
-  "<span><img src = '../../man/figures/euroleague-logo-vertical.png'
+  "<span><img src = 'figures/euroleague-logo-vertical.png'
   height='50'></span>")
 
 PlotCaption <- glue(
@@ -182,8 +181,8 @@ e <- e +
     legend.margin = margin(10, 0, 15, 0),
     legend.box.spacing = unit(0, "pt"),
     # Title, subtitle, caption
-    plot.title = element_markdown(lineheight = 1, size = 24, hjust = 0, 
-                                   vjust = 1, margin = margin(0, 0, -20, 0)),
+    plot.title = element_markdown(lineheight = 1, size = 24, hjust = 0,
+                                  vjust = 1, margin = margin(0, 0, -20, 0)),
     plot.title.position = "plot",
     plot.subtitle = element_markdown(hjust = 1, margin = margin(-30, 3, 0, 0)),
     plot.caption = element_markdown(size = 12, margin = margin(40, 0, 0, 3)),

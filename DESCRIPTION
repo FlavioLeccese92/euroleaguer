@@ -1,6 +1,6 @@
 Type: Package
 Package: euroleaguer
-Title: 'Euroleague basketball API'
+Title: 'Euroleague' and 'Eurocup' basketball API
 Version: 0.2.0
 Authors@R: 
     person("Flavio", "Leccese", , "flavioleccese92@gmail.com", role = c("aut", "cre"))
@@ -22,7 +22,7 @@ Suggests:
     knitr,
     rmarkdown
 Config/Needs/website: tidyr, dplyr, ggplot2, ggtext, showtext, ggimage,
-    geomtextpath, hexbin, devtools
+    geomtextpath, hexbin, devtoolsm, euroleaguer
 Encoding: UTF-8
 Language: en-US
 LazyData: true

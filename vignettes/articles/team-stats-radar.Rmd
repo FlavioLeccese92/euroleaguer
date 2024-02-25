@@ -15,7 +15,6 @@ invisible(Sys.setlocale(locale = "en_EN.UTF-8"))
 
 library(devtools)
 install_github("teunbrand/elementalist")
-install_github("flavioleccese92/euroleaguer")
 library(elementalist)
 ```
 
@@ -56,7 +55,7 @@ font_add_google("Inconsolata", "Inconsolata")
 
 # Add Font Awesome for logos
 font_add(family = "Font Awesome 6 Brands", 
-         regular = "../../man/figures/fa-brands-400.ttf")
+         regular = "figures/fa-brands-400.ttf")
 showtext_opts(dpi = 200)
 showtext_auto()
 ```
@@ -131,7 +130,7 @@ PlotTitle <- glue(
   {MaxGameDate}</span>")
 
 PlotSubtitle <- glue(
-  "<span><img src = '../../man/figures/euroleague-logo-vertical.png'
+  "<span><img src = 'figures/euroleague-logo-vertical.png'
   height='50'></span>")
 
 PlotCaption <- glue(
