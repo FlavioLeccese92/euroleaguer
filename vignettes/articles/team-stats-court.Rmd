@@ -254,7 +254,7 @@ e <- e +
     axis.title.y = element_blank(),
     axis.text.y = element_blank(),
     axis.title.x = element_blank(),
-    axis.text.x = element_text(vjust = 0.5),
+    axis.text.x = element_blank(),
     # Legend
     legend.background = element_blank(),
     legend.box.background = element_blank(),
