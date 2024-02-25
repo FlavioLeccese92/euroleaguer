@@ -93,7 +93,7 @@
                         <h4 data-toc-skip class="author">Flavio
 Leccese</h4>
             
-            <h4 data-toc-skip class="date">2024-02-22</h4>
+            <h4 data-toc-skip class="date">2024-02-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/FlavioLeccese92/euroleaguer/blob/HEAD/vignettes/articles/team-standings-race.Rmd" class="external-link"><code>vignettes/articles/team-standings-race.Rmd</code></a></small>
       <div class="d-none name"><code>team-standings-race.Rmd</code></div>
@@ -131,7 +131,7 @@ function.</p>
 <span></span>
 <span><span class="co"># Add Font Awesome for logos</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/sysfonts/man/font_add.html" class="external-link">font_add</a></span><span class="op">(</span>family <span class="op">=</span> <span class="st">"Font Awesome 6 Brands"</span>,</span>
-<span>         regular <span class="op">=</span> <span class="st">"../../man/figures/fa-brands-400.ttf"</span><span class="op">)</span></span>
+<span>         regular <span class="op">=</span> <span class="st">"figures/fa-brands-400.ttf"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_opts.html" class="external-link">showtext_opts</a></span><span class="op">(</span>dpi <span class="op">=</span> <span class="fl">200</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/pkg/showtext/man/showtext_auto.html" class="external-link">showtext_auto</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -144,8 +144,9 @@ function.</p>
 <span></span>
 <span><span class="va">CompetitionStandings</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getCompetitionStandings.html">getCompetitionStandings</a></span><span class="op">(</span><span class="st">"E2023"</span>, <span class="va">CompetitionRounds</span><span class="op">$</span><span class="va">Round</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">MaxRound</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">CompetitionRounds</span><span class="op">$</span><span class="va">Round</span><span class="op">)</span></span>
-<span><span class="va">MaxGameDate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">CompetitionRounds</span><span class="op">$</span><span class="va">MaxGameStartDate</span><span class="op">)</span></span>
+<span><span class="va">MaxRound</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">CompetitionStandings</span><span class="op">$</span><span class="va">Round</span><span class="op">)</span></span>
+<span><span class="va">MaxGameDate</span> <span class="op">&lt;-</span> <span class="va">CompetitionRounds</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Round</span> <span class="op">==</span> <span class="va">MaxRound</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">MaxGameStartDate</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">.</span>, <span class="st">'%d %b %Y'</span><span class="op">)</span></span>
 <span><span class="va">NRounds</span> <span class="op">&lt;-</span> <span class="fl">12</span></span>
 <span></span>
 <span><span class="va">Teams</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getTeamMetadata.html">getTeam</a></span><span class="op">(</span><span class="st">"E2023"</span>, <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">CompetitionStandings</span><span class="op">$</span><span class="va">TeamCode</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -185,11 +186,10 @@ function.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">PlotTitle</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></span><span class="op">(</span></span>
 <span>  <span class="st">"&lt;span style = 'font-size: 32px'&gt;Team standings by round&lt;/span&gt;&lt;br&gt;</span></span>
-<span><span class="st">  &lt;span style = 'font-size: 20px'&gt;All teams | From round {MaxRound - NRounds} to round {MaxRound} |</span></span>
-<span><span class="st">  {MaxGameDate}&lt;/span&gt;"</span><span class="op">)</span></span>
+<span><span class="st">  &lt;span style = 'font-size: 20px'&gt;All teams | From round {MaxRound - NRounds} to round {MaxRound} | {MaxGameDate}&lt;/span&gt;"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">PlotSubtitle</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></span><span class="op">(</span></span>
-<span>  <span class="st">"&lt;span&gt;&lt;img src = '../../man/figures/euroleague-logo-vertical.png'</span></span>
+<span>  <span class="st">"&lt;span&gt;&lt;img src = 'figures/euroleague-logo-vertical.png'</span></span>
 <span><span class="st">  height='50'&gt;&lt;/span&gt;"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">PlotCaption</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://glue.tidyverse.org/reference/glue.html" class="external-link">glue</a></span><span class="op">(</span></span>
@@ -265,8 +265,8 @@ function.</p>
 <span>    legend.margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">margin</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">0</span>, <span class="fl">15</span>, <span class="fl">0</span><span class="op">)</span>,</span>
 <span>    legend.box.spacing <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">0</span>, <span class="st">"pt"</span><span class="op">)</span>,</span>
 <span>    <span class="co"># Title, subtitle, caption</span></span>
-<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_markdown.html" class="external-link">element_markdown</a></span><span class="op">(</span>lineheight <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="fl">24</span>, hjust <span class="op">=</span> <span class="fl">0</span>, </span>
-<span>                                   vjust <span class="op">=</span> <span class="fl">1</span>, margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">margin</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">20</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_markdown.html" class="external-link">element_markdown</a></span><span class="op">(</span>lineheight <span class="op">=</span> <span class="fl">1</span>, size <span class="op">=</span> <span class="fl">24</span>, hjust <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>                                  vjust <span class="op">=</span> <span class="fl">1</span>, margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">margin</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span>, <span class="op">-</span><span class="fl">20</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    plot.title.position <span class="op">=</span> <span class="st">"plot"</span>,</span>
 <span>    plot.subtitle <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_markdown.html" class="external-link">element_markdown</a></span><span class="op">(</span>hjust <span class="op">=</span> <span class="fl">1</span>, margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">margin</a></span><span class="op">(</span><span class="op">-</span><span class="fl">30</span>, <span class="fl">3</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>    plot.caption <span class="op">=</span> <span class="fu"><a href="https://wilkelab.org/ggtext/reference/element_markdown.html" class="external-link">element_markdown</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span>, margin <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">margin</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>,</span>
