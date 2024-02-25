@@ -41,6 +41,12 @@ conduct when dealing with open API calls.
 
 ## Installation
 
+To get the current released version from CRAN:
+
+```{r install-cran, eval=FALSE, include=TRUE}
+install.packages("euroleaguer")
+```
+
 To get the current development version from [GitHub](https://github.com/):
 
 ```{r install-github, eval=FALSE, include=TRUE}

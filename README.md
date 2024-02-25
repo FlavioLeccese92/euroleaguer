@@ -25,6 +25,12 @@ of conduct when dealing with open API calls.
 
 ## Installation
 
+To get the current released version from CRAN:
+
+``` r
+install.packages("euroleaguer")
+```
+
 To get the current development version from
 [GitHub](https://github.com/):
 
