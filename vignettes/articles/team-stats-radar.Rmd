@@ -204,10 +204,10 @@ e <- e +
     legend.box.spacing = unit(0, "pt"),
     # Title, subtitle, caption
     plot.title = element_markdown(
-      lineheight = 1, size = 24, hjust = 0, vjust = 1, 
-      margin = margin(0, 0, -20, 0)),
+      lineheight = 1, size = 24, hjust = 0, vjust = 1, margin = margin(0, 0, -20, 0)),
+    plot.title.position = "plot",
     plot.subtitle = element_markdown(
-      hjust = 1, size = 16, margin = margin(-30, 3, -50, 0)),
+      hjust = 1, margin = margin(-33, 3, -50, 0)),
     plot.caption = element_markdown(
       size = 12, margin = margin(-25, 0, 0, 3)),
     plot.caption.position = "plot",

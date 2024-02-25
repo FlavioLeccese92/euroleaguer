@@ -163,7 +163,7 @@ e <- e +
     panel.grid.minor = element_blank(),
     panel.background = element_rect(fill = "#e2e7ea"),
     plot.background = element_rect(fill = "#f2f2f2", colour = "transparent"),
-    plot.margin = margin(32, 15, 40, 17),
+    plot.margin = margin(28, 15, 28, 17),
     text = element_text(color = "#404040", family = "Lato"),
     # Axis labels
     axis.ticks = element_blank(),
@@ -181,11 +181,13 @@ e <- e +
     legend.margin = margin(10, 0, 15, 0),
     legend.box.spacing = unit(0, "pt"),
     # Title, subtitle, caption
-    plot.title = element_markdown(lineheight = 1, size = 24, hjust = 0,
-                                  vjust = 1, margin = margin(0, 0, -20, 0)),
+    plot.title = element_markdown(
+      lineheight = 1, size = 24, hjust = 0, vjust = 1, margin = margin(0, 0, -20, 0)),
     plot.title.position = "plot",
-    plot.subtitle = element_markdown(hjust = 1, margin = margin(-30, 3, 0, 0)),
-    plot.caption = element_markdown(size = 12, margin = margin(40, 0, 0, 3)),
+    plot.subtitle = element_markdown(
+      hjust = 1, margin = margin(-33, 3, -50, 0)),
+    plot.caption = element_markdown(
+      size = 12, margin = margin(30, 0, 0, 3)),
     plot.caption.position = "plot",
     # Facet
     strip.background = element_rect(fill = "#F47321"),

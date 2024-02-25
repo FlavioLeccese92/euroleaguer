@@ -13,7 +13,7 @@
 #'
 #' @examples
 #'
-#' if(interactive()) {
+#' \dontrun{
 #'
 #' getCompetitionCalendar(season_code = c("E2023", "E2022"), round = 1)
 #'
