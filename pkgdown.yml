@@ -1,4 +1,4 @@
-pandoc: 2.19.2
+pandoc: 3.1.11
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
@@ -6,7 +6,7 @@ articles:
   team-standings-race: team-standings-race.html
   team-stats-court: team-stats-court.html
   team-stats-radar: team-stats-radar.html
-last_built: 2024-02-25T10:59Z
+last_built: 2024-03-01T15:08Z
 urls:
   reference: https://flavioleccese92.github.io/euroleaguer/reference
   article: https://flavioleccese92.github.io/euroleaguer/articles
