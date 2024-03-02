@@ -93,7 +93,7 @@
                         <h4 data-toc-skip class="author">Flavio
 Leccese</h4>
             
-            <h4 data-toc-skip class="date">2024-03-01</h4>
+            <h4 data-toc-skip class="date">2024-03-02</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/FlavioLeccese92/euroleaguer/blob/HEAD/vignettes/articles/team-stats-court.Rmd" class="external-link"><code>vignettes/articles/team-stats-court.Rmd</code></a></small>
       <div class="d-none name"><code>team-stats-court.Rmd</code></div>
@@ -143,14 +143,15 @@ number of attempts.</p>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">CompetitionRounds</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getCompetitionMetadata.html">getCompetitionRounds</a></span><span class="op">(</span><span class="st">"E2023"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">MaxGameStartDate</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">MinGameStartDate</span> <span class="op">&lt;=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">MaxRound</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">CompetitionRounds</span><span class="op">$</span><span class="va">Round</span><span class="op">)</span></span>
 <span><span class="va">MaxGameDate</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">CompetitionRounds</span><span class="op">$</span><span class="va">MaxGameStartDate</span><span class="op">)</span><span class="op">)</span>, </span>
 <span>                     <span class="st">'%d %b %Y'</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">CompetitionStandings</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getCompetitionStandings.html">getCompetitionStandings</a></span><span class="op">(</span><span class="st">"E2023"</span>, <span class="va">MaxRound</span><span class="op">)</span></span>
-<span><span class="va">CompetitionGames</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getCompetitionMetadata.html">getCompetitionGames</a></span><span class="op">(</span><span class="st">"E2023"</span>, <span class="va">CompetitionRounds</span><span class="op">$</span><span class="va">Round</span><span class="op">)</span></span>
+<span><span class="va">CompetitionGames</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getCompetitionMetadata.html">getCompetitionGames</a></span><span class="op">(</span><span class="st">"E2023"</span>, <span class="va">CompetitionRounds</span><span class="op">$</span><span class="va">Round</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">Status</span> <span class="op">==</span> <span class="st">"result"</span><span class="op">)</span></span>
 <span><span class="va">GamePoints</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/getGamePoints.html">getGamePoints</a></span><span class="op">(</span><span class="st">"E2023"</span>, <span class="va">CompetitionGames</span><span class="op">$</span><span class="va">GameCode</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
