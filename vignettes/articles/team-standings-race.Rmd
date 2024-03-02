@@ -78,8 +78,10 @@ CompetitionStandings <-
             by = "TeamCode") %>%
   left_join(CompetitionStandings %>% filter(Round == MaxRound) %>%
               arrange(desc(Position)) %>%
-              mutate(y = factor(glue("**#{Position}** ({GamesWon*2} pts {GamesPlayed} gp) - {TeamName}"),
-                                levels = glue("**#{Position}** ({GamesWon*2} pts {GamesPlayed} gp) - {TeamName}"))) %>%
+              mutate(
+                gp = ifelse(max(GamesPlayed) != min(GamesPlayed), glue(" {GamesPlayed} gp"), ""),
+                y = factor(glue("**#{Position}** ({GamesWon*2} pts{gp}) - {TeamName}"),
+                                levels = glue("**#{Position}** ({GamesWon*2} pts{gp}) - {TeamName}"))) %>%
               select(y, Position),
             by = "Position") %>%
   filter(Round %in% (MaxRound - NRounds):MaxRound) %>% 
