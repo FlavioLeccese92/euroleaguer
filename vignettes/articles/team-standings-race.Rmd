@@ -64,6 +64,7 @@ MaxRound <- max(CompetitionStandings$Round)
 MaxGameDate <- CompetitionRounds %>% filter(Round == MaxRound) %>% pull(MaxGameStartDate) %>% 
   format(., '%d %b %Y')
 NRounds <- 10
+MinRound <- MaxRound - NRounds
 
 Teams <- getTeam("E2023", unique(CompetitionStandings$TeamCode))
 ```
@@ -95,6 +96,15 @@ TeamImage <- CompetitionStandings %>%
   slice_max(order_by = Round) %>%
   filter(!is.na(TeamImagesCrest)) %>%
   distinct(x, y, TeamName, TeamImagesCrest)
+```
+
+## Playoffs and playins
+
+```{r lines for plot}
+PlayInsOff = LastRound %>%
+  filter(Position %in% c(6, 10)) %>% 
+  mutate(Label = ifelse(Position == 10, "Play-In", "Playoffs")) %>% 
+  select(Label, y)
 ```
 
 ## Title, subtitle and caption
@@ -149,14 +159,24 @@ e <- e +
   geom_point(data = LastRound, aes(colour = PrimaryColor), alpha = 0.50, size = 12) +
   geom_point(data = LastRound, colour = "#f2f2f2", size = 10)
 
+# Add lines of Play-In and Playoffs
+e <- e +
+  geom_rect(aes(xmin = -Inf, xmax = MinRound - 0.25, 
+                ymin = -Inf, ymax = +Inf),
+            fill = "#f2f2f2", color = NA) +
+  geom_hline(data = PlayInsOff, aes(yintercept = as.numeric(y) - 0.5), colour = "#F47321", 
+             linetype = "dashed") +
+  geom_text(data = PlayInsOff, angle = 90, hjust = 0, colour = "#F47321",
+            aes(label = Label, y = as.numeric(y) - 0.25, x = MinRound - 0.5))
+
 # Add images + general theme setting
 e <- e +
   geom_image(data = TeamImage, aes(y = y, image = TeamImagesCrest), size = 0.03,
              image_fun = function(img) { magick::image_crop(img) }) +
   scale_colour_identity() +
   scale_y_discrete(position = "right") +
-  scale_x_continuous(breaks = 1:MaxRound, labels = 1:MaxRound,
-                     expand = c(0.01, 0.1)) +
+  scale_x_continuous(breaks = MinRound:MaxRound, labels = MinRound:MaxRound,
+                     min = MinRound, expand = c(0.01, 0.1)) +
   theme(
     # General
     panel.grid.major = element_blank(),
