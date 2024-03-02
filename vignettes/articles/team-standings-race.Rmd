@@ -63,7 +63,7 @@ CompetitionStandings <- getCompetitionStandings("E2023", CompetitionRounds$Round
 MaxRound <- max(CompetitionStandings$Round)
 MaxGameDate <- CompetitionRounds %>% filter(Round == MaxRound) %>% pull(MaxGameStartDate) %>% 
   format(., '%d %b %Y')
-NRounds <- 12
+NRounds <- 10
 
 Teams <- getTeam("E2023", unique(CompetitionStandings$TeamCode))
 ```
@@ -77,8 +77,8 @@ CompetitionStandings <-
             by = "TeamCode") %>%
   left_join(CompetitionStandings %>% filter(Round == MaxRound) %>%
               arrange(desc(Position)) %>%
-              mutate(y = factor(glue("**#{Position}** ({GamesWon*2} pts) - {TeamName}"),
-                                levels = glue("**#{Position}** ({GamesWon*2} pts) - {TeamName}"))) %>%
+              mutate(y = factor(glue("**#{Position}** ({GamesWon*2} pts {GamesPlayed} gp) - {TeamName}"),
+                                levels = glue("**#{Position}** ({GamesWon*2} pts {GamesPlayed} gp) - {TeamName}"))) %>%
               select(y, Position),
             by = "Position") %>%
   filter(Round %in% (MaxRound - NRounds):MaxRound) %>% 
