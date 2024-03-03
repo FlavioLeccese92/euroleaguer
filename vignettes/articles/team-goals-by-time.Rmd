@@ -1,0 +1,261 @@
+---
+title: "Team goals by time of action"
+author: "Flavio Leccese"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+  ```{r markdown-set, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE
+)
+invisible(Sys.setlocale(locale = "en_EN.UTF-8"))
+
+library(devtools)
+install_github("teunbrand/elementalist")
+library(elementalist)
+```
+
+## Goal
+
+We want to create a chart for each team showing the field-goals percentage and
+overall attempts on the court.
+
+Colours are ranging from
+<span style="font-family:'Source Code Pro';background-color:#C70D3A;color:white;">#C70D3A</span>
+  (lower percentages) to
+<span style="font-family:'Source Code Pro';background-color:#2EB086;color:white;">#2EB086</span>)
+  (high percentages)
+and size of hexagons <span style="color:#F47321; font-size:20px;">&#x2B22;</span>
+  are corresponding to the number of attempts.
+
+Data can be obtained through `getGamePoints` function.
+
+Resulted plot can be found at the bottom of this page.
+
+## Setup
+
+```{r setup}
+library(euroleaguer)
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(ggtext)
+library(showtext)
+library(ggimage)
+library(glue)
+library(geomtextpath)
+
+# Add Lato font (Euroleague official font)
+font_add_google("Lato", "Lato")
+font_add_google("Inconsolata", "Inconsolata")
+
+# Add Font Awesome for logos
+font_add(family = "Font Awesome 6 Brands",
+         regular = "figures/fa-brands-400.ttf")
+showtext_opts(dpi = 200)
+showtext_auto()
+```
+
+## Data
+
+```{r data}
+CompetitionRounds <- getCompetitionRounds("E2023") %>%
+  filter(MinGameStartDate <= Sys.Date())
+
+MaxRound <- max(CompetitionRounds$Round)
+MaxGameDate <- format(as.Date(max(CompetitionRounds$MaxGameStartDate)), 
+                     '%d %b %Y')
+
+CompetitionStandings <- getCompetitionStandings("E2023", MaxRound)
+CompetitionGames <- getCompetitionGames("E2023", CompetitionRounds$Round) %>% 
+  filter(Status == "result")
+
+PlayByPlay <- getGamePlayByPlay("E2023", CompetitionGames$GameCode)$PlayByPlay
+```
+
+## Data for plot
+
+```{r data for plot}
+PlayByPlay = PlayByPlay %>% 
+  mutate(Minutes = sub("\\:.*", "", Markertime) %>% as.numeric(),
+         Seconds = sub(".*\\:", "", Markertime) %>% as.numeric(),
+         Markertime = (600 - (Minutes*60 + Seconds)) %>% 
+           ifelse(PlayType %in% c("EP", "EG"), 600, .) %>% 
+           ifelse(PlayType == "BP", 0, .),
+         PlayInfo = gsub("\\s*\\([^\\)]+\\)", "", PlayInfo),
+         Possession = case_when(PlayType %in% c("BP", "TO", "CM", "FV") ~ lead(TeamCode, 1),
+                                PlayType %in% c("JB", "2PM", "3PM", "D", "O", "2PA", "3PA", "AS", "ST", "AG", "RV", "FTA", "FTM", "OF") ~ TeamCode,
+                                PlayType %in% c("EG", "EP") ~ lag(TeamCode, 1),
+                                TRUE ~ NA),
+         SecondChance = case_when(PlayType %in% c("O") ~ 1,
+                                  TRUE ~ 0)) %>% 
+  arrange(GameCode, Quarter, Markertime) %>%
+  fill(Possession) %>% 
+  group_by(GameCode, Quarter) %>%
+  mutate(PossessionId = cumsum(ifelse(Possession == lag(Possession, 1, ""), 0, 1)),
+         Markertime_lag = lag(Markertime, 1, 0)) %>%
+  group_by(GameCode, Quarter, PossessionId) %>% 
+  mutate(Chance = cumsum(SecondChance) + 1) %>% ungroup() %>% 
+  group_by(GameCode, Quarter) %>%
+  mutate(PossessionId = cumsum(ifelse(Possession == lag(Possession, 1, "") &
+                                        Chance == lag(Chance, 1, 0), 0, 1))) %>% 
+  ungroup() %>%
+  group_by(GameCode, Quarter, PossessionId) %>%
+  mutate(ActionStart = min(Markertime_lag, na.rm = TRUE), 
+         ActionEnd = max(Markertime),
+         ActionMarker = Markertime - ActionStart) %>%
+  ungroup() %>% 
+  fill(ActionStart, .direction = "down") %>% 
+  fill(ActionEnd, .direction = "up") %>% 
+  select(GameCode, Quarter, Markertime, ActionMarker, TeamCode, PlayType, PlayInfo, 
+         PossessionId, ActionStart, ActionEnd, Possession, Chance)  %>%
+  left_join(CompetitionStandings %>%
+              select(TeamCode, TeamName, TeamImagesCrest, Position),
+            by = "TeamCode") %>%
+  arrange(Position) %>%
+  mutate(TeamName = glue("{TeamName} #{Position}")) %>%
+  mutate(TeamName = factor(TeamName, levels = unique(.$TeamName)))
+
+
+Points = PlayByPlay %>%
+  filter(PlayType %in% c("2PM", "3PM", "2PA", "3PA"),
+         ActionMarker < 24,
+         Chance == 1) %>% 
+  mutate(GoalValue =  gsub('\\D+','', PlayType),
+         MissedMade = ifelse(grepl("PA", PlayType), "Missed", "Made"),
+         ActionMarker = cut(ActionMarker, include.lowest = TRUE, 
+                            breaks = seq(0, 24, 6))) %>%
+  group_by(TeamName, ActionMarker, GoalValue, MissedMade) %>% 
+  summarise(Count = n(), .groups = "drop") %>% 
+  group_by(TeamName,  ActionMarker, GoalValue) %>% 
+  mutate(TotalCount = sum(Count)) %>% ungroup() %>% 
+  mutate(MaxCount = max(TotalCount)) %>% ungroup() %>% 
+  pivot_wider(names_from = MissedMade, values_from = Count, values_fill = 0) %>% 
+  mutate(Missed = Missed/MaxCount %>% ifelse(GoalValue == 3, -1*., .),
+         Made = Made/MaxCount %>% ifelse(GoalValue == 3, -1*., .)) %>% 
+  pivot_longer(cols = c("Missed", "Made"), names_to = "MissedMade", values_to = "Percentage") %>%
+  mutate(MissedMade = factor(MissedMade, levels = c("Missed", "Made")))
+
+Labels = Points %>% 
+  group_by(TeamName,  ActionMarker, GoalValue) %>% 
+  mutate(y = sum(Percentage)) %>% ungroup() %>% 
+  filter(MissedMade == "Made") %>%
+  mutate(Percent = scales::percent_format(accuracy = 0.01)(abs(Percentage/y)),
+         Label = ifelse(GoalValue == 2, 
+                        glue("{TotalCount}\n{Percent}"), 
+                        glue("{Percent}\n{TotalCount}"))) %>% 
+  select(TeamName, ActionMarker, y, Label, GoalValue)
+```
+
+
+## Image for plot
+
+```{r images for plot}
+TeamImage <- Goals %>%
+  filter(!is.na(TeamImagesCrest)) %>%
+  distinct(TeamName, TeamImagesCrest) %>% 
+  mutate(x = 1, y = 1.05)
+```
+
+## Title, subtitle and caption
+
+```{r title, subtitle and caption}
+PlotTitle <- glue(
+  "<span style = 'font-size: 32px'>Team 2 and 3 goals by action time</span><br>
+  <span style = 'font-size: 20px'>All teams | Up to round {MaxRound} | {MaxGameDate}</span>")
+
+PlotSubtitle <- glue(
+  "<span><img src = 'figures/euroleague-logo-vertical.png'
+  height='50'></span>")
+
+PlotCaption <- glue(
+  "<span>Visualization with </span>
+  <span style = 'font-family:\"Inconsolata\";'>R</span>
+  <span>and</span>
+  <span style = 'font-family:\"Inconsolata\";'>ggplot2</span>
+  <span>by Flavio Leccese |</span>
+  <span style = 'font-family:\"Font Awesome 6 Brands\";'>&#xf09b;</span>
+  <span>flavioleccese92</span>
+  <span style = 'font-family:\"Font Awesome 6 Brands\";'>&#xf08c;</span>
+  <span>flavioleccese</span>")
+```
+
+## Plot
+
+```{r plot}
+# Initialize
+e <- Points %>%
+  ggplot(aes(x = as.numeric(ActionMarker)))
+
+# Draw bars of stats
+e <- e +
+  geom_bar(aes(y = Percentage, group = MissedMade, fill = MissedMade), colour = "#f2f2f2", stat = "identity")
+
+# Add labels and Team image
+e <- e +
+  geom_text(data = Labels %>% filter(GoalValue == 2), vjust = -0.2, size = 3, color = "#404040",
+            aes(x = as.numeric(ActionMarker), y = y, label = Label)) +
+  geom_text(data = Labels %>% filter(GoalValue == 3), vjust = 1.2, size = 3, color = "#404040",
+            aes(x = as.numeric(ActionMarker), y = y, label = Label)) +
+  geom_image(data = TeamImage, aes(y = y, x = x, image = TeamImagesCrest), size = 0.18,
+             image_fun = function(img) { magick::image_crop(img) })
+
+# Facet by team + general theme setting
+e <- e +
+  scale_fill_manual(name = "Attempt", values = c("Missed" = "#C70D3A", "Made" = "#2EB086")) +
+  scale_y_continuous(breaks = c(-0.1, 0.1), labels = c("3FG", "2FG"),
+                     limits = c(-0.9, 1.3), position = "right") +
+  scale_x_continuous(breaks = 1:4, labels = c("Opening\n1-6s", "Early\n6-12s", "Late\n12-18s", "Ending\n18-24s")) +
+  facet_wrap(~ TeamName, ncol = 6) +
+  theme(
+    # General
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect_round(fill = "#e2e7ea"),
+    plot.background = element_rect(fill = "#f2f2f2", colour = "transparent"),
+    plot.margin = margin(28, 15, 18, 15),
+    text = element_text(color = "#404040", family = "Lato"),
+    # Axis labels
+    axis.ticks = element_blank(),
+    axis.title.y = element_blank(),
+    axis.text.y = element_text(hjust = 0),
+    axis.title.x = element_blank(),
+    axis.text.x = element_text(vjust = 0),
+    # Legend
+    legend.background = element_blank(),
+    legend.box.background = element_blank(),
+    legend.key = element_blank(),
+    legend.position = 'bottom',
+    legend.justification = 'left',
+    legend.direction = 'horizontal',
+    legend.margin = margin(25, 0, -7, 0),
+    legend.box.spacing = unit(0, "pt"),
+    # Title, subtitle, caption
+    plot.title = element_markdown(
+      lineheight = 1, size = 24, hjust = 0, vjust = 1, margin = margin(0, 0, -20, 0)),
+    plot.title.position = "plot",
+    plot.subtitle = element_markdown(
+      hjust = 1, margin = margin(-33, 3, -50, 0)),
+    plot.caption = element_markdown(
+      size = 12, margin = margin(-15, 0, 0, 3)),
+    plot.caption.position = "plot",
+    # Facets
+    strip.background = element_rect(fill = "#F47321"),
+    strip.text = element_text(colour = "black", hjust = 0)
+  ) +
+labs(title = PlotTitle, subtitle = PlotSubtitle, caption = PlotCaption,
+     x = "", y = "")
+```
+
+```{r save, include=FALSE}
+# Save plot (standard width 4100)
+ggsave("team-goals-by-time.png", plot = e, path = "../../man/figures/",
+       height = 2000, width = 3000, units = "px", dpi = 200)
+
+```
+## Result
+
+![](https://raw.githubusercontent.com/FlavioLeccese92/euroleaguer/main/man/figures/team-goals-by-time.png)
