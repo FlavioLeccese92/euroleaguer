@@ -21,17 +21,16 @@ library(elementalist)
 ## Goal
 
 We want to create a chart for each team showing the field-goals percentage and
-overall attempts on the court.
+overall attempts by time period of action.
 
-Colours are ranging from
-<span style="font-family:'Source Code Pro';background-color:#C70D3A;color:white;">#C70D3A</span>
-  (lower percentages) to
-<span style="font-family:'Source Code Pro';background-color:#2EB086;color:white;">#2EB086</span>)
-  (high percentages)
-and size of hexagons <span style="color:#F47321; font-size:20px;">&#x2B22;</span>
-  are corresponding to the number of attempts.
+Periods are `Opening` (from second 1 to 6), `Early` (6 to 12), `Late` (12 to 18)
+and `Ending` (18 to 24). Second opportunities are not included.
 
-Data can be obtained through `getGamePoints` function.
+Data can be obtained through `getPlayByPlay` function.
+
+Note that results may be slightly incorrect since some events are not traced by
+`Euroleague` (such as foot interference and similia), so that sometimes clock 
+reset is unknown.
 
 Resulted plot can be found at the bottom of this page.
 
