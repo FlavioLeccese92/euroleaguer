@@ -64,7 +64,7 @@ showtext_auto()
 
 ```{r data}
 CompetitionRounds <- getCompetitionRounds("E2023") %>%
-  filter(MinGameStartDate <= Sys.Date())
+  filter(Sys.Date() >= MaxGameStartDate)
 
 MaxRound <- max(CompetitionRounds$Round)
 MaxGameDate <- format(as.Date(max(CompetitionRounds$MaxGameStartDate)), 

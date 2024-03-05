@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-  ```{r markdown-set, include=FALSE}
+```{r markdown-set, include=FALSE}
 knitr::opts_chunk$set(
   echo = TRUE,
   message = FALSE,
@@ -62,7 +62,7 @@ showtext_auto()
 
 ```{r data}
 CompetitionRounds <- getCompetitionRounds("E2023") %>%
-  filter(MinGameStartDate <= Sys.Date())
+  filter(Sys.Date() >= MaxGameStartDate)
 
 MaxRound <- max(CompetitionRounds$Round)
 MaxGameDate <- format(as.Date(max(CompetitionRounds$MaxGameStartDate)), 
@@ -119,7 +119,7 @@ PlayByPlay = PlayByPlay %>%
   mutate(TeamName = factor(TeamName, levels = unique(.$TeamName)))
 
 
-Points = PlayByPlay %>%
+Goals = PlayByPlay %>%
   filter(PlayType %in% c("2PM", "3PM", "2PA", "3PA"),
          ActionMarker < 24,
          Chance == 1) %>% 
@@ -138,7 +138,7 @@ Points = PlayByPlay %>%
   pivot_longer(cols = c("Missed", "Made"), names_to = "MissedMade", values_to = "Percentage") %>%
   mutate(MissedMade = factor(MissedMade, levels = c("Missed", "Made")))
 
-Labels = Points %>% 
+Labels = Goals %>% 
   group_by(TeamName,  ActionMarker, GoalValue) %>% 
   mutate(y = sum(Percentage)) %>% ungroup() %>% 
   filter(MissedMade == "Made") %>%
@@ -153,7 +153,7 @@ Labels = Points %>%
 ## Image for plot
 
 ```{r images for plot}
-TeamImage <- Goals %>%
+TeamImage <- PlayByPlay %>%
   filter(!is.na(TeamImagesCrest)) %>%
   distinct(TeamName, TeamImagesCrest) %>% 
   mutate(x = 1, y = 1.05)
@@ -186,7 +186,7 @@ PlotCaption <- glue(
 
 ```{r plot}
 # Initialize
-e <- Points %>%
+e <- Goals %>%
   ggplot(aes(x = as.numeric(ActionMarker)))
 
 # Draw bars of stats
