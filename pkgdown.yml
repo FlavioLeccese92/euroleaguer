@@ -3,10 +3,11 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   glossary: glossary.html
+  team-goals-by-time: team-goals-by-time.html
   team-standings-race: team-standings-race.html
   team-stats-court: team-stats-court.html
   team-stats-radar: team-stats-radar.html
-last_built: 2024-03-02T12:30Z
+last_built: 2024-03-05T20:24Z
 urls:
   reference: https://flavioleccese92.github.io/euroleaguer/reference
   article: https://flavioleccese92.github.io/euroleaguer/articles
