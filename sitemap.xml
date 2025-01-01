@@ -1,96 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/404.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/articles/glossary.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/articles/team-goals-by-time.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/articles/team-standings-race.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/articles/team-stats-court.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/articles/team-stats-radar.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/index.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/dot-inheritParams.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionAheadBehind.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionCalendar.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionMargins.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionMetadata.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionStandings.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionStreaks.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getGameBoxScore.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getGameEvolution.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getGameMetadata.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getGamePlayByPlay.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getGamePoints.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getPlayerAdvanced.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getPlayerMisc.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getPlayerPoints.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getPlayerStats.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getTeamLeadStats.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getTeamMetadata.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/getTeamStats.html</loc>
-  </url>
-  <url>
-    <loc>https://flavioleccese92.github.io/euroleaguer/reference/index.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/404.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/LICENSE-text.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/LICENSE.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/articles/glossary.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/articles/index.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/articles/team-goals-by-time.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/articles/team-standings-race.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/articles/team-stats-court.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/articles/team-stats-radar.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/authors.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/index.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/dot-inheritParams.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionAheadBehind.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionCalendar.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionMargins.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionMetadata.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionStandings.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getCompetitionStreaks.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getGameBoxScore.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getGameEvolution.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getGameMetadata.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getGamePlayByPlay.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getGamePoints.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getPlayerAdvanced.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getPlayerMisc.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getPlayerPoints.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getPlayerStats.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getTeamLeadStats.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getTeamMetadata.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/getTeamStats.html</loc></url>
+<url><loc>https://flavioleccese92.github.io/euroleaguer/reference/index.html</loc></url>
 </urlset>
+
