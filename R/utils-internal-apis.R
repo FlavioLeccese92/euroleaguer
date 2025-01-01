@@ -54,10 +54,10 @@ NULL
   if (out$status == 200) {
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
       .$data %>% tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$winner), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$winner.images), names_sep = ".") %>%
+      tidyr::unnest(cols = c(winner), names_sep = ".") %>%
+      tidyr::unnest(cols = c(winner.images), names_sep = ".") %>%
       dplyr::rename_with(.TextFormatType1) %>%
-      dplyr::rename(SeasonCode = .data$Code, WinnerImages = .data$WinnerImagesCrest) %>%
+      dplyr::rename(SeasonCode = Code, WinnerImages = WinnerImagesCrest) %>%
       dplyr::mutate(dplyr::across(dplyr::ends_with("Date"), ~as.Date(.)))
   } else {out$data <- NULL}
   return(out)
@@ -105,10 +105,10 @@ NULL
   if (out$status == 200) {
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
       tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$season), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$phaseType), names_sep = ".") %>%
+      tidyr::unnest(cols = c(season), names_sep = ".") %>%
+      tidyr::unnest(cols = c(phaseType), names_sep = ".") %>%
       dplyr::rename_with(.TextFormatType1) %>%
-      dplyr::rename(PhaseType = .data$PhaseTypeCode) %>%
+      dplyr::rename(PhaseType = PhaseTypeCode) %>%
       dplyr::mutate(dplyr::across(dplyr::ends_with("Date"), ~as.Date(.)))
   } else {out$data <- NULL}
   return(out)
@@ -132,9 +132,9 @@ NULL
   if (out$status == 200) {
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
       .$data %>% tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$images, .data$country), names_sep = ".") %>%
+      tidyr::unnest(cols = c(images, country), names_sep = ".") %>%
       dplyr::rename_with(.TextFormatType1) %>%
-      dplyr::rename(TeamCode = .data$Code, TeamName = .data$Name)
+      dplyr::rename(TeamCode = Code, TeamName = Name)
   } else {out$data <- NULL}
   return(out)
 }
@@ -161,21 +161,21 @@ NULL
   if (out$status == 200) {
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
       .$data %>% tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$season, .data$competition, .data$group, .data$phaseType,
-                             .data$round, .data$home, .data$away, .data$venue),
+      tidyr::unnest(cols = c(season, competition, group, phaseType,
+                             round, home, away, venue),
                     names_sep = ".") %>%
-      tidyr::unnest(c(.data$home.quarters, .data$home.coach, .data$home.imageUrls,
-                      .data$away.quarters, .data$away.coach, .data$away.imageUrls),
-                    names_sep = ".") %>% dplyr::select(-.data$broadcasters) %>%
-      dplyr::mutate(referees = lapply(.data$referees, function(x) if (is.null(x)) NA else x)) %>%
-      tidyr::unnest(c(.data$referees),  names_sep = ".") %>%
-      tidyr::unnest(c(.data$referees.country),  names_sep = ".") %>%
+      tidyr::unnest(c(home.quarters, home.coach, home.imageUrls,
+                      away.quarters, away.coach, away.imageUrls),
+                    names_sep = ".") %>% dplyr::select(-broadcasters) %>%
+      dplyr::mutate(referees = lapply(referees, function(x) if (is.null(x)) NA else x)) %>%
+      tidyr::unnest(c(referees),  names_sep = ".") %>%
+      tidyr::unnest(c(referees.country),  names_sep = ".") %>%
       dplyr::rename_with(.TextFormatType1) %>%
-      dplyr::rename(GameCode = .data$Code) %>%
-      dplyr::mutate(dplyr::across(c(dplyr::ends_with("Date"), -.data$ConfirmedDate), ~as.Date(.))) %>%
+      dplyr::rename(GameCode = Code) %>%
+      dplyr::mutate(dplyr::across(c(dplyr::ends_with("Date"), -ConfirmedDate), ~as.Date(.))) %>%
       dplyr::group_by(dplyr::across(!dplyr::starts_with("Referees"))) %>%
       dplyr::reframe(dplyr::across(dplyr::starts_with("Referees"), ~list(.))) %>%
-      dplyr::select(-.data$RoundRound)
+      dplyr::select(-RoundRound)
   } else {out$data <- NULL}
   return(out)
 }
@@ -198,10 +198,10 @@ NULL
   if (out$status == 200) {
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
       .$teams %>% tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$club), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$club.images), names_sep = ".") %>%
+      tidyr::unnest(cols = c(club), names_sep = ".") %>%
+      tidyr::unnest(cols = c(club.images), names_sep = ".") %>%
       dplyr::rowwise() %>%
-      dplyr::mutate(last5Form = paste0(unlist(.data$last5Form), collapse = "-")) %>%
+      dplyr::mutate(last5Form = paste0(unlist(last5Form), collapse = "-")) %>%
       dplyr::ungroup() %>%
       dplyr::rename_with(.TextFormatType1) %>%
       dplyr::rename_with(function(x) {gsub("Club", "Team", x)})
@@ -227,9 +227,9 @@ NULL
   if (out$status == 200) {
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
       .$teams %>% tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$club), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$club.images), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$streaks), names_sep = ".") %>%
+      tidyr::unnest(cols = c(club), names_sep = ".") %>%
+      tidyr::unnest(cols = c(club.images), names_sep = ".") %>%
+      tidyr::unnest(cols = c(streaks), names_sep = ".") %>%
       dplyr::rename_with(.TextFormatType1) %>%
       dplyr::rename_with(function(x) {gsub("Club", "Team", x)}) %>%
       dplyr::mutate(dplyr::across(dplyr::ends_with("Date"), ~as.Date(.)))
@@ -255,8 +255,8 @@ NULL
   if (out$status == 200) {
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
       .$teams %>% tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$club), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$club.images), names_sep = ".") %>%
+      tidyr::unnest(cols = c(club), names_sep = ".") %>%
+      tidyr::unnest(cols = c(club.images), names_sep = ".") %>%
       dplyr::rename_with(.TextFormatType1) %>%
       dplyr::rename_with(function(x) {gsub("Club", "Team", x)})
   } else {out$data <- NULL}
@@ -281,8 +281,8 @@ NULL
   if (out$status == 200) {
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
       .$teams %>% tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$club), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$club.images), names_sep = ".") %>%
+      tidyr::unnest(cols = c(club), names_sep = ".") %>%
+      tidyr::unnest(cols = c(club.images), names_sep = ".") %>%
       dplyr::rename_with(.TextFormatType1) %>%
       dplyr::rename_with(function(x) {gsub("Club", "Team", x)})
   } else {out$data <- NULL}
@@ -308,8 +308,8 @@ NULL
   if (out$status == 200) {
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
       .$teams %>% tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$club), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$club.images), names_sep = ".") %>%
+      tidyr::unnest(cols = c(club), names_sep = ".") %>%
+      tidyr::unnest(cols = c(club.images), names_sep = ".") %>%
       dplyr::rename_with(.TextFormatType1) %>%
       dplyr::rename_with(function(x) {gsub("Club", "Team", x)})
   } else {out$data <- NULL}
@@ -356,28 +356,28 @@ NULL
 
     out$data[["PlayerStats"]] <- getin_data$Stats$PlayersStats %>% dplyr::bind_rows() %>% tibble::as_tibble() %>%
       dplyr::bind_cols(GameCode = game_code, .) %>%
-      dplyr::rename(TeamCode = .data$Team) %>%
+      dplyr::rename(TeamCode = Team) %>%
       .rename_stat() %>%
-      dplyr::filter(.data$Minutes != "DNP") %>%
-      dplyr::mutate(Player = paste0(gsub(".*, ", "", .data$Player), " ", gsub(",.*", "", .data$Player), " #", .data$Dorsal),
-             Seconds = lubridate::period_to_seconds(lubridate::ms(.data$Minutes)), .after = "Minutes",
-             Player_ID = trimws(gsub("P", "", .data$Player_ID)),
+      dplyr::filter(Minutes != "DNP") %>%
+      dplyr::mutate(Player = paste0(gsub(".*, ", "", Player), " ", gsub(",.*", "", Player), " #", Dorsal),
+             Seconds = lubridate::period_to_seconds(lubridate::ms(Minutes)), .after = "Minutes",
+             Player_ID = trimws(gsub("P", "", Player_ID)),
              .keep = "unused") %>%
-      dplyr::mutate(`FG%` = 100*((.data$`2PM` + .data$`3PM`)/(.data$`2PA` + .data$`3PA`)) %>% round(4),
-             `2P%` = 100*(.data$`2PM`/.data$`2PA`) %>% round(4),
-             `3P%` = 100*(.data$`3PM`/.data$`3PA`) %>% round(4),
-             `FT%` = 100*(.data$`FTM`/.data$`FTA`) %>% round(4)) %>%
+      dplyr::mutate(`FG%` = 100*((`2PM` + `3PM`)/(`2PA` + `3PA`)) %>% round(4),
+             `2P%` = 100*(`2PM`/`2PA`) %>% round(4),
+             `3P%` = 100*(`3PM`/`3PA`) %>% round(4),
+             `FT%` = 100*(`FTM`/`FTA`) %>% round(4)) %>%
       dplyr::mutate(dplyr::across(dplyr::everything(), ~ifelse(is.nan(.), NA, .)))
 
     out$data[["TeamStats"]] <- getin_data$Stats$totr %>% tibble::as_tibble() %>%
       dplyr::bind_cols(TeamCode = unique(out$data[["PlayerStats"]]$TeamCode), .) %>%
       dplyr::bind_cols(GameCode = game_code, .) %>% .rename_stat() %>%
-      dplyr::mutate(Seconds = lubridate::period_to_seconds(lubridate::ms(.data$Minutes)), .after = "Minutes",
+      dplyr::mutate(Seconds = lubridate::period_to_seconds(lubridate::ms(Minutes)), .after = "Minutes",
                     .keep = "unused") %>%
-      dplyr::mutate(`FG%` = 100*((.data$`2PM` + .data$`3PM`)/(.data$`2PA` + .data$`3PA`)) %>% round(4),
-                    `2P%` = 100*(.data$`2PM`/.data$`2PA`) %>% round(4),
-                    `3P%` = 100*(.data$`3PM`/.data$`3PA`) %>% round(4),
-                    `FT%` = 100*(.data$`FTM`/.data$`FTA`) %>% round(4)) %>%
+      dplyr::mutate(`FG%` = 100*((`2PM` + `3PM`)/(`2PA` + `3PA`)) %>% round(4),
+                    `2P%` = 100*(`2PM`/`2PA`) %>% round(4),
+                    `3P%` = 100*(`3PM`/`3PA`) %>% round(4),
+                    `FT%` = 100*(`FTM`/`FTA`) %>% round(4)) %>%
       dplyr::mutate(dplyr::across(dplyr::everything(), ~ifelse(is.nan(.), NA, .)))
     } else {out$data <- NULL}
   return(out)
@@ -397,11 +397,11 @@ NULL
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
       .$Rows %>% tibble::as_tibble() %>%
       dplyr::rename_with(.TextFormatType2) %>%
-      dplyr::rename(NumberOfPlay = .data$NumAnot) %>%
-      dplyr::mutate(Player_ID = trimws(gsub("P", "", .data$Player_ID)),
-                    Utc = as.POSIXct(.data$Utc, format = "%Y%m%d%H%M%OS", tz = "UTC")) %>%
+      dplyr::rename(NumberOfPlay = NumAnot) %>%
+      dplyr::mutate(Player_ID = trimws(gsub("P", "", Player_ID)),
+                    Utc = as.POSIXct(Utc, format = "%Y%m%d%H%M%OS", tz = "UTC")) %>%
       dplyr::mutate(GameCode = game_code,
-                    TeamCode = trimws(.data$Team), .keep = "unused", .before = 1)
+                    TeamCode = trimws(Team), .keep = "unused", .before = 1)
     } else {out$data <- NULL}
   return(out)
 }
@@ -440,7 +440,7 @@ NULL
       { if (nrow(.) > 0)
         dplyr::rename_with(., .TextFormatType4) %>%
         dplyr::rename_with(., .TextFormatType1) %>%
-        dplyr::mutate(Player_ID = trimws(gsub("P", "", .data$Player_ID)))
+        dplyr::mutate(Player_ID = trimws(gsub("P", "", Player_ID)))
          else  NULL }
   } else {out$data <- NULL}
   return(out)
@@ -475,11 +475,11 @@ NULL
       dplyr::rename_with(.TextFormatType3) %>%
       dplyr::mutate(dplyr::across(dplyr::where(is.character), trimws),
                     dplyr::across(dplyr::everything(), ~ifelse(nchar(.) == 0, NA, .))) %>%
-      dplyr::mutate(Player_ID = trimws(gsub("P", "", .data$Player_ID))) %>%
-      dplyr::rename(TeamCode = .data$CodeTeam,
-                    PlayerName = .data$Player,
-                    TeamName = .data$Team) %>%
-      dplyr::mutate(PlayType = gsub("FG", "P", .data$PlayType))
+      dplyr::mutate(Player_ID = trimws(gsub("P", "", Player_ID))) %>%
+      dplyr::rename(TeamCode = CodeTeam,
+                    PlayerName = Player,
+                    TeamName = Team) %>%
+      dplyr::mutate(PlayType = gsub("FG", "P", PlayType))
     } else {out$data <- NULL}
   return(out)
 }
@@ -504,9 +504,9 @@ NULL
 
     out$data[["Evolution"]] <- dplyr::bind_cols(
       Minute = getin_data[["MinutesList"]],
-      getin_data[["PointsList"]] %>% t() %>% as.data.frame() %>% dplyr::rename(PointsTeamA = .data$V1, PointsTeamB = .data$V2),
-      getin_data[["ScoreDiffPerMinute"]] %>% t() %>% as.data.frame() %>% dplyr::rename(DiffTeamA = .data$V1, DiffTeamB = .data$V2) %>%
-        dplyr::mutate(DiffTeamB = abs(.data$DiffTeamB))) %>% tibble::as_tibble()
+      getin_data[["PointsList"]] %>% t() %>% as.data.frame() %>% dplyr::rename(PointsTeamA = V1, PointsTeamB = V2),
+      getin_data[["ScoreDiffPerMinute"]] %>% t() %>% as.data.frame() %>% dplyr::rename(DiffTeamA = V1, DiffTeamB = V2) %>%
+        dplyr::mutate(DiffTeamB = abs(DiffTeamB))) %>% tibble::as_tibble()
   } else {out$data <- NULL}
   return(out)
 }
@@ -532,9 +532,9 @@ NULL
         { if (is.null(dim(.)))
           unlist(.) %>% t() %>% tibble::as_tibble()
         else tibble::as_tibble(.) %>%
-          tidyr::unnest(cols = c(.data$images, .data$country), names_sep = ".")} %>%
+          tidyr::unnest(cols = c(images, country), names_sep = ".")} %>%
           dplyr::rename_with(.TextFormatType1) %>%
-          dplyr::rename(TeamCode = .data$Code, TeamName = .data$Name)
+          dplyr::rename(TeamCode = Code, TeamName = Name)
   } else {out$data <- NULL}
   return(out)
 }
@@ -557,13 +557,13 @@ NULL
   if (out$status == 200) {
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
     tibble::as_tibble() %>%
-    tidyr::unnest(cols = c(.data$person, .data$images, .data$club, .data$season), names_sep = ".") %>%
-    tidyr::unnest(cols = c(.data$person.country, .data$person.birthCountry,
-                           .data$person.images, .data$club.images), names_sep = ".") %>%
+    tidyr::unnest(cols = c(person, images, club, season), names_sep = ".") %>%
+    tidyr::unnest(cols = c(person.country, person.birthCountry,
+                           person.images, club.images), names_sep = ".") %>%
     dplyr::rename_with(.TextFormatType1) %>%
     dplyr::mutate(TeamCode = team_code,
-                  PersonCode = trimws(.data$PersonCode),
-                  Player = paste0(gsub(".*, ", "", .data$PersonName), " ", gsub(",.*", "", .data$PersonName), " #", .data$Dorsal),
+                  PersonCode = trimws(PersonCode),
+                  Player = paste0(gsub(".*, ", "", PersonName), " ", gsub(",.*", "", PersonName), " #", Dorsal),
                   .before = 1)
   } else {out$data <- NULL}
   return(out)
@@ -588,22 +588,22 @@ NULL
   if (out$status == 200) {
     out$data <- getin %>% .$content %>% rawToChar() %>% jsonlite::fromJSON(.) %>%
       .$data %>% tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$season, .data$competition, .data$group, .data$phaseType,
-                             .data$round, .data$home, .data$away, .data$venue),
+      tidyr::unnest(cols = c(season, competition, group, phaseType,
+                             round, home, away, venue),
                     names_sep = ".") %>%
-      tidyr::unnest(c(.data$home.quarters, .data$home.coach, .data$home.imageUrls,
-                      .data$away.quarters, .data$away.coach, .data$away.imageUrls),
-                    names_sep = ".") %>% dplyr::select(-.data$broadcasters) %>%
+      tidyr::unnest(c(home.quarters, home.coach, home.imageUrls,
+                      away.quarters, away.coach, away.imageUrls),
+                    names_sep = ".") %>% dplyr::select(-broadcasters) %>%
       dplyr::rename_with(.TextFormatType1) %>%
-      dplyr::rename(GameId = .data$Id, GameCode = .data$Code, GameDate = .data$Date,
-                    GameStatus = .data$Status, Round = .data$RoundRound) %>%
+      dplyr::rename(GameId = Id, GameCode = Code, GameDate = Date,
+                    GameStatus = Status, Round = RoundRound) %>%
       dplyr::mutate(TeamCode = team_code,
-                    WinLoss = ifelse((team_code == .data$HomeCode) == (.data$HomeScore > .data$AwayScore), "Win", "Loss"),
-                    TeamCodeAgainst = ifelse(team_code == .data$HomeCode, .data$AwayCode, .data$HomeCode),
-                    HomeAway = ifelse((team_code == .data$HomeCode), "Home", "Away"),
-                    GameDate = as.Date(.data$GameDate),
-                    TeamScore = ifelse(.data$HomeAway == "Home", .data$HomeScore, .data$AwayScore),
-                    TeamAgainstScore = ifelse(.data$HomeAway == "Away", .data$HomeScore, .data$AwayScore), .before = 1)
+                    WinLoss = ifelse((team_code == HomeCode) == (HomeScore > AwayScore), "Win", "Loss"),
+                    TeamCodeAgainst = ifelse(team_code == HomeCode, AwayCode, HomeCode),
+                    HomeAway = ifelse((team_code == HomeCode), "Home", "Away"),
+                    GameDate = as.Date(GameDate),
+                    TeamScore = ifelse(HomeAway == "Home", HomeScore, AwayScore),
+                    TeamAgainstScore = ifelse(HomeAway == "Away", HomeScore, AwayScore), .before = 1)
   } else {out$data <- NULL}
   return(out)
 }
@@ -630,27 +630,27 @@ NULL
 
     out$data[["PlayerAccumulated"]] <- getin_data[["playerStats"]] %>%
       tibble::as_tibble() %>%
-      dplyr::select(-.data$averagePerGame) %>%
-      tidyr::unnest(., cols = c(.data$player, .data$accumulated), names_sep = ".") %>%
+      dplyr::select(-averagePerGame) %>%
+      tidyr::unnest(., cols = c(player, accumulated), names_sep = ".") %>%
       dplyr::rename_with(function(x) {gsub("accumulated\\.", "", x)} ) %>%
       .rename_stat() %>%
       dplyr::mutate(TeamCode = team_code,
-                    Player_ID = trimws(.data$PlayerCode), .before = 1, .keep = "unused") %>%
+                    Player_ID = trimws(PlayerCode), .before = 1, .keep = "unused") %>%
       dplyr::mutate(dplyr::across(dplyr::contains("%"), ~as.numeric(gsub("%", "", .))))
 
     out$data[["PlayerAveragePerGame"]] <- getin_data[["playerStats"]] %>%
       tibble::as_tibble() %>%
-      dplyr::select(-.data$accumulated) %>%
-      tidyr::unnest(., cols = c(.data$player, .data$averagePerGame), names_sep = ".") %>%
+      dplyr::select(-accumulated) %>%
+      tidyr::unnest(., cols = c(player, averagePerGame), names_sep = ".") %>%
       dplyr::rename_with(function(x) {gsub("averagePerGame\\.", "", x)}) %>%
       .rename_stat() %>%
       dplyr::mutate(TeamCode = team_code,
-                    Player_ID = trimws(.data$PlayerCode), .before = 1, .keep = "unused") %>%
+                    Player_ID = trimws(PlayerCode), .before = 1, .keep = "unused") %>%
       dplyr::mutate(dplyr::across(dplyr::contains("%"), ~as.numeric(gsub("%", "", .))))
 
     out$data[["PlayerAveragePer40"]] <- out$data[["PlayerAccumulated"]] %>%
       dplyr::mutate(dplyr::across(-c("TeamCode", dplyr::contains("Player"), dplyr::contains("%")),
-                                  ~ round(40*60*./.data$TimePlayed, 2)))
+                                  ~ round(40*60*./TimePlayed, 2)))
 
     out$data[["TeamAccumulated"]] <- getin_data[["accumulated"]] %>%
       tibble::as_tibble() %>% tidyr::unnest(cols = dplyr::everything()) %>%
@@ -717,13 +717,13 @@ NULL
   }
 
   out$data[["TeamAccumulated"]] <- temp %>%
-    dplyr::select(.data$Stat, .data$clubCode, .data$gamesPlayed, .data$timePlayedSeconds, .data$total) %>%
+    dplyr::select(Stat, clubCode, gamesPlayed, timePlayedSeconds, total) %>%
     tidyr::pivot_wider(names_from = "Stat", values_from = "total") %>%
     .rename_stat() %>%
     dplyr::rename_with(function(x) {gsub("Club", "Team", x)})
 
   out$data[["TeamAveragePerGame"]] <- temp %>%
-    dplyr::select(.data$Stat, .data$clubCode, .data$gamesPlayed, .data$timePlayedSeconds, .data$averagePerGame) %>%
+    dplyr::select(Stat, clubCode, gamesPlayed, timePlayedSeconds, averagePerGame) %>%
     tidyr::pivot_wider(names_from = "Stat", values_from = "averagePerGame") %>%
     .rename_stat() %>%
     dplyr::rename_with(function(x) {gsub("Club", "Team", x)})
@@ -757,15 +757,15 @@ NULL
   if (out$status == 200) {
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
       tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$players), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$players.player), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$players.player.team), names_sep = ".") %>%
+      tidyr::unnest(cols = c(players), names_sep = ".") %>%
+      tidyr::unnest(cols = c(players.player), names_sep = ".") %>%
+      tidyr::unnest(cols = c(players.player.team), names_sep = ".") %>%
       dplyr::rename_with(function(x) {gsub("players|player", "", x)}) %>%
       .rename_stat() %>%
-      dplyr::rename(Player_ID = .data$Code,
-                    PlayerName = .data$Name,
-                    PlayerAge = .data$Age) %>%
-      dplyr::select(-.data$Total, -.data$Ranking)
+      dplyr::rename(Player_ID = Code,
+                    PlayerName = Name,
+                    PlayerAge = Age) %>%
+      dplyr::select(-Total, -Ranking)
   } else {out$data <- NULL}
   return(out)
 }
@@ -795,15 +795,15 @@ NULL
   if (out$status == 200) {
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
       tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$players), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$players.player), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$players.player.team), names_sep = ".") %>%
+      tidyr::unnest(cols = c(players), names_sep = ".") %>%
+      tidyr::unnest(cols = c(players.player), names_sep = ".") %>%
+      tidyr::unnest(cols = c(players.player.team), names_sep = ".") %>%
       dplyr::rename_with(function(x) {gsub("players|player", "", x)}) %>%
       .rename_stat() %>%
-      dplyr::rename(Player_ID = .data$Code,
-                    PlayerName = .data$Name,
-                    PlayerAge = .data$Age) %>%
-      dplyr::select(-.data$Total, -.data$Ranking)
+      dplyr::rename(Player_ID = Code,
+                    PlayerName = Name,
+                    PlayerAge = Age) %>%
+      dplyr::select(-Total, -Ranking)
   } else {out$data <- NULL}
   return(out)
 }
@@ -832,15 +832,15 @@ NULL
   if (out$status == 200) {
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
       tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$players), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$players.player), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$players.player.team), names_sep = ".") %>%
+      tidyr::unnest(cols = c(players), names_sep = ".") %>%
+      tidyr::unnest(cols = c(players.player), names_sep = ".") %>%
+      tidyr::unnest(cols = c(players.player.team), names_sep = ".") %>%
       dplyr::rename_with(function(x) {gsub("players|player", "", x)}) %>%
       .rename_stat() %>%
-      dplyr::rename(Player_ID = .data$Code,
-                    PlayerName = .data$Name,
-                    PlayerAge = .data$Age) %>%
-      dplyr::select(-.data$Total, -.data$Ranking)
+      dplyr::rename(Player_ID = Code,
+                    PlayerName = Name,
+                    PlayerAge = Age) %>%
+      dplyr::select(-Total, -Ranking)
   } else {out$data <- NULL}
   return(out)
 }
@@ -869,15 +869,15 @@ NULL
   if (out$status == 200) {
     out$data <- getin$content %>% rawToChar() %>% jsonlite::fromJSON() %>%
       tibble::as_tibble() %>%
-      tidyr::unnest(cols = c(.data$players), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$players.player), names_sep = ".") %>%
-      tidyr::unnest(cols = c(.data$players.player.team), names_sep = ".") %>%
+      tidyr::unnest(cols = c(players), names_sep = ".") %>%
+      tidyr::unnest(cols = c(players.player), names_sep = ".") %>%
+      tidyr::unnest(cols = c(players.player.team), names_sep = ".") %>%
       dplyr::rename_with(function(x) {gsub("players|player", "", x)})%>%
       .rename_stat() %>%
-      dplyr::rename(Player_ID = .data$Code,
-                    PlayerName = .data$Name,
-                    PlayerAge = .data$Age) %>%
-      dplyr::select(-.data$Total, -.data$Ranking)
+      dplyr::rename(Player_ID = Code,
+                    PlayerName = Name,
+                    PlayerAge = Age) %>%
+      dplyr::select(-Total, -Ranking)
   } else {out$data <- NULL}
   return(out)
 }
