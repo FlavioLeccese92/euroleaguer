@@ -167,6 +167,7 @@ NULL
       tidyr::unnest(c(.data$home.quarters, .data$home.coach, .data$home.imageUrls,
                       .data$away.quarters, .data$away.coach, .data$away.imageUrls),
                     names_sep = ".") %>% dplyr::select(-.data$broadcasters) %>%
+      dplyr::mutate(referees = lapply(.data$referees, function(x) if (is.null(x)) NA else x)) %>%
       tidyr::unnest(c(.data$referees),  names_sep = ".") %>%
       tidyr::unnest(c(.data$referees.country),  names_sep = ".") %>%
       dplyr::rename_with(.TextFormatType1) %>%

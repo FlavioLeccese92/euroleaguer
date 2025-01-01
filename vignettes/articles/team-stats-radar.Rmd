@@ -63,7 +63,7 @@ showtext_auto()
 ## Data
 
 ```{r data}
-CompetitionRounds <- getCompetitionRounds("E2023") %>%
+CompetitionRounds <- getCompetitionRounds("E2024") %>%
   filter(Sys.Date() >= MaxGameStartDate) %>%
   slice_head(n = 1)
 
@@ -71,8 +71,8 @@ MaxRound <- max(CompetitionRounds$Round)
 MaxGameDate <- format(as.Date(max(CompetitionRounds$MaxGameStartDate)), 
                      '%d %b %Y')
 
-CompetitionStandings <- getCompetitionStandings("E2023", CompetitionRounds$Round)
-TeamStats <- getTeamStats("E2023", CompetitionStandings$TeamCode)
+CompetitionStandings <- getCompetitionStandings("E2024", CompetitionRounds$Round)
+TeamStats <- getTeamStats("E2024", CompetitionStandings$TeamCode)
 ```
 
 ## Data for plot
