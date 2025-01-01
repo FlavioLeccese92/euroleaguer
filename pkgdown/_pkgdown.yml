@@ -28,6 +28,9 @@ home:
     href: https://www.euroleaguebasketball.net/eurocup/
 docsearch:
   search:
+news:
+  one_page: true # Optional: Lists all news on a single page
+
 reference:
 
 - title: Competition

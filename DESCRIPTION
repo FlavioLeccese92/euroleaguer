@@ -1,6 +1,6 @@
 Type: Package
 Package: euroleaguer
-Title: 'Euroleague' and 'Eurocup' basketball API
+Title: Euroleague and Eurocup basketball API
 Version: 0.2.0
 Authors@R: 
     person("Flavio", "Leccese", , "flavioleccese92@gmail.com", role = c("aut", "cre"))
